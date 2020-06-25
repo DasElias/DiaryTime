@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="Diary.Views.EntryWasDeletedPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{x:Bind messageText}" />
+            <Button Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,15,0,0" Click="HandleUndoBtn_Click">Rückgängig machen</Button>
+        </StackPanel>
+    </Grid>
+</Page>

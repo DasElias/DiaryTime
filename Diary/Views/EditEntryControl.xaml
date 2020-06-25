@@ -1,0 +1,281 @@
+﻿<UserControl
+    x:Class="Diary.Views.EditEntryControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Views"
+    xmlns:model="using:Diary.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+        xmlns:symbols="using:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarSymbols"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="ButtonTemplate1" TargetType="Button">
+                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BackgroundSizing="{TemplateBinding BackgroundSizing}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <Storyboard>
+                                    <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="PointerOver">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                </Storyboard>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ContentPresenter>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <!-- the background is set because otherwise the PointerPressed handler is not fired-->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" PointerPressed="HandleBackground_PointerPressed">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="titleBox" Margin="0,0,0,35" FontSize="30" FontFamily="Calibri" FontWeight="Light" PlaceholderText="Titel" BorderThickness="1" Grid.Row="0" TextChanged="HandleTextChanged_TitleBox"></TextBox>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Margin" Value="0,0,8,0" />
+                        <Setter Property="AllowFocusOnInteraction" Value="False" />
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Margin" Value="0,0,8,0" />
+                        <Setter Property="AllowFocusOnInteraction" Value="False" />
+                    </Style>
+                    <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="Transparent" />
+                    <Style TargetType="ComboBox">
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="BorderBrush" Value="#44000000" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="undoButton" ToolTipService.ToolTip="Rückgängig" Click="HandleUndoButton_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7A7;" />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="redoButton" ToolTipService.ToolTip="Wiederholen" Click="HandleRedoButton_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7A6;" />
+                    </Button.Content>
+                </Button>
+                <ComboBox x:Name="fontFamilyBox" 
+                      Width="200" 
+                      SelectionChanged="HandleFontFamilyBox_SelectionChanged" />
+                <ComboBox x:Name="fontSizeBox" 
+                      Margin="-1,0,8,0"
+                      ItemsSource="{x:Bind fontSizes}" 
+                      SelectionChanged="HandleFontSizeBox_SelectionChanged" />
+                <ToggleButton x:Name="boldButton" ToolTipService.ToolTip="Fetter Text" Click="HandleBoldBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DD;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="italicButton" ToolTipService.ToolTip="Kursiver Text" Click="HandleItalicBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DB;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="underlineButton" ToolTipService.ToolTip="Unterstrichener Text" Click="HandleUnderlineBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DC;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="strikeButton"
+                        Height="29"
+                        ToolTipService.ToolTip="Durchgestrichener Text"
+                        Click="HandleStrikeThroughBtn_Click">
+                    <ToggleButton.Content>
+                        <TextBlock FontSize="20" Text="abc" TextDecorations="Strikethrough" TextLineBounds="Tight" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <SplitButton x:Name="textColorButton" Style="{StaticResource SplitButtonStyle}" BorderThickness="0" Background="Transparent" Margin="0,0,0,0" AllowFocusOnInteraction="False" Height="29" ToolTipService.ToolTip="Schriftfarbe" Padding="0,0,0,0" Click="HandleTextColorButton_Click">
+                    <SplitButton.Resources>
+                        <CollectionViewSource x:Name="ColorSource" Source="{x:Bind colorService.GroupedColors}" IsSourceGrouped="True" />
+                    </SplitButton.Resources>
+                    <SplitButton.Content>
+                        <StackPanel Width="20" Height="25">
+                            <TextBlock FontSize="14" HorizontalAlignment="Center">A</TextBlock>
+                            <Rectangle x:Name="currentSelectedColorRectangle" Width="15" Height="3" Fill="White" Margin="0,-1,0,0"></Rectangle>
+                        </StackPanel>
+                    </SplitButton.Content>
+                    <SplitButton.Flyout>
+                        <Flyout x:Name="textColorButtonFlyout" Placement="Bottom">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderBrush="LightGray" Padding="12.5" BorderThickness="2">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <GridView ItemsSource="{Binding Source={StaticResource ColorSource}}"
+                                  SingleSelectionFollowsFocus="False"
+                                  SelectedIndex="1" Padding="0"
+                                  SelectionChanged="HandleTextColorButton_SelectionChanged">
+                                <GridView.GroupStyle>
+                                    <GroupStyle>
+                                        <GroupStyle.HeaderTemplate>
+                                            <DataTemplate x:DataType="model:ColorGroup">
+                                                <TextBlock Text="{x:Bind Key}" FontSize="13" FontWeight="Bold" Margin="8" />
+                                            </DataTemplate>
+                                        </GroupStyle.HeaderTemplate>
+                                        <GroupStyle.HeaderContainerStyle>
+                                            <Style TargetType="GridViewHeaderItem">
+                                                <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+                                                <Setter Property="FontSize" Value="{ThemeResource ListViewHeaderItemThemeFontSize}" />
+                                                <Setter Property="Margin" Value="0" />
+                                                <Setter Property="Padding" Value="0" />
+                                                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                                <Setter Property="VerticalContentAlignment" Value="Bottom" />
+                                                <Setter Property="MinHeight" Value="{ThemeResource ListViewHeaderItemMinHeight}" />
+                                                <Setter Property="UseSystemFocusVisuals" Value="True" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="GridViewHeaderItem">
+                                                            <ContentPresenter x:Name="ContentPresenter"
+                                                    Background="{TemplateBinding Background}"
+                                                    Content="{TemplateBinding Content}"
+                                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </GroupStyle.HeaderContainerStyle>
+
+                                    </GroupStyle>
+                                </GridView.GroupStyle>
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Rectangle Fill="{Binding}" Width="20" Height="20"/>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                                <GridView.ItemContainerStyle>
+                                    <Style TargetType="GridViewItem">
+                                        <Setter Property="Margin" Value="0.75"/>
+                                        <Setter Property="MinWidth" Value="0"/>
+                                        <Setter Property="MinHeight" Value="0"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                                <GridView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="10" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </GridView.ItemsPanel>
+                            </GridView>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                </SplitButton>
+                <AppBarSeparator />
+                <ToggleButton x:Name="alignLeftButton" ToolTipService.ToolTip="Linksbündig ausrichten" Click="HandleAlignLeftBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E4;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="alignCenterButton" ToolTipService.ToolTip="Zentriert ausrichten" Click="HandleAlignCenterBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E3;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="alignRightButton" ToolTipService.ToolTip="Rechtsbündig ausrichten" Click="HandleAlignRightBtn_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E2;" />
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <Button x:Name="unorderedListButton" ToolTipService.ToolTip="Aufzählung" Click="HandleUnorderedListBtn_Click">
+                    <Button.Content>
+                        <symbols:List />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="orderedListButton" ToolTipService.ToolTip="Nummerierung" Margin="0" Click="HandleOrderedListBtn_Click">
+                    <Button.Content>
+                        <symbols:NumberedList />
+                    </Button.Content>
+                </Button>
+                <AppBarSeparator />
+                <local:StyleTemplateButton x:Name="templatePicker" 
+                                       Margin="0,0,8,0"
+                                       VerticalAlignment="Center"
+                                       ApplyStyleTemplate="HandleTemplatePicker_ApplyStyleTemplate">
+
+                </local:StyleTemplateButton>
+            </StackPanel>
+        </ScrollViewer>
+        <RichEditBox x:Name="Editor" 
+                     FontFamily="Calibri" 
+                     FontSize="13.1" 
+                     SelectionHighlightColorWhenNotFocused="#FFCD3C3C" 
+                     SelectionChanged="HandleEditor_SelectionChanged" 
+                     TextChanged="HandleEditor_TextChanged" 
+                     BorderThickness="1" 
+                     Grid.Row="2"/>
+
+    </Grid>
+</UserControl>

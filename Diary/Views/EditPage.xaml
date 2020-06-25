@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="Diary.Views.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+
+    <controls:DockPanel>
+        <local:EntryButtonBarControl x:Name="entryButtonBarControl" controls:DockPanel.Dock="Top">
+            <local:EntryButtonBarControl.Resources>
+                <SolidColorBrush x:Key="AppBarToggleButtonBackgroundChecked" Color="#C8C6C4" />
+                <SolidColorBrush x:Key="AppBarToggleButtonBackgroundCheckedPointerOver" Color="#C8C6C4" />
+                <SolidColorBrush x:Key="AppBarToggleButtonBackgroundCheckedPressed" Color="#C8C6C4" />
+            </local:EntryButtonBarControl.Resources>
+            <local:EntryButtonBarControl.Buttons>
+                <AppBarButton Icon="View" Label="Bearbeiten abschließen" Click="HandleViewButton_Click"/>
+                <AppBarButton Icon="Delete" Label="Löschen" Click="HandleDeleteButton_Click"/>
+                <AppBarToggleButton x:Name="spellCheckingToggleButton"  Icon="Attach" Label="Rechtschreibprüfung" Click="HandleSpellCheckingButton_Click"/>
+            </local:EntryButtonBarControl.Buttons>
+        </local:EntryButtonBarControl>
+        <local:EditEntryControl x:Name="editor" controls:DockPanel.Dock="Top" Margin="11, 40, 11, 11"></local:EditEntryControl>
+    </controls:DockPanel>
+</Page>

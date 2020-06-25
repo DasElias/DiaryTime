@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="Diary.Views.ShellPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="312" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <RelativePanel Grid.Column="0">
+            <RelativePanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Width="312">
+                <Rectangle RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
+                    <Rectangle.Fill>
+                        <ImageBrush ImageSource="../Assets/shellPageTop.jpg"/>
+                    </Rectangle.Fill>
+
+                </Rectangle>
+                <Image Stretch="UniformToFill" Source="../Assets/shellPageBottom.jpg" Height="500" RelativePanel.AlignBottomWithPanel="True"/>
+                <Rectangle RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" Opacity="0.650" >
+                    <Rectangle.Fill>
+                        <AcrylicBrush TintColor="{ThemeResource SystemAccentColor}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </RelativePanel>
+            <StackPanel RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312" Padding="0,76,0,0">
+                <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag bearbeiten" Foreground="White" RequestedTheme="Dark" Tapped="HandleEditTodayEntry_Tapped"/>
+                <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag lesen" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped"/>
+                <NavigationViewItemSeparator FocusVisualPrimaryBrush="White" Foreground="White"  RequestedTheme="Dark" />
+                <Viewbox MaxWidth="228">
+                    <CalendarView x:Name="calendarView"
+                                  Foreground="White"
+                                  Background="{x:Null}" 
+                                  BorderBrush="{x:Null}"
+                                  CalendarItemBorderBrush="{x:Null}"
+                                  CalendarItemForeground="White" 
+                                  HoverBorderBrush="{ThemeResource SystemControlHighlightAccent2RevealBackgroundBrush}" 
+                                  SelectedBorderBrush="{ThemeResource SystemControlHighlightAccent2RevealBackgroundBrush}"
+                                  SelectedHoverBorderBrush="{ThemeResource SystemControlHighlightAccent2RevealBackgroundBrush}"
+                                  OutOfScopeBackground="{x:Null}" 
+                                  OutOfScopeForeground="{ThemeResource SystemControlHighlightAccent2RevealBackgroundBrush}"   
+                                  IsTodayHighlighted="False"
+                                  SelectedForeground="White"
+                                  PressedBorderBrush="#AAFFFFFF"
+                                  PressedForeground="White"
+                                  FirstDayOfWeek="Monday" 
+                                  SelectedDatesChanged="HandleCalendar_SelectedDateChange" 
+                                  CalendarViewDayItemChanging="HandleCalendar_CalendarViewDayItemChanging">
+                        <!--<CalendarView.Resources>
+                            <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="Green" />
+                        </CalendarView.Resources>-->
+                    </CalendarView>
+                </Viewbox>
+
+                <NavigationViewItemSeparator FocusVisualPrimaryBrush="White" Foreground="White" RequestedTheme="Dark" />
+                <NavigationViewItem x:Uid="ListViewItem" Content="Listenansicht" Foreground="White" RequestedTheme="Dark" Tapped="HandleOpenListView_Tapped">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8FD;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </StackPanel>
+            <StackPanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312">
+                <NavigationViewItem x:Uid="Settings" Icon="Setting" Content="Einstellungen" Foreground="White" RequestedTheme="Dark" Tapped="HandleSettings_Tapped" />
+
+            </StackPanel>
+        </RelativePanel>
+        <Frame x:Name="ShellFrame" Grid.Column="1">
+            <Frame.ContentTransitions>
+                <TransitionCollection>
+                    <NavigationThemeTransition>
+                        <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                            <SuppressNavigationTransitionInfo />
+                        </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    </NavigationThemeTransition>
+                </TransitionCollection>
+            </Frame.ContentTransitions>
+        </Frame>
+    </Grid>
+</Page>

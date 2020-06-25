@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Resources">
+
+    <Style x:Key="AutoSuggestWithoutBorder" TargetType="AutoSuggestBox">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="TextBoxStyle" Value="{StaticResource AutoSuggestBoxTextBoxStyle}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="AutoSuggestBox">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Orientation">
+                                <VisualState x:Name="Landscape"/>
+                                <VisualState x:Name="Portrait"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Grid.Resources>
+                            <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#FFEEEEEE"/>
+                            <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#FFEEEEEE"/>
+                        </Grid.Resources>
+                        <TextBox x:Name="TextBox"
+                Style="{TemplateBinding TextBoxStyle}"
+                PlaceholderText="{TemplateBinding PlaceholderText}"
+                Header="{TemplateBinding Header}"
+                Width="{TemplateBinding Width}"
+                Background="{TemplateBinding Background}"
+                BorderThickness="0"
+                ScrollViewer.BringIntoViewOnFocusChange="False"
+                Canvas.ZIndex="0"
+                IsSpellCheckEnabled="False"
+                Margin="0"
+                DesiredCandidateWindowAlignment="BottomEdge"/>
+                        <Popup x:Name="SuggestionsPopup">
+                            <Border x:Name="SuggestionsContainer" BorderThickness="0">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="UpwardTransform"/>
+                                </Border.RenderTransform>
+                                <ListView
+                                            x:Name="SuggestionsList"
+                                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                                            BorderThickness="0"
+                                            BorderBrush="{ThemeResource SystemControlForegroundChromeHighBrush}"
+                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                            IsItemClickEnabled="True"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                                            ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            MaxHeight="{ThemeResource AutoSuggestListMaxHeight}"
+                                            Margin="{ThemeResource AutoSuggestListMargin}"
+                                            Padding="{ThemeResource AutoSuggestListPadding}">
+                                    <ListView.ItemContainerTransitions>
+                                        <TransitionCollection />
+                                    </ListView.ItemContainerTransitions>
+                                </ListView>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
