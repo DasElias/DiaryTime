@@ -94,7 +94,7 @@
             </ListView>
 
             <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}}" Text="Keine Einträge anzuzeigen" />-->
-            <TextBlock Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}}"
+            <TextBlock Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}, Mode=OneWay}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Text="Keine Einträge anzuzeigen" 
