@@ -13,7 +13,7 @@
             <ColumnDefinition Width="312" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
+
         <RelativePanel Grid.Column="0">
             <RelativePanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Width="312">
                 <Rectangle RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
@@ -31,7 +31,11 @@
             </RelativePanel>
             <StackPanel RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312" Padding="0,76,0,0">
                 <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag bearbeiten" Foreground="White" RequestedTheme="Dark" Tapped="HandleEditTodayEntry_Tapped"/>
-                <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag lesen" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped"/>
+                <NavigationViewItem x:Uid="TodaysEntryItem" Content="Heutigen Tagebucheintrag lesen" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE736;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
                 <NavigationViewItemSeparator FocusVisualPrimaryBrush="White" Foreground="White"  RequestedTheme="Dark" />
                 <Viewbox MaxWidth="228">
                     <CalendarView x:Name="calendarView"
