@@ -20,7 +20,11 @@
             <local:EntryButtonBarControl.Buttons>
                 <AppBarButton Icon="View" Label="Bearbeiten abschließen" Click="HandleViewButton_Click"/>
                 <AppBarButton Icon="Delete" Label="Löschen" Click="HandleDeleteButton_Click"/>
-                <AppBarToggleButton x:Name="spellCheckingToggleButton"  Icon="Attach" Label="Rechtschreibprüfung" Click="HandleSpellCheckingButton_Click"/>
+                <AppBarToggleButton x:Name="spellCheckingToggleButton" Label="Rechtschreibprüfung" Click="HandleSpellCheckingButton_Click">
+                    <AppBarToggleButton.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE73E;" />
+                    </AppBarToggleButton.Content>
+                </AppBarToggleButton>
             </local:EntryButtonBarControl.Buttons>
         </local:EntryButtonBarControl>
         <local:EditEntryControl x:Name="editor" controls:DockPanel.Dock="Top" Margin="11, 40, 11, 11"></local:EditEntryControl>
