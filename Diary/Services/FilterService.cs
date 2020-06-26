@@ -37,7 +37,7 @@ namespace Diary.Services {
 
         private static bool IsInMonth(DiaryEntryPreview entry, string searchBoxText) {
             string trimmedSearchBoxText = searchBoxText.Trim();
-            return entry.Date.Month.ToString() == trimmedSearchBoxText;
+            return entry.Date.ToString("MMMM") == trimmedSearchBoxText;
         }
 
         private static bool IsInDate(DiaryEntryPreview entry, string searchBoxText) {
