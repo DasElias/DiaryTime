@@ -14,6 +14,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <converters:DateToStringConverter x:Name="dateToStringConverter" />
+            <converters:VisibleWhenZeroConverter x:Name="visibleWhenZeroConverter" />
             <CollectionViewSource x:Name="entriesSource" Source="{x:Bind diaryEntries}" IsSourceGrouped="True" />
 
             <ResourceDictionary.MergedDictionaries>
@@ -44,7 +45,6 @@
             </Grid>-->
             <AutoSuggestBox x:Name="searchBox" Grid.Row="0" QueryIcon="Find" Background="#FFEEEEEE" PlaceholderText="Suchen..." Style="{StaticResource AutoSuggestWithoutBorder}" Margin="12" QuerySubmitted="HandleSearchBox_QuerySubmitted"/>
 
-            <!--<SearchBox x:Name="searchBox" QuerySubmitted="HandleSearchBox_QuerySubmitted" Grid.Row="0"></SearchBox>-->
             <ListView x:Name="entriesList" ItemsSource="{Binding Source={StaticResource entriesSource}}" SelectionMode="None" IsItemClickEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1" ItemClick="HandleEntriesList_ItemClick">
                 <ListView.Resources>
                     <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="Transparent" />
@@ -92,6 +92,15 @@
                     </GroupStyle>
                 </ListView.GroupStyle>
             </ListView>
+
+            <!--<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}}" Text="Keine Einträge anzuzeigen" />-->
+            <TextBlock Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Keine Einträge anzuzeigen" 
+                       Foreground="#FF5F5F5F" 
+                       Grid.Row="1" />
+
         </Grid>
     </Grid>
 </Page>
