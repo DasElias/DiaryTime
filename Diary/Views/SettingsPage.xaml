@@ -27,7 +27,7 @@
                 <Button Click="HandleChangePasswordBtn_Click">Passwort jetzt ändern</Button>
             </StackPanel>
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}">Datenexport</TextBlock>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Datenexport</TextBlock>
                 <StackPanel Spacing="10" Orientation="Horizontal">
                     <Button Click="HandleExportBtn_Click">Einträge exportieren</Button>
                     <Button Click="HandleImportBtn_Click">Einträge importieren</Button>
