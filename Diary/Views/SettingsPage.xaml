@@ -41,6 +41,7 @@
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Über</TextBlock>
                 <TextBlock>Elias Horner</TextBlock>
+                <Button Margin="0,5,0,0" Click="HandleSendMailBtn_Click">Kontaktieren</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

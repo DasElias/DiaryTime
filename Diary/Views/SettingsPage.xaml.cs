@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.Email;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -113,6 +114,14 @@ namespace Diary.Views {
 
             persistorService.Import(file);
             await CoreApplication.RequestRestartAsync("");
+        }
+
+        private async void HandleSendMailBtn_Click(object sender, RoutedEventArgs e) {
+            EmailMessage msg = new EmailMessage();
+            EmailRecipient recipient = new EmailRecipient("diarytime@icloud.com", "DiaryTime");
+            msg.To.Add(recipient);
+
+            await EmailManager.ShowComposeNewEmailAsync(msg);
         }
     }
 }
