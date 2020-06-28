@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="8b826c0a-fd4d-47a8-ba5d-6cf2ed886eec" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Diary</DisplayName>
+    <DisplayName>DiaryTime</DisplayName>
     <PublisherDisplayName>Elias</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -42,8 +42,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-
-  <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
 </Package>
