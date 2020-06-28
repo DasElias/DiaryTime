@@ -37,7 +37,7 @@ namespace Diary {
             Start();
 
           //  DiaryReminderToastService.ShowToastImmediately();
-           DiaryReminderToastService.ScheduleToast(DateTime.Now.AddSeconds(15));
+          // DiaryReminderToastService.ScheduleToast(DateTime.Now.AddSeconds(15));
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {

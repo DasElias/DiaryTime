@@ -33,7 +33,7 @@
                     <Button Click="HandleImportBtn_Click">Einträge importieren</Button>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Margin="{StaticResource SmallTopMargin}">
+            <StackPanel Margin="{StaticResource SmallTopMargin}" Visibility="Collapsed">
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Errinnerungen</TextBlock>
                 <CheckBox x:Name="shouldNotifyCheckBox" Click="HandleCheckBox_Click">Ja, ich möchte täglich daran errinnert werden, einen Tagebucheintrag zu erstellen.</CheckBox>
                 <TimePicker x:Name="shouldNotifyTimePicker" Margin="{StaticResource XSmallTopMargin}" IsEnabled="{x:Bind shouldNotifyCheckBox.IsChecked, Converter={StaticResource NullBooleanConverter}, Mode=OneWay}" SelectedTimeChanged="HandleTimePicker_SelectedTimeChanged">Uhrzeit</TimePicker>
@@ -41,7 +41,7 @@
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Über</TextBlock>
                 <TextBlock>Elias Horner</TextBlock>
-                <Button Margin="0,5,0,0" Click="HandleSendMailBtn_Click">Kontaktieren</Button>
+                <Button Margin="0,8,0,0" Click="HandleSendMailBtn_Click">Kontaktieren</Button>
             </StackPanel>
         </StackPanel>
     </Grid>
