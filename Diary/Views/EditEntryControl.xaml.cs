@@ -29,7 +29,7 @@ namespace Diary.Views {
         private FontFamilyOptions fontFamilies = new FontFamilyOptions();
         private bool shouldSuppressFontFamilyChange = false;
 
-        private FontSizeCollection fontSizes = new FontSizeCollection();
+        private FontSizeService fontSizeService = new FontSizeService();
         private bool shouldSuppressFontSizeChange = false;
 
         public EditEntryControl() {
@@ -107,7 +107,7 @@ namespace Diary.Views {
             Editor.Document.SetText(TextSetOptions.None, "a");
             Editor.Document.Selection.Expand(TextRangeUnit.Paragraph);
 
-            string defaultFontSize = fontSizes[5];
+            string defaultFontSize = fontSizeService.FontSizes[5];
             fontSizeBox.SelectedValue = defaultFontSize;
 
             Editor.Document.SetText(TextSetOptions.None, "");
