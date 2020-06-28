@@ -42,6 +42,14 @@ namespace Diary.Views {
         private AbstractEncryptor encryptor = null;
         private AbstractPersistorService persistorService = null;
 
+
+        /*
+         * Sometimes, we want programmatically to unselect all dates in the CalendarView, for example when navigating to ListViewPage.
+         * Nevertheless, the user should not be able to unselect an entry, therefore we cancel all unselect events, except this flag is set.
+         */
+        private bool allowEntryUnselect = false;
+        private DateTimeOffset? calendarViewSelectedDate;
+
         public ShellPage() {
             this.InitializeComponent();
             Loaded += Page_Loaded;
@@ -95,8 +103,20 @@ namespace Diary.Views {
         private void HandleCalendar_SelectedDateChange(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args) {
             if(args.AddedDates.Count > 0) {
                 DateTimeOffset selected = args.AddedDates[0];
-                DateTime dateTime = selected.DateTime;
-                NavigateOnCalenderClick(dateTime);
+
+                // we don't want to navigate, if this event was only fired because of the undo of an unselection event
+                if(selected != this.calendarViewSelectedDate) {
+                    this.calendarViewSelectedDate = selected;
+                    DateTime dateTime = selected.DateTime;
+                    NavigateOnCalenderClick(dateTime);
+                }
+            } else if(args.RemovedDates.Count > 0 && !allowEntryUnselect) {
+                // cancel unselect event
+                calendarView.SelectedDates.Add(args.RemovedDates[0]);
+                return;
+            } else if(args.RemovedDates.Count > 0) {
+                // selection was cleared, for example due to navigation to the settings page
+                this.calendarViewSelectedDate = null;
             }
 
             // update selected background
@@ -168,7 +188,9 @@ namespace Diary.Views {
         }
 
         private void UnselectDate() {
+            allowEntryUnselect = true;
             calendarView.SelectedDates.Clear();
+            allowEntryUnselect = false;
         }
 
         private void NavigateOnCalenderClick(DateTime date) {
