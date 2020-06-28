@@ -12,7 +12,7 @@ namespace Diary.Services {
             if(IsInTitleOrText(entry, searchBoxText)) return true;
             if(IsInYear(entry, searchBoxText)) return true;
             if(IsInMonth(entry, searchBoxText)) return true;
-            if(IsInYear(entry, searchBoxText)) return true;
+            if(IsInDate(entry, searchBoxText)) return true;
 
             return false;
         }
