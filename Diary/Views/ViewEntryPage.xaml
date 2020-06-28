@@ -23,7 +23,7 @@
             </local:EntryButtonBarControl.Buttons>
         </local:EntryButtonBarControl>
         <TextBlock x:Name="titleElement" Grid.Row="1" FontSize="30" FontFamily="Calibri" FontWeight="Light" Margin="11, 30, 11, 7.5" IsTextSelectionEnabled="True"/>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" Grid.Row="2" Margin="11, 0, 11, 11">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Disabled" Grid.Row="2" Margin="11, 0, 11, 11">
             <RichEditBox x:Name="contentElement" IsReadOnly="True" BorderThickness="0" Padding="0"/>
         </ScrollViewer>
        
