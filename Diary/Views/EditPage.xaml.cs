@@ -68,7 +68,7 @@ namespace Diary.Views {
         }
 
         private void OnAutoSave(object sender, object e) {
-            Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+            _ = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 // we check if the page was unloaded in the meantime
                 if(diaryEntry != null && changedCharactersCount > 20) {
                     changedCharactersCount = 0;
