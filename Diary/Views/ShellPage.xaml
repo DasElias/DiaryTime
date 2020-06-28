@@ -29,6 +29,10 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </RelativePanel>
+            <StackPanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312">
+                <NavigationViewItem x:Uid="Settings" Icon="Setting" Content="Einstellungen" Foreground="White" RequestedTheme="Dark" Tapped="HandleSettings_Tapped" />
+
+            </StackPanel>
             <StackPanel RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312" Padding="0,76,0,0">
                 <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag bearbeiten" Foreground="White" RequestedTheme="Dark" Tapped="HandleEditTodayEntry_Tapped"/>
                 <NavigationViewItem x:Uid="TodaysEntryItem" Content="Heutigen Tagebucheintrag lesen" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped">
@@ -69,10 +73,7 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </StackPanel>
-            <StackPanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312">
-                <NavigationViewItem x:Uid="Settings" Icon="Setting" Content="Einstellungen" Foreground="White" RequestedTheme="Dark" Tapped="HandleSettings_Tapped" />
-
-            </StackPanel>
+            
         </RelativePanel>
         <Frame x:Name="ShellFrame" Grid.Column="1">
             <Frame.ContentTransitions>
