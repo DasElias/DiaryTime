@@ -1,5 +1,6 @@
 ﻿using Diary.Services;
 using Diary.Views;
+using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,7 +51,7 @@ namespace Diary {
             if(frame == null) {
                 frame = new Frame();
                 Window.Current.Content = frame;
-                if(DatabasePersistorService.DoesDatabaseExist().Result) {
+                if(AsyncContext.Run(DatabasePersistorService.DoesDatabaseExist)) {
                     frame.Navigate(typeof(LoginPage));
 
                 } else {
