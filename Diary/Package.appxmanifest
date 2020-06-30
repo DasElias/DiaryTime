@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="8b826c0a-fd4d-47a8-ba5d-6cf2ed886eec"
-    Publisher="CN=Elias"
-    Version="1.0.4.0" />
+    Name="65124EliasHorner.DiaryTime"
+    Publisher="CN=CB97A0FB-EF33-425D-B5E4-78C8B418801D"
+    Version="1.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="8b826c0a-fd4d-47a8-ba5d-6cf2ed886eec" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f9939c7f-b62b-413f-9d58-d0a25cad0df2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>DiaryTime</DisplayName>
-    <PublisherDisplayName>Elias</PublisherDisplayName>
+    <PublisherDisplayName>Elias Horner</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
