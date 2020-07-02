@@ -33,6 +33,8 @@ namespace Diary.Views {
 
         public NoEntryForDayPage() {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -41,6 +43,9 @@ namespace Diary.Views {
             entryDate = arg.Date;
             isForToday = DateUtils.IsToday(entryDate);
             UpdateMessageText();
+
+            // because page is cached
+            Bindings.Update();
         }
 
         private void UpdateMessageText() {
