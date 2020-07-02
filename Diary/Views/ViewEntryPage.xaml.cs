@@ -28,21 +28,29 @@ namespace Diary.Views {
 
         private AbstractPersistorService persistorService;
         private DiaryEntry entry;
+        private bool wasFirstLoaded = false;
 
         public ViewEntryPage() {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
             this.Loaded += Page_Loaded;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             EntryArgument arg = (EntryArgument) e.Parameter;
             persistorService = arg.PersistorService;
-            entry = arg.Entry;            
+            entry = arg.Entry;
+
+            if(wasFirstLoaded) {
+                UpdateContent();
+            }
 
         }
 
-         private void Page_Loaded(object sender, RoutedEventArgs e) {
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
             UpdateContent();
+            wasFirstLoaded = true;
         }
 
 
