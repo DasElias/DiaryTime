@@ -271,11 +271,11 @@
         <RichEditBox x:Name="Editor" 
                      FontFamily="Calibri" 
                      FontSize="13.1" 
-                     SelectionHighlightColorWhenNotFocused="#FFCD3C3C" 
                      SelectionChanged="HandleEditor_SelectionChanged" 
                      TextChanged="HandleEditor_TextChanged" 
                      BorderThickness="1" 
-                     Grid.Row="2"/>
+                     Grid.Row="2" 
+                     SelectionHighlightColorWhenNotFocused="{ThemeResource SystemColorHighlightBrush}"/>
 
     </Grid>
 </UserControl>
