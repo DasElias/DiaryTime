@@ -16,7 +16,8 @@
                 <ResourceDictionary Source="/Resources/SelectorSplitButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <converter:PtToPxConverter x:Name="PtToPxConverter" />
-
+            
+            <x:Double x:Key="TemplateButtonWidth">135</x:Double>
             <x:Double x:Key="TemplateButtonHeight">33</x:Double>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -33,7 +34,7 @@
                     </RelativePanel.Resources>
                     <Button Background="Transparent"
                             HorizontalContentAlignment="Stretch"
-                            Width="125"
+                            Width="{StaticResource TemplateButtonWidth}"
                             Height="{StaticResource TemplateButtonHeight}"
                             Margin="0"
                             Padding="0"
@@ -77,7 +78,7 @@
                                     </RelativePanel.Resources>
                                     <Button Background="Transparent"
                                             HorizontalContentAlignment="Stretch"
-                                            Width="125"
+                                            Width="{StaticResource TemplateButtonWidth}"
                                             Height="{StaticResource TemplateButtonHeight}"
                                             Margin="0"
                                             Padding="0"
