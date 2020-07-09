@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Diary.Model {
-    class DiaryEntryPreview : IEquatable<DiaryEntryPreview>, IComparable<DiaryEntryPreview> {
+    public class DiaryEntryPreview : IEquatable<DiaryEntryPreview>, IComparable<DiaryEntryPreview> {
         public DiaryEntryPreview(DateTime date){
             Date = date;
             Title = "Tagebucheintrag vom " + DateUtils.ToDateString(date);
