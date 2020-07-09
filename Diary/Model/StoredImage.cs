@@ -46,7 +46,7 @@ namespace Diary.Model {
         }
 
         private async Task<BitmapImage> LoadBitmapImage() {
-            return await BitmapImageToByteArrayHelper.ConvertByteArrayToBitmapImage(imageData);
+            return await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(imageData);
         }
 
         public static bool operator ==(StoredImage left, StoredImage right) {

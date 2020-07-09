@@ -1,12 +1,16 @@
-﻿using Diary.Services;
+﻿using Diary.Model;
+using Diary.Services;
 using Diary.Utils;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Streams;
 using Windows.UI.Text;
 using Windows.UI.WebUI;
 using Windows.UI.Xaml;
@@ -15,6 +19,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -95,7 +100,6 @@ namespace Diary.Views {
             }
         }
 
-
         public void Clear() {
             // by setting the text with LoadFromStream, we clear the undo/redo history
             using(var stream = StringFromStream.Generate("u")) {
@@ -122,6 +126,16 @@ namespace Diary.Views {
 
             Editor.TextDocument.ClearUndoRedoHistory();
             UpdateUndoRedoButtons();
+        }
+
+        public async Task LoadImages(ReadOnlyCollection<StoredImage> images) {
+            EntryImagesEditor.Clear();
+            await EntryImagesEditor.LoadImages(images);
+        }
+
+        public void UpdateEntryWithImageChanges(DiaryEntry entry) {
+            entry.UpdateImages(EntryImagesEditor.AddedImages, EntryImagesEditor.RemovedImages);
+            EntryImagesEditor.ClearImageChanges();
         }
 
         private int CountEmptyTrailingParagraphs() {
@@ -269,6 +283,22 @@ namespace Diary.Views {
                 }
             }
         }
+
+        private async void HandleInsertImageBtn_Click(object sender, RoutedEventArgs e) {
+            Windows.Storage.Pickers.FileOpenPicker open = new Windows.Storage.Pickers.FileOpenPicker();
+            open.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            open.FileTypeFilter.Add(".png");
+            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
+            if(file != null) {
+                using(IRandomAccessStream fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read)) {
+                    BitmapImage image = new BitmapImage();
+                    await image.SetSourceAsync(fileStream);
+                    Editor.Document.Selection.InsertImage(image.PixelWidth, image.PixelHeight, 0, VerticalCharacterAlignment.Baseline, "img", fileStream);
+                }
+            }
+        }
+
+
 
         private void HandleTextColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args) {
             // button part of the split button was clicked

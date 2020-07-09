@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <AppInstallerUri>C:\Users\Elias\source\repos\Diary\Diary\AppPackages</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateKeyFile>Diary_TemporaryKey.pfx</PackageCertificateKeyFile>
@@ -142,6 +142,7 @@
     <Compile Include="Model\DiaryEntry.cs" />
     <Compile Include="Model\DiaryEntryPreview.cs" />
     <Compile Include="Model\GroupedObservableCollection.cs" />
+    <Compile Include="Model\StoredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AbstractEncryptor.cs" />
     <Compile Include="Services\ColorService.cs" />
@@ -156,9 +157,12 @@
     <Compile Include="Services\ReminderTimeSaveService.cs" />
     <Compile Include="Services\SpellCheckingSettingService.cs" />
     <Compile Include="Services\ToastNotificationService.cs" />
+    <Compile Include="Utils\ByteArrayToBitmapImageHelper.cs" />
+    <Compile Include="Utils\ByteArrayHasher.cs" />
     <Compile Include="Utils\ChildElementHelper.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="Utils\FloatingPointComparison.cs" />
+    <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />
     <Compile Include="Utils\StringFromStream.cs" />
     <Compile Include="Views\ChangePasswordDialog.xaml.cs">
       <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>
@@ -175,8 +179,17 @@
     <Compile Include="Views\EntryButtonBarControl.xaml.cs">
       <DependentUpon>EntryButtonBarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EntryImagesEditor.xaml.cs">
+      <DependentUpon>EntryImagesEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FontFamilyOptions.cs" />
     <Compile Include="Views\FontFamilyWrapper.cs" />
+    <Compile Include="Views\ImageViewContentDialog.xaml.cs">
+      <DependentUpon>ImageViewContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImageViewRoot.xaml.cs">
+      <DependentUpon>ImageViewRoot.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListViewPage.xaml.cs">
       <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
@@ -319,6 +332,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EntryButtonBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EntryImagesEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageViewContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ImageViewRoot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

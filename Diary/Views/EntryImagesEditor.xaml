@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="Diary.Views.EntryImagesEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Diary.Views"
+    xmlns:model="using:Diary.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Margin="0, 10, 0, 0">
+        <controls:Expander IsExpanded="False" ExpandDirection="Down" HorizontalContentAlignment="Left" Background="Transparent">
+            <controls:Expander.Header>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Impressionen</TextBlock>
+            </controls:Expander.Header>
+
+            <Grid>
+                <ListView 
+                  x:Name="ImagesListView"
+                  ItemsSource="{x:Bind imagesToDisplay}"
+                  SelectionMode="None" 
+                  IsItemClickEnabled="True" 
+                  ItemClick="HandleImageList_ItemClick"
+                  ScrollViewer.HorizontalScrollMode="Enabled"
+                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                  ScrollViewer.IsHorizontalRailEnabled="True"
+                  ScrollViewer.VerticalScrollMode="Disabled"
+                  Margin="0, 4, 0, 0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="BitmapImage">
+                            <Image Width="100" Height="100" Source="{x:Bind}" Stretch="UniformToFill" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Padding="5, 0, 0, 0" Spacing="5" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.Header>
+                        <ListViewItem Tapped="HandleAddImageBtn_Tapped" Background="{ThemeResource SystemRevealChromeLowColor}">
+                            <Grid Width="100" Height="100">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Spacing="10">
+                                    <TextBlock FontSize="35" TextLineBounds="Tight" HorizontalAlignment="Center">+</TextBlock>
+                                    <TextBlock TextLineBounds="Tight" HorizontalAlignment="Center">Bild hinzufügen</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <!--<TextBlock Width="100" Height="100" FontSize="35" HorizontalTextAlignment="Center" VerticalAlignment="Center">+</TextBlock>-->
+                            <!--<Button Click="HandleAddImageBtn_Click" Width="100" Height="100" Background="Transparent" hover>+</Button>-->
+                        </ListViewItem>
+                    </ListView.Header>
+                </ListView>
+            </Grid>
+        </controls:Expander>
+    </Grid>
+</UserControl>

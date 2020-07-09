@@ -82,6 +82,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <TextBox x:Name="titleBox" Margin="0,0,0,35" FontSize="30" FontFamily="Calibri" FontWeight="Light" PlaceholderText="Titel" BorderThickness="1" Grid.Row="0" TextChanged="HandleTextChanged_TitleBox"></TextBox>
@@ -254,9 +255,14 @@
                         <symbols:List />
                     </Button.Content>
                 </Button>
-                <Button x:Name="orderedListButton" ToolTipService.ToolTip="Nummerierung" Margin="0" Click="HandleOrderedListBtn_Click">
+                <Button x:Name="orderedListButton" ToolTipService.ToolTip="Nummerierung" Click="HandleOrderedListBtn_Click">
                     <Button.Content>
                         <symbols:NumberedList />
+                    </Button.Content>
+                </Button>
+                <Button x:Name="insertImageButton" ToolTipService.ToolTip="Bild einfügen" Margin="0" Click="HandleInsertImageBtn_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E2;" />
                     </Button.Content>
                 </Button>
                 <AppBarSeparator />
@@ -276,6 +282,18 @@
                      BorderThickness="1" 
                      Grid.Row="2" 
                      SelectionHighlightColorWhenNotFocused="{ThemeResource SystemColorHighlightBrush}"/>
+        <local:EntryImagesEditor x:Name="EntryImagesEditor" Grid.Row="3" />
+
+        <!--<controls:Expander IsExpanded="False" ExpandDirection="Down" HorizontalContentAlignment="Left" Grid.Row="3" Background="Transparent">
+            <controls:Expander.Header>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Bilder</TextBlock>
+            </controls:Expander.Header>
+
+        </controls:Expander>-->
+        <!--<StackPanel Grid.Row="3">
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Bilder</TextBlock>
+            <local:EntryImagesEditor x:Name="EntryImagesEditor" />
+        </StackPanel>-->
 
     </Grid>
 </UserControl>

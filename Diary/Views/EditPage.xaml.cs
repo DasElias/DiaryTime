@@ -54,6 +54,8 @@ namespace Diary.Views {
                 editor.Clear();
             }
 
+            _ = editor.LoadImages(diaryEntry.StoredImages);
+
             bool isSpellCheckingEnabled = SpellCheckingSettingService.GetSpellCheckingPreference();
             spellCheckingToggleButton.IsChecked = isSpellCheckingEnabled;
             editor.IsSpellCheckingEnabled = isSpellCheckingEnabled;
@@ -106,6 +108,7 @@ namespace Diary.Views {
         private void UpdateEntry() {
             diaryEntry.Title = editor.Title;
             diaryEntry.SetText(editor.RawText, editor.RtfText);
+            editor.UpdateEntryWithImageChanges(diaryEntry);
         }
 
         private void HandleViewButton_Click(object sender, RoutedEventArgs e) {
