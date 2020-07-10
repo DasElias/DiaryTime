@@ -26,6 +26,18 @@ namespace Diary.Model {
             }
         }
 
+        public ReadOnlyCollection<StoredImage> AddedImages {
+            get {
+                return imagesToAdd.AsReadOnly();
+            }
+        }
+
+        public ReadOnlyCollection<StoredImage> RemovedImages {
+            get {
+                return imagesToRemove.AsReadOnly();
+            }
+        }
+
         public override void SetText(string plainText, string rtfText) {
             base.SetText(plainText, rtfText);
             RtfText = rtfText;
@@ -38,6 +50,10 @@ namespace Diary.Model {
 
             imagesToAdd.AddRange(newImagesToAdd);
             imagesToRemove.AddRange(newImagesToRemove);
+        }
+
+        public void InsertImageImmediately(StoredImage i) {
+            images.Add(i);
         }
 
         public void CommitImageChanges() {

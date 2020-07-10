@@ -100,6 +100,12 @@ namespace Diary.Views {
             }
         }
 
+        public int ImageChangesCount {
+            get {
+                return EntryImagesEditor.AddedImages.Count + EntryImagesEditor.RemovedImages.Count;
+            }
+        }
+
         public void Clear() {
             // by setting the text with LoadFromStream, we clear the undo/redo history
             using(var stream = StringFromStream.Generate("u")) {

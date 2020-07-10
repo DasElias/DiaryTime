@@ -34,8 +34,8 @@ namespace Diary.Services {
             connection = new SqliteConnection(connectionString);
             try {
                 connection.Open();
-                
-                if(! DoesTableExist()) {
+
+                if(!DoesTableExist()) {
                     CreateTable();
                     DiaryEntry pwCheckEntry = new DiaryEntry(PW_CHECK_ENTRY_DATE, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT);
                     CreateEntryImpl(pwCheckEntry);
@@ -83,7 +83,15 @@ namespace Diary.Services {
                                        "title TEXT NOT NULL, " +
                                        "rawText TEXT NOT NULL, " +
                                        "rtfText TEXT NOT NULL);";
+                command.ExecuteNonQuery();
 
+                command.CommandText = "CREATE TABLE images (" +
+                                      "hash TEXT," +
+                                      "date INTEGER," +
+                                      "imageData BLOB NOT NULL," +
+                                      "PRIMARY KEY (hash, date)," +
+                                      "FOREIGN KEY (date) REFERENCES entries(date)" +
+                                      ");";
                 command.ExecuteNonQuery();
             }
         }
@@ -151,6 +159,8 @@ namespace Diary.Services {
 
                 command.ExecuteNonQuery();
             }
+
+            AddImagesForEntry(entry);
         }
 
         protected override void UpdateEntryImpl(DiaryEntry entry) {
@@ -165,7 +175,40 @@ namespace Diary.Services {
 
                 command.ExecuteNonQuery();
             }
-            return;
+
+            AddImagesForEntry(entry);
+        }
+
+        private void AddImagesForEntry(DiaryEntry entry) {
+            if(entry.AddedImages.Count == 0) return;
+
+            using(var transaction = connection.BeginTransaction()) {
+                using(var command = connection.CreateCommand()) {
+                    command.CommandText = @"INSERT INTO images (hash, imageData, date) VALUES (@hash, @imageData, @date);";
+
+                    var hashParam = command.CreateParameter();
+                    hashParam.ParameterName = "@hash";
+                    command.Parameters.Add(hashParam);
+
+                    var imageDataParam = command.CreateParameter();
+                    imageDataParam.ParameterName = "@imageData";
+                    imageDataParam.SqliteType = SqliteType.Blob;
+                    command.Parameters.Add(imageDataParam);
+
+                    command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(entry.Date));
+
+                    foreach(StoredImage img in entry.AddedImages) {
+                        hashParam.Value = img.Hash;
+                        imageDataParam.Value = img.ImageData;
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                transaction.Commit();
+            }
+
+            entry.CommitImageChanges();
         }
 
         protected override DiaryEntry LoadImpl(DateTime date) {
@@ -180,11 +223,29 @@ namespace Diary.Services {
                         string title = encryptor.Decrypt(reader.GetString(0));
                         string rawText = encryptor.Decrypt(reader.GetString(1));
                         string rtfText = encryptor.Decrypt(reader.GetString(2));
-                        return new DiaryEntry(date, title, rawText, rtfText);
+                        DiaryEntry entry = new DiaryEntry(date, title, rawText, rtfText);
+                        LoadImagesForEntry(entry);
+                        return entry;
                     }
                 }
             }
             return null;
+        }
+
+        private void LoadImagesForEntry(DiaryEntry e) {
+            using(var command = connection.CreateCommand()) {
+                command.CommandText = @"SELECT imageData FROM images WHERE date = @date;";
+                command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(e.Date));
+                command.Prepare();
+
+                using(SqliteDataReader reader = command.ExecuteReader()) {
+                    while(reader.Read()) {
+                        byte[] imageData = (byte[]) reader[0];
+                        StoredImage img = new StoredImage(imageData);
+                        e.InsertImageImmediately(img);
+                    }
+                }
+            }
         }
 
         protected override ObservableCollection<DiaryEntryPreview> LoadPreviewsImpl() {

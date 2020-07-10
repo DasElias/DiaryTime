@@ -187,9 +187,6 @@
     <Compile Include="Views\ImageViewContentDialog.xaml.cs">
       <DependentUpon>ImageViewContentDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ImageViewRoot.xaml.cs">
-      <DependentUpon>ImageViewRoot.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ListViewPage.xaml.cs">
       <DependentUpon>ListViewPage.xaml</DependentUpon>
     </Compile>
@@ -340,10 +337,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ImageViewContentDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ImageViewRoot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

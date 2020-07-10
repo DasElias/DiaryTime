@@ -57,7 +57,9 @@ namespace Diary.Services {
 
         private bool ShouldSaveEntry(DiaryEntry entry) {
             string trimmedText = entry.PlainContent.Trim();
-            return trimmedText.Length > 0;
+            bool hasText = trimmedText.Length > 0;
+            bool hasImages = entry.StoredImages.Count + entry.AddedImages.Count - entry.RemovedImages.Count > 0;
+            return hasText || hasImages;
         }
 
         public void RemoveEntry(DiaryEntryPreview entry) {

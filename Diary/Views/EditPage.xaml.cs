@@ -71,8 +71,10 @@ namespace Diary.Views {
 
         private void OnAutoSave(object sender, object e) {
             _ = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                // we check if the page was unloaded in the meantime
-                if(diaryEntry != null && changedCharactersCount > 20) {
+                bool wasntUnloadedInMeantime = diaryEntry != null;
+                bool wasChangedEnough = changedCharactersCount > 20 || editor.ImageChangesCount > 0;
+
+                if(wasntUnloadedInMeantime && wasChangedEnough) {
                     changedCharactersCount = 0;
                     UpdateEntry();
                     persistorService.SaveEntryDraft(diaryEntry);
