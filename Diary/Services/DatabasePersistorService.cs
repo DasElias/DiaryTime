@@ -32,18 +32,20 @@ namespace Diary.Services {
             string path = AsyncContext.Run(GetPath);
             string connectionString = $"Filename={path}";
             connection = new SqliteConnection(connectionString);
+
             try {
                 connection.Open();
 
-                if(!DoesTableExist()) {
-                    CreateTable();
-                    DiaryEntry pwCheckEntry = new DiaryEntry(PW_CHECK_ENTRY_DATE, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT);
-                    CreateEntryImpl(pwCheckEntry);
-                } else {
+                DatabaseStructureService structureService = new DatabaseStructureService(connection);
+                var setupResult = structureService.EnsureDatabaseIsSetUp();
+                if(setupResult == DatabaseStructureService.CreationResult.DB_DID_EXIST) {
                     DiaryEntry pwCheckEntry = LoadEntry(PW_CHECK_ENTRY_DATE);
                     if(pwCheckEntry.PlainContent != PW_CHECK_ENTRY_PLAIN_TEXT) {
                         throw new InvalidPasswordException();
                     }
+                } else {
+                    DiaryEntry pwCheckEntry = new DiaryEntry(PW_CHECK_ENTRY_DATE, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT, PW_CHECK_ENTRY_PLAIN_TEXT);
+                    CreateEntryImpl(pwCheckEntry);
                 }
             } catch(SqliteException) {
                 connection.Close();
@@ -75,39 +77,6 @@ namespace Diary.Services {
             return path;
         }
 
-        private void CreateTable() {
-            using(var command = new SqliteCommand()) {
-                command.Connection = connection;
-                command.CommandText = @"CREATE TABLE entries (" +
-                                       "date INTEGER PRIMARY KEY, " +
-                                       "title TEXT NOT NULL, " +
-                                       "rawText TEXT NOT NULL, " +
-                                       "rtfText TEXT NOT NULL);";
-                command.ExecuteNonQuery();
-
-                command.CommandText = "CREATE TABLE images (" +
-                                      "hash TEXT," +
-                                      "date INTEGER," +
-                                      "imageData BLOB NOT NULL," +
-                                      "PRIMARY KEY (hash, date)," +
-                                      "FOREIGN KEY (date) REFERENCES entries(date)" +
-                                      ");";
-                command.ExecuteNonQuery();
-            }
-        }
-
-        private bool DoesTableExist() {
-            using(var command = new SqliteCommand()) {
-                command.Connection = connection;
-                command.CommandText = @"SELECT name 
-                                       FROM sqlite_master 
-                                       WHERE type = 'table' AND name = 'entries';";
-
-                using(SqliteDataReader reader = command.ExecuteReader()) {
-                    return reader.Read();
-                }
-            }
-        }
 
         private void HandleEncryptor_PasswordChanged(string oldPlainPw, string newPlainPw) {
             var entries = GetAllEntries(oldPlainPw);

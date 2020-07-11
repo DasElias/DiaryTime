@@ -147,6 +147,8 @@
     <Compile Include="Services\AbstractEncryptor.cs" />
     <Compile Include="Services\ColorService.cs" />
     <Compile Include="Services\DatabasePersistorService.cs" />
+    <Compile Include="Services\DatabaseStructureService.cs" />
+    <Compile Include="Services\DatabaseVersionService.cs" />
     <Compile Include="Services\DiaryReminderToastService.cs" />
     <Compile Include="Services\EmptyDiaryPersistorService.cs" />
     <Compile Include="Services\EncryptionService.cs" />
