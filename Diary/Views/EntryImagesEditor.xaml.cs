@@ -32,6 +32,8 @@ namespace Diary.Views {
             this.InitializeComponent();
         }
 
+        public bool IsEditable { get; set; }
+
         public ReadOnlyCollection<StoredImage> AddedImages {
             get {
                 return addedImages.AsReadOnly();

@@ -48,7 +48,7 @@
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.Header>
-                        <ListViewItem Tapped="HandleAddImageBtn_Tapped" Background="{ThemeResource SystemRevealChromeLowColor}">
+                        <ListViewItem x:Name="AddImageListItem" x:Load="{x:Bind IsEditable}" Tapped="HandleAddImageBtn_Tapped" Background="{ThemeResource SystemRevealChromeLowColor}">
                             <Grid Width="100" Height="100">
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Spacing="10">
                                     <TextBlock FontSize="35" TextLineBounds="Tight" HorizontalAlignment="Center">+</TextBlock>

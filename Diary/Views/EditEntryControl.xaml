@@ -260,11 +260,6 @@
                         <symbols:NumberedList />
                     </Button.Content>
                 </Button>
-                <Button x:Name="insertImageButton" ToolTipService.ToolTip="Bild einfügen" Margin="0" Click="HandleInsertImageBtn_Click">
-                    <Button.Content>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E2;" />
-                    </Button.Content>
-                </Button>
                 <AppBarSeparator />
                 <local:StyleTemplateButton x:Name="templatePicker" 
                                        Margin="0,0,8,0"
@@ -282,7 +277,7 @@
                      BorderThickness="1" 
                      Grid.Row="2" 
                      SelectionHighlightColorWhenNotFocused="{ThemeResource SystemColorHighlightBrush}"/>
-        <local:EntryImagesEditor x:Name="EntryImagesEditor" Grid.Row="3" />
+        <local:EntryImagesEditor x:Name="EntryImagesEditor" IsEditable="True" Grid.Row="3" />
 
         <!--<controls:Expander IsExpanded="False" ExpandDirection="Down" HorizontalContentAlignment="Left" Grid.Row="3" Background="Transparent">
             <controls:Expander.Header>
