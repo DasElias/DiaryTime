@@ -68,6 +68,7 @@ namespace Diary.Services {
         }
 
         public abstract void Export(IStorageFile storageFile);
+        public abstract Task<bool> VerifyForImport(StorageFile storageFile);
         public abstract void Import(StorageFile storageFile);
 
         protected abstract ObservableCollection<DiaryEntryPreview> LoadPreviewsImpl();

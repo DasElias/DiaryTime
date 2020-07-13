@@ -102,6 +102,17 @@ namespace Diary.Views {
             StorageFile file = await openPicker.PickSingleFileAsync();
             if(file == null) return;
 
+            bool isValid = await persistorService.VerifyForImport(file);
+            if(! isValid) {
+                ContentDialog invalidDialog = new ContentDialog() {
+                    Title = "Import fehlgeschlagen",
+                    Content = "Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.",
+                    PrimaryButtonText = "OK"
+                };
+                await invalidDialog.ShowAsync();
+                return;
+            }
+
 
             ContentDialog successDialog = new ContentDialog() {
                 Title = "Import abgeschlossen",
