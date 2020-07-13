@@ -130,6 +130,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\InvisibleWhenZeroConverter.cs" />
     <Compile Include="Converters\VisibleWhenZeroConverter.cs" />
     <Compile Include="Converters\DateToStringConverter.cs" />
     <Compile Include="Converters\NullBooleanConverter.cs" />
@@ -150,12 +151,12 @@
     <Compile Include="Services\DatabaseStructureService.cs" />
     <Compile Include="Services\DatabaseVersionService.cs" />
     <Compile Include="Services\DiaryReminderToastService.cs" />
-    <Compile Include="Services\EmptyDiaryPersistorService.cs" />
     <Compile Include="Services\EncryptionService.cs" />
     <Compile Include="Services\AbstractPersistorService.cs" />
     <Compile Include="Services\FilterService.cs" />
     <Compile Include="Services\FontSizeService.cs" />
     <Compile Include="Services\InvalidPasswordException.cs" />
+    <Compile Include="Services\MockEncryptionService.cs" />
     <Compile Include="Services\ReminderTimeSaveService.cs" />
     <Compile Include="Services\SpellCheckingSettingService.cs" />
     <Compile Include="Services\ToastNotificationService.cs" />

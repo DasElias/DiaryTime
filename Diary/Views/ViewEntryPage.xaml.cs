@@ -49,8 +49,10 @@ namespace Diary.Views {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
-            UpdateContent();
-            wasFirstLoaded = true;
+            if(! wasFirstLoaded) {
+                UpdateContent();
+                wasFirstLoaded = true;
+            }
         }
 
 
@@ -62,6 +64,14 @@ namespace Diary.Views {
             contentElement.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, entry.RtfText);
             contentElement.Document.ApplyDisplayUpdates();
             contentElement.IsReadOnly = true;
+
+            bool hasEntryImages = entry.StoredImages.Count > 0;
+            entryImagesEditor.Visibility = hasEntryImages ? Visibility.Visible : Visibility.Collapsed;
+            if(hasEntryImages) {
+                entryImagesEditor.Clear();
+                _ = entryImagesEditor.LoadImages(entry.StoredImages);
+            }
+
         }
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
