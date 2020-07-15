@@ -51,8 +51,8 @@ namespace Diary.Services {
                     CreateEntryImpl(pwCheckEntry);
                 }
             } catch(Exception) {
-               connection.Close();
-               throw;
+                connection.Close();
+                throw;
             }
         }
 
@@ -149,6 +149,8 @@ namespace Diary.Services {
             }
 
             AddImagesForEntry(entry);
+            RemoveImagesForEntry(entry);
+            entry.CommitImageChanges();
         }
 
         private void AddImagesForEntry(DiaryEntry entry) {
@@ -179,8 +181,30 @@ namespace Diary.Services {
 
                 transaction.Commit();
             }
+        }
 
-            entry.CommitImageChanges();
+        private void RemoveImagesForEntry(DiaryEntry entry) {
+            if(entry.RemovedImages.Count == 0) return;
+
+            using(var transaction = connection.BeginTransaction()) {
+                using(var command = connection.CreateCommand()) {
+                    command.CommandText = @"DELETE FROM images WHERE date = @date AND hash = @hash;";
+
+                    var hashParam = command.CreateParameter();
+                    hashParam.ParameterName = "@hash";
+                    command.Parameters.Add(hashParam);
+
+                    command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(entry.Date));
+
+                    foreach(StoredImage img in entry.RemovedImages) {
+                        hashParam.Value = img.Hash;
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                transaction.Commit();
+            }
         }
 
         protected override DiaryEntry LoadImpl(DateTime date) {
@@ -253,6 +277,16 @@ namespace Diary.Services {
                 command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(entry.Date));
                 command.Prepare();
 
+                command.ExecuteNonQuery();
+            }
+
+            RemoveAllImagesForEntry(entry);
+        }
+
+        private void RemoveAllImagesForEntry(DiaryEntryPreview entry) {
+            using(var command = connection.CreateCommand()) {
+                command.CommandText = @"DELETE FROM images WHERE date = @date;";
+                command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(entry.Date));
                 command.ExecuteNonQuery();
             }
         }
