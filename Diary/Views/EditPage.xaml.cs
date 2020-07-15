@@ -48,7 +48,7 @@ namespace Diary.Views {
 
             entryButtonBarControl.DateText = diaryEntry.DateString;
             editor.Title = diaryEntry.Title;
-            if(diaryEntry.RtfText != null) {
+            if(diaryEntry.RtfText != null && diaryEntry.PlainContent.Trim().Length > 0) {
                 editor.RtfText = diaryEntry.RtfText;
             } else {
                 editor.Clear();
