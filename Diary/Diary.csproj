@@ -143,6 +143,7 @@
     <Compile Include="Model\DiaryEntry.cs" />
     <Compile Include="Model\DiaryEntryPreview.cs" />
     <Compile Include="Model\GroupedObservableCollection.cs" />
+    <Compile Include="Model\ImageWrapper.cs" />
     <Compile Include="Model\StoredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AbstractEncryptor.cs" />

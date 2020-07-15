@@ -22,17 +22,29 @@ using Windows.UI.Xaml.Navigation;
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Diary.Views {
+
     public sealed partial class EntryImagesEditor : UserControl {
-        private ObservableCollection<BitmapImage> imagesToDisplay = new ObservableCollection<BitmapImage>();
-        private HashSet<StoredImage> storedImages = new HashSet<StoredImage>();
+
+        private ObservableCollection<ImageWrapper> imagesToDisplay = new ObservableCollection<ImageWrapper>();
         private List<StoredImage> addedImages = new List<StoredImage>();
         private List<StoredImage> removedImages = new List<StoredImage>();
+        private bool isEditable;
 
         public EntryImagesEditor() {
             this.InitializeComponent();
+            IsEditable = false;
         }
 
-        public bool IsEditable { get; set; }
+        public bool IsEditable {
+            get {
+                return isEditable;
+            }
+            set {
+                isEditable = value;
+                string key = isEditable ? "EditableTemplate" : "NonEditableTemplate";
+                ImagesListView.ItemTemplate = (DataTemplate) Resources[key];
+            }
+        }
 
         public ReadOnlyCollection<StoredImage> AddedImages {
             get {
@@ -48,9 +60,12 @@ namespace Diary.Views {
         public async Task LoadImages(ReadOnlyCollection<StoredImage> images) {
             foreach(StoredImage img in images) {
                 BitmapImage bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(img.ImageData);
-                imagesToDisplay.Add(bitmapImage);
+                ImageWrapper imageWrapper = new ImageWrapper() {
+                    StoredImage = img,
+                    BitmapImage = bitmapImage
+                };
 
-                storedImages.Add(img);
+                imagesToDisplay.Add(imageWrapper);
             }
         }
 
@@ -61,14 +76,13 @@ namespace Diary.Views {
 
         public void Clear() {
             imagesToDisplay.Clear();
-            storedImages.Clear();
             addedImages.Clear();
             removedImages.Clear();
         }
 
         private async void HandleImageList_ItemClick(object sender, ItemClickEventArgs e) {
-            BitmapImage img = (BitmapImage) e.ClickedItem;
-            ContentDialog c = new ImageViewContentDialog(img);
+            ImageWrapper img = (ImageWrapper) e.ClickedItem;
+            ContentDialog c = new ImageViewContentDialog(img.BitmapImage);
             await c.ShowAsync();
         }
 
@@ -84,15 +98,37 @@ namespace Diary.Views {
                 byte[] imageData = await StorageFileToByteArrayHelper.GetBytesAsync(file);
                 StoredImage image = new StoredImage(imageData);
 
-                if(storedImages.Contains(image)) {
+                if(Contains(image)) {
                     await DisplayImageAlreadyExistsWarning();
                 } else {
-                    addedImages.Add(image);
-                    storedImages.Add(image);
+                    bool wasRemovedBefore = removedImages.Remove(image);
+                    if(!wasRemovedBefore) {
+                        // if the image was removed before, it exists already in the database
+                        addedImages.Add(image);
+                    }
 
                     BitmapImage bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(imageData);
-                    imagesToDisplay.Add(bitmapImage);
+                    ImageWrapper imageWrapper = new ImageWrapper() {
+                        BitmapImage = bitmapImage,
+                        StoredImage = image
+                    };
+                    imagesToDisplay.Add(imageWrapper);
                 }
+            }
+        }
+
+        private bool Contains(StoredImage image) {
+            return imagesToDisplay.FirstOrDefault(i => i.StoredImage == image) != null;
+        }
+
+        private void HandleRemoveImageBtn_Click(object sender, RoutedEventArgs e) {
+            ImageWrapper imageWrapper = (ImageWrapper) ((Button) sender).Tag;
+            imagesToDisplay.Remove(imageWrapper);
+
+            bool wasAddedBefore = addedImages.Remove(imageWrapper.StoredImage);
+            if(! wasAddedBefore) {
+                // if the image was already added before, it doesn't exist in the database yet
+                removedImages.Add(imageWrapper.StoredImage);
             }
         }
 
@@ -104,5 +140,7 @@ namespace Diary.Views {
             };
             await dialog.ShowAsync();
         }
+
+
     }
 }
