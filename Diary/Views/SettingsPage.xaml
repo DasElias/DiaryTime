@@ -28,7 +28,8 @@
             </StackPanel>
             <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Datenexport</TextBlock>
-                <StackPanel Spacing="10" Orientation="Horizontal">
+                <TextBlock TextWrapping="WrapWholeWords">Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</TextBlock>
+                <StackPanel Margin="0,8,0,0" Spacing="10" Orientation="Horizontal">
                     <Button Click="HandleExportBtn_Click">Einträge exportieren</Button>
                     <Button Click="HandleImportBtn_Click">Einträge importieren</Button>
                 </StackPanel>
