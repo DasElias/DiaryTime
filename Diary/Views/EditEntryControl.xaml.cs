@@ -125,11 +125,7 @@ namespace Diary.Views {
             int defaultFontFamily = fontFamilies.IndexOf(fontFamilies.Find("Calibri"));
             fontFamilyBox.SelectedIndex = defaultFontFamily;
 
-
-            //var undoLimit = Editor.Document.UndoLimit;
-            //Editor.Document.UndoLimit = 0;
-            //Editor.Document.UndoLimit = undoLimit;
-
+            // clear undo history
             Editor.TextDocument.ClearUndoRedoHistory();
             UpdateUndoRedoButtons();
         }
@@ -142,18 +138,6 @@ namespace Diary.Views {
         public void UpdateEntryWithImageChanges(DiaryEntry entry) {
             entry.UpdateImages(EntryImagesEditor.AddedImages, EntryImagesEditor.RemovedImages);
             EntryImagesEditor.ClearImageChanges();
-        }
-
-        private int CountEmptyTrailingParagraphs() {
-            string rawText = this.RawText;
-            int counter = 0;
-
-            for(int i = rawText.Length - 1; i >= 0; i--) {
-                if(rawText[i] == '\r') counter++;
-                else break;
-            }
-
-            return counter;
         }
 
         private void InitFontFamilyPicker() {
@@ -290,21 +274,6 @@ namespace Diary.Views {
             }
         }
 
-        private async void HandleInsertImageBtn_Click(object sender, RoutedEventArgs e) {
-            Windows.Storage.Pickers.FileOpenPicker open = new Windows.Storage.Pickers.FileOpenPicker();
-            open.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
-            open.FileTypeFilter.Add(".png");
-            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
-            if(file != null) {
-                using(IRandomAccessStream fileStream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read)) {
-                    BitmapImage image = new BitmapImage();
-                    await image.SetSourceAsync(fileStream);
-                    Editor.Document.Selection.InsertImage(image.PixelWidth, image.PixelHeight, 0, VerticalCharacterAlignment.Baseline, "img", fileStream);
-                }
-            }
-        }
-
-
 
         private void HandleTextColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args) {
             // button part of the split button was clicked
@@ -370,10 +339,6 @@ namespace Diary.Views {
         private void UpdateFontSizeChooser() {
             float currentFontSizeInSelection = Editor.Document.Selection.CharacterFormat.Size;
             double currentFontSizeInBox = Convert.ToDouble(fontSizeBox.SelectedValue);
-            //if(FloatingPointComparison.IsEqual(currentFontSizeInSelection, 9.8f, 0.01f)) {
-            //    Editor.Document.Selection.CharacterFormat.Size = (float) currentFontSizeInBox;
-            //    return;
-            //}
 
             double delta = Math.Abs(currentFontSizeInSelection - currentFontSizeInBox);
             const double maxDelta = 0.01f;
