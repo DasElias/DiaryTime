@@ -102,13 +102,20 @@ namespace Diary.Views {
                 if(Contains(image)) {
                     await DisplayImageAlreadyExistsWarning();
                 } else {
+                    BitmapImage bitmapImage;
+                    try {
+                        bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(imageData);
+                    } catch(Exception) {
+                        await DisplayInvalidImageError();
+                        return;
+                    }
+
                     bool wasRemovedBefore = removedImages.Remove(image);
                     if(!wasRemovedBefore) {
                         // if the image was removed before, it exists already in the database
                         addedImages.Add(image);
                     }
 
-                    BitmapImage bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(imageData);
                     ImageWrapper imageWrapper = new ImageWrapper() {
                         BitmapImage = bitmapImage,
                         StoredImage = image
@@ -127,7 +134,7 @@ namespace Diary.Views {
             imagesToDisplay.Remove(imageWrapper);
 
             bool wasAddedBefore = addedImages.Remove(imageWrapper.StoredImage);
-            if(! wasAddedBefore) {
+            if(!wasAddedBefore) {
                 // if the image was already added before, it doesn't exist in the database yet
                 removedImages.Add(imageWrapper.StoredImage);
             }
@@ -142,6 +149,14 @@ namespace Diary.Views {
             await dialog.ShowAsync();
         }
 
+        private async Task DisplayInvalidImageError() {
+            ContentDialog dialog = new ContentDialog() {
+                Title = "Fehler",
+                Content = "Bei dieser Datei handelt es sich nicht um eine gültige Bilddatei.",
+                CloseButtonText = "OK"
+            };
+            await dialog.ShowAsync();
+        }
 
     }
 }
