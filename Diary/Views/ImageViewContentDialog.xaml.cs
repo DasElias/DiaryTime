@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Diary.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,12 +20,14 @@ using Windows.UI.Xaml.Shapes;
 
 namespace Diary.Views {
     public sealed partial class ImageViewContentDialog : ContentDialog {
-        public ImageViewContentDialog(ImageSource image) {
-            this.ImageSource = image;
+        private ImageViewModel imageViewModel;
+
+        public ImageViewContentDialog(ICollection<ImageWrapper> allImages, int index) {
+            this.imageViewModel = new ImageViewModel(allImages, index);
             this.InitializeComponent();
+           
         }
 
-        private ImageSource ImageSource { get; set; }
 
         protected override void OnApplyTemplate() {
             base.OnApplyTemplate();
@@ -45,6 +49,15 @@ namespace Diary.Views {
 
         private void HandleCloseBtn_Click(object sender, RoutedEventArgs e) {
             this.Hide();
+        }
+
+        private void HandleNavigationLeftBtn_Click(object sender, RoutedEventArgs e) {
+            imageViewModel.NavigateLeft();
+
+        }
+
+        private void HandleNavigationRightBtn_Click(object sender, RoutedEventArgs e) {
+            imageViewModel.NavigateRight();
         }
     }
 }

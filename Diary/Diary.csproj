@@ -130,6 +130,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InvisibleWhenZeroConverter.cs" />
     <Compile Include="Converters\VisibleWhenZeroConverter.cs" />
     <Compile Include="Converters\DateToStringConverter.cs" />
@@ -139,10 +140,12 @@
     <Compile Include="Events\PersistorArgument.cs" />
     <Compile Include="Events\DateArgument.cs" />
     <Compile Include="Events\EntryArgument.cs" />
+    <Compile Include="Model\BindableBase.cs" />
     <Compile Include="Model\ColorGroup.cs" />
     <Compile Include="Model\DiaryEntry.cs" />
     <Compile Include="Model\DiaryEntryPreview.cs" />
     <Compile Include="Model\GroupedObservableCollection.cs" />
+    <Compile Include="Model\ImageViewModel.cs" />
     <Compile Include="Model\ImageWrapper.cs" />
     <Compile Include="Model\StoredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -82,7 +82,8 @@ namespace Diary.Views {
 
         private async void HandleImageList_ItemClick(object sender, ItemClickEventArgs e) {
             ImageWrapper img = (ImageWrapper) e.ClickedItem;
-            ContentDialog c = new ImageViewContentDialog(img.BitmapImage);
+            int index = imagesToDisplay.IndexOf(img);
+            ContentDialog c = new ImageViewContentDialog(imagesToDisplay, index);
             await c.ShowAsync();
         }
 
