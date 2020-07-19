@@ -142,6 +142,7 @@
     <Compile Include="Events\EntryArgument.cs" />
     <Compile Include="Model\BindableBase.cs" />
     <Compile Include="Model\ColorGroup.cs" />
+    <Compile Include="Model\DefaultFont.cs" />
     <Compile Include="Model\DiaryEntry.cs" />
     <Compile Include="Model\DiaryEntryPreview.cs" />
     <Compile Include="Model\GroupedObservableCollection.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Services\InvalidPasswordException.cs" />
     <Compile Include="Services\MockEncryptionService.cs" />
     <Compile Include="Services\ReminderTimeSaveService.cs" />
+    <Compile Include="Services\DefaultFontSaveService.cs" />
     <Compile Include="Services\SpellCheckingSettingService.cs" />
     <Compile Include="Services\ToastNotificationService.cs" />
     <Compile Include="Utils\ByteArrayToBitmapImageHelper.cs" />

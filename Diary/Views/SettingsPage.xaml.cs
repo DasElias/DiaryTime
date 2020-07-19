@@ -1,4 +1,5 @@
 ﻿using Diary.Events;
+using Diary.Model;
 using Diary.Services;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace Diary.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class SettingsPage : Page {
+        private FontSizeService fontSizeService = new FontSizeService();
+        private bool isDefaultFontPickerInitialized = false;
+
         private AbstractPersistorService persistorService;
         private AbstractEncryptor encryptor;
 
@@ -37,6 +41,8 @@ namespace Diary.Views {
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             shouldNotifyCheckBox.IsChecked = ReminderTimeSaveService.ShouldReminder();
             shouldNotifyTimePicker.Time = ReminderTimeSaveService.GetReminderTime();
+
+            InitDefaultFontPicker();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -103,7 +109,7 @@ namespace Diary.Views {
             if(file == null) return;
 
             bool isValid = await persistorService.VerifyForImport(file);
-            if(! isValid) {
+            if(!isValid) {
                 ContentDialog invalidDialog = new ContentDialog() {
                     Title = "Import fehlgeschlagen",
                     Content = "Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.",
@@ -133,6 +139,39 @@ namespace Diary.Views {
             msg.To.Add(recipient);
 
             await EmailManager.ShowComposeNewEmailAsync(msg);
+        }
+
+        private void InitDefaultFontPicker() {
+            FontFamilyOptions fontFamilies = new FontFamilyOptions();
+            foreach(FontFamily ff in fontFamilies) {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = ff;
+                item.FontFamily = ff;
+                fontFamilyBox.Items.Add(item);
+            }
+
+            DefaultFont defaultFont = DefaultFontSaveService.GetDefaultFont();
+            fontSizeBox.SelectedValue = defaultFont.FontSize;
+            fontFamilyBox.SelectedIndex = fontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
+
+            isDefaultFontPickerInitialized = true;
+        }
+
+        private void HandleFontFamilyBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if(isDefaultFontPickerInitialized) {
+                FontFamilyWrapper ff = (e.AddedItems[0] as ComboBoxItem)?.Content as FontFamilyWrapper;
+                DefaultFontSaveService.SetDefaultFontFamily(ff.Source);
+            }
+
+        }
+
+        private void HandleFontSizeBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if(isDefaultFontPickerInitialized) {
+                ComboBox box = (ComboBox) sender;
+                string fontSizeString = box.SelectedValue.ToString();
+                DefaultFontSaveService.SetDefaultFontSize(fontSizeString);
+            }
+
         }
     }
 }

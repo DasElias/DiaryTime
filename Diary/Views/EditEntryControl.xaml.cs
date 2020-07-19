@@ -117,12 +117,12 @@ namespace Diary.Views {
             Editor.Document.SetText(TextSetOptions.None, "a");
             Editor.Document.Selection.Expand(TextRangeUnit.Paragraph);
 
-            string defaultFontSize = fontSizeService.FontSizes[5];
-            fontSizeBox.SelectedValue = defaultFontSize;
+            DefaultFont defaultFont = DefaultFontSaveService.GetDefaultFont();
+            fontSizeBox.SelectedValue = defaultFont.FontSize;
 
             Editor.Document.SetText(TextSetOptions.None, "");
 
-            int defaultFontFamily = fontFamilies.IndexOf(fontFamilies.Find("Calibri"));
+            int defaultFontFamily = fontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
             fontFamilyBox.SelectedIndex = defaultFontFamily;
 
             // clear undo history

@@ -34,6 +34,18 @@
                     <Button Click="HandleImportBtn_Click">Einträge importieren</Button>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Standardschrift</TextBlock>
+                <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+                    <ComboBox x:Name="fontFamilyBox" 
+                      Width="200" 
+                      SelectionChanged="HandleFontFamilyBox_SelectionChanged" />
+                    <ComboBox x:Name="fontSizeBox" 
+                      Margin="-1,0,8,0"
+                      ItemsSource="{x:Bind fontSizeService.FontSizes}" 
+                      SelectionChanged="HandleFontSizeBox_SelectionChanged" />
+                </StackPanel>
+            </StackPanel>
             <StackPanel Margin="{StaticResource SmallTopMargin}" Visibility="Collapsed">
                 <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Errinnerungen</TextBlock>
                 <CheckBox x:Name="shouldNotifyCheckBox" Click="HandleCheckBox_Click">Ja, ich möchte täglich daran errinnert werden, einen Tagebucheintrag zu erstellen.</CheckBox>
