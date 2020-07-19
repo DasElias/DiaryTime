@@ -93,6 +93,9 @@ namespace Diary.Views {
             open.FileTypeFilter.Add(".png");
             open.FileTypeFilter.Add(".jpg");
             open.FileTypeFilter.Add(".jpeg");
+            open.FileTypeFilter.Add(".bmp");
+            open.FileTypeFilter.Add(".gif");
+
 
             Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
             if(file != null) {
