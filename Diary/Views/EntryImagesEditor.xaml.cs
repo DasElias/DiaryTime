@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -96,21 +97,20 @@ namespace Diary.Views {
             open.FileTypeFilter.Add(".bmp");
             open.FileTypeFilter.Add(".gif");
 
-
-            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
-            if(file != null) {
+            IReadOnlyList<StorageFile> allFiles = await open.PickMultipleFilesAsync();
+            foreach(StorageFile file in allFiles) {
                 byte[] imageData = await StorageFileToByteArrayHelper.GetBytesAsync(file);
                 StoredImage image = new StoredImage(imageData);
 
                 if(Contains(image)) {
-                    await DisplayImageAlreadyExistsWarning();
+                    await DisplayImageAlreadyExistsWarning(file.DisplayName);
                 } else {
                     BitmapImage bitmapImage;
                     try {
                         bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(imageData);
                     } catch(Exception) {
-                        await DisplayInvalidImageError();
-                        return;
+                        await DisplayInvalidImageError(file.DisplayName);
+                        continue;
                     }
 
                     bool wasRemovedBefore = removedImages.Remove(image);
@@ -143,19 +143,19 @@ namespace Diary.Views {
             }
         }
 
-        private async Task DisplayImageAlreadyExistsWarning() {
+        private async Task DisplayImageAlreadyExistsWarning(string filename) {
             ContentDialog dialog = new ContentDialog() {
                 Title = "Fehler",
-                Content = "Das Bild wurde bereits einmal zum Tagebucheintrag hinzugefügt.",
+                Content = $"Das Bild \"{filename}\" wurde bereits einmal zum Tagebucheintrag hinzugefügt.",
                 CloseButtonText = "OK"
             };
             await dialog.ShowAsync();
         }
 
-        private async Task DisplayInvalidImageError() {
+        private async Task DisplayInvalidImageError(string filename) {
             ContentDialog dialog = new ContentDialog() {
                 Title = "Fehler",
-                Content = "Bei dieser Datei handelt es sich nicht um eine gültige Bilddatei.",
+                Content = $"Bei der Datei \"{filename}\" handelt es sich nicht um eine gültige Bilddatei.",
                 CloseButtonText = "OK"
             };
             await dialog.ShowAsync();
