@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -88,6 +89,26 @@ namespace Diary.Views {
             await c.ShowAsync();
         }
 
+        private void HandleImageList_DragOver(object sender, DragEventArgs e) {
+            if(IsEditable) {
+                e.AcceptedOperation = DataPackageOperation.Copy;
+
+                if(e.DragUIOverride != null) {
+                    e.DragUIOverride.Caption = "Hinzufügen";
+                    e.DragUIOverride.IsContentVisible = true;
+                }
+            }
+        }
+
+        private async void HandleImageList_Drop(object sender, DragEventArgs e) {
+            if(e.DataView.Contains(StandardDataFormats.StorageItems)) {
+                var items = await e.DataView.GetStorageItemsAsync();
+                var storageFiles = items.Cast<StorageFile>().ToList();
+
+                await InsertImages(storageFiles);
+            }
+        }
+
         private async void HandleAddImageBtn_Tapped(object sender, TappedRoutedEventArgs e) {
             Windows.Storage.Pickers.FileOpenPicker open = new Windows.Storage.Pickers.FileOpenPicker();
             open.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
@@ -98,6 +119,10 @@ namespace Diary.Views {
             open.FileTypeFilter.Add(".gif");
 
             IReadOnlyList<StorageFile> allFiles = await open.PickMultipleFilesAsync();
+            await InsertImages(allFiles);
+        }
+
+        private async Task InsertImages(IReadOnlyList<StorageFile> allFiles) {
             foreach(StorageFile file in allFiles) {
                 byte[] imageData = await StorageFileToByteArrayHelper.GetBytesAsync(file);
                 StoredImage image = new StoredImage(imageData);
@@ -160,6 +185,7 @@ namespace Diary.Views {
             };
             await dialog.ShowAsync();
         }
+
 
     }
 }
