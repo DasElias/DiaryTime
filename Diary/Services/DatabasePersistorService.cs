@@ -133,6 +133,9 @@ namespace Diary.Services {
             }
 
             AddImagesForEntry(entry);
+            // we don't have to remove the images for the entry, since the entry was just created
+
+            entry.CommitImageChanges();
         }
 
         protected override void UpdateEntryImpl(DiaryEntry entry) {
