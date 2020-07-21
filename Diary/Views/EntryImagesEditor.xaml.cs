@@ -103,7 +103,11 @@ namespace Diary.Views {
         private async void HandleImageList_Drop(object sender, DragEventArgs e) {
             if(e.DataView.Contains(StandardDataFormats.StorageItems)) {
                 var items = await e.DataView.GetStorageItemsAsync();
-                var storageFiles = items.Cast<StorageFile>().ToList();
+                var storageFiles = new List<StorageFile>();
+                foreach(IStorageItem i in items) {
+                    var casted = i as StorageFile;
+                    if(casted != null) storageFiles.Add(casted);
+                }
 
                 await InsertImages(storageFiles);
             }
