@@ -121,6 +121,7 @@ namespace Diary.Views {
             open.FileTypeFilter.Add(".jpeg");
             open.FileTypeFilter.Add(".bmp");
             open.FileTypeFilter.Add(".gif");
+            open.FileTypeFilter.Add(".tiff");
 
             IReadOnlyList<StorageFile> allFiles = await open.PickMultipleFilesAsync();
             await InsertImages(allFiles);
@@ -190,6 +191,21 @@ namespace Diary.Views {
             await dialog.ShowAsync();
         }
 
+        private async void HandleSaveFlyoutItem_Click(object sender, RoutedEventArgs e) {
+            ImageWrapper imageWrapper = (ImageWrapper) ((MenuFlyoutItem) sender).Tag;
+            byte[] imageData = imageWrapper.StoredImage.ImageData;
+            string fileExtension = "." + ImageTypeHelper.DetermineImageExtension(imageData);
 
+            Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
+            savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            savePicker.FileTypeChoices.Add("Bild", new List<string>() { fileExtension });
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if(file != null) {
+                await FileIO.WriteBytesAsync(file, imageData);
+            }
+            
+
+        }
     }
 }

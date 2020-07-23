@@ -18,11 +18,23 @@
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate x:Key="NonEditableTemplate" x:DataType="model:ImageWrapper">
-                <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill" />
+                <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill">
+                    <Image.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Icon="Save" Text="In Datei speichern" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
+                        </MenuFlyout>
+                    </Image.ContextFlyout>
+                </Image>
             </DataTemplate>
             <DataTemplate x:Key="EditableTemplate" x:DataType="model:ImageWrapper">
                 <Grid>
-                    <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill" />
+                    <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill">
+                        <Image.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Icon="Save" Text="In Datei speichern" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
+                            </MenuFlyout>
+                        </Image.ContextFlyout>
+                    </Image>
                     <controls:DropShadowPanel HorizontalAlignment="Center" 
                                               VerticalAlignment="Bottom"
                                               BlurRadius="5">
