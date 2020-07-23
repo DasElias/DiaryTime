@@ -169,6 +169,7 @@
     <Compile Include="Utils\ChildElementHelper.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="Utils\FloatingPointComparison.cs" />
+    <Compile Include="Utils\ImageTypeHelper.cs" />
     <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />
     <Compile Include="Utils\StringFromStream.cs" />
     <Compile Include="Views\ChangePasswordDialog.xaml.cs">
