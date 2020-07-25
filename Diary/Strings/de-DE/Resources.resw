@@ -135,6 +135,9 @@
   <data name="enterOldPassword" xml:space="preserve">
     <value>Altes Passwort eingeben</value>
   </data>
+  <data name="invalidPassword" xml:space="preserve">
+    <value>Falsches Passwort.</value>
+  </data>
   <data name="oldPasswordIsIncorrect" xml:space="preserve">
     <value>Dein altes Passwort ist nicht korrekt.</value>
   </data>

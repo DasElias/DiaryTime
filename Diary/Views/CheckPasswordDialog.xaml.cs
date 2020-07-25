@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
@@ -19,11 +20,13 @@ using Windows.UI.Xaml.Navigation;
 namespace Diary.Views {
     public sealed partial class CheckPasswordDialog : ContentDialog {
         private string plainPassword;
+        private ResourceLoader resourceLoader;
 
         public CheckPasswordDialog(string contentText, string plainPassword) {
             this.ContentText = contentText;
             this.plainPassword = plainPassword;
 
+            this.resourceLoader = ResourceLoader.GetForCurrentView();
             this.InitializeComponent();
         }
 
@@ -33,7 +36,7 @@ namespace Diary.Views {
         private void HandlePrimaryButton_Click(ContentDialog sender, ContentDialogButtonClickEventArgs args) {
             if(Password != plainPassword) {
                 args.Cancel = true;
-                errorMsgBox.Text = "Falsches Passwort!";
+                errorMsgBox.Text = resourceLoader.GetString("invalidPassword");
             }
         }
 
