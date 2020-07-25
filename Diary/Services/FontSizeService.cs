@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Diary.Services {
     class FontSizeService {
         public ObservableCollection<string> FontSizes { get; } = new ObservableCollection<string>();
+        public ObservableCollection<string> FontSizesForDefaultFont { get; private set; }
 
         public FontSizeService() {
             InitFontSizes();
@@ -24,6 +25,9 @@ namespace Diary.Services {
             FontSizes.Add("15");
             FontSizes.Add("16");
             FontSizes.Add("18");
+
+            FontSizesForDefaultFont = new ObservableCollection<string>(FontSizes);
+
             FontSizes.Add("20");
             FontSizes.Add("22");
             FontSizes.Add("24");
