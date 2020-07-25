@@ -192,6 +192,9 @@
   <data name="italicText" xml:space="preserve">
     <value>Kursiver Text</value>
   </data>
+  <data name="noPasswordEntered" xml:space="preserve">
+    <value>Bitte wähle dein Passwort!</value>
+  </data>
   <data name="ok" xml:space="preserve">
     <value>OK</value>
   </data>
@@ -242,5 +245,11 @@
   </data>
   <data name="unorderedList" xml:space="preserve">
     <value>Aufzählung</value>
+  </data>
+  <data name="welcomeMessage" xml:space="preserve">
+    <value>Herzlich Willkommen bei DiaryTime!</value>
+  </data>
+  <data name="welcomeMessageBody" xml:space="preserve">
+    <value>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</value>
   </data>
 </root>

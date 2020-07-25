@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,16 +19,19 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Diary.Views {
     public sealed partial class FirstLoginPage : Page {
+        private ResourceLoader resourceLoader;
+
         public FirstLoginPage() {
             this.InitializeComponent();
+            this.resourceLoader = ResourceLoader.GetForCurrentView();
             this.Loaded += Page_Loaded;
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e) {
             ContentDialog welcomeDialog = new ContentDialog() {
-                Title = "Herzlich Willkommen bei DiaryTime!",
-                Content = "Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.",
-                PrimaryButtonText = "OK"
+                Title = resourceLoader.GetString("welcomeMessage"),
+                Content = resourceLoader.GetString("welcomeMessageBody"),
+                PrimaryButtonText = resourceLoader.GetString("ok")
             };
             await welcomeDialog.ShowAsync();
         }
@@ -46,10 +50,10 @@ namespace Diary.Views {
             string pw = newPasswordBox.Password;
             string repeatedPw = repeatPasswordBox.Password;
             if(pw.Length == 0) {
-                errorMsgField.Text = "Bitte wähle dein Passwort!";
+                errorMsgField.Text = resourceLoader.GetString("noPasswordEntered");
                 return;
             } else if(pw != repeatedPw) {
-                errorMsgField.Text = "Die eingegebenen Passwörter stimmen nicht überein.";
+                errorMsgField.Text = resourceLoader.GetString("passwordsAreNotTheSame");
                 return;
             }
 

@@ -40,13 +40,13 @@
 
         <RelativePanel Grid.Column="0">
             <StackPanel x:Name="fieldsPanel" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Width="295">
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 25">DiaryTime</TextBlock>
+                <TextBlock Text="{CustomResource appName}" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 25" />
 
-                <TextBlock Margin="{StaticResource SmallTopMargin}">Neues Passwort</TextBlock>
+                <TextBlock Text="{CustomResource enterNewPassword}" Margin="{StaticResource SmallTopMargin}" />
                 <PasswordBox x:Name="newPasswordBox"></PasswordBox>
-                <TextBlock Margin="{StaticResource SmallTopMargin}">Passwort wiederholen</TextBlock>
+                <TextBlock Text="{CustomResource repeatNewPassword}" Margin="{StaticResource SmallTopMargin}" />
                 <PasswordBox x:Name="repeatPasswordBox" KeyDown="HandlePasswordBox_KeyDown"></PasswordBox>
-                <Button HorizontalAlignment="Right" Style="{StaticResource AccentButtonStyle}" Margin="0,25,0,0" Click="HandleSignInBtn_Click">Anmelden</Button>
+                <Button Content="{CustomResource signIn}" HorizontalAlignment="Right" Style="{StaticResource AccentButtonStyle}" Margin="0,25,0,0" Click="HandleSignInBtn_Click" />
             </StackPanel>
             <TextBlock x:Name="errorMsgField" Margin="{StaticResource MediumTopMargin}" Foreground="Red" RelativePanel.Below="fieldsPanel" RelativePanel.AlignLeftWith="fieldsPanel" />
         </RelativePanel>
