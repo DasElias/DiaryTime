@@ -159,19 +159,25 @@ namespace Diary.Views {
 
         private void HandleFontFamilyBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if(isDefaultFontPickerInitialized) {
-                FontFamilyWrapper ff = (e.AddedItems[0] as ComboBoxItem)?.Content as FontFamilyWrapper;
-                DefaultFontSaveService.SetDefaultFontFamily(ff.Source);
+                UpdateDefaultFont();
             }
 
         }
 
         private void HandleFontSizeBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             if(isDefaultFontPickerInitialized) {
-                ComboBox box = (ComboBox) sender;
-                string fontSizeString = box.SelectedValue.ToString();
-                DefaultFontSaveService.SetDefaultFontSize(fontSizeString);
+                UpdateDefaultFont();
             }
 
+        }
+
+        private void UpdateDefaultFont() {
+            var selectedFontFamilyWrapper = (fontFamilyBox.SelectedItem as ComboBoxItem)?.Content as FontFamilyWrapper;
+            string fontFamily = selectedFontFamilyWrapper.Source;
+            string fontSize = fontSizeBox.SelectedValue.ToString();
+
+            DefaultFont f = new DefaultFont(fontFamily, fontSize);
+            DefaultFontSaveService.SetDefaultFont(f);
         }
     }
 }

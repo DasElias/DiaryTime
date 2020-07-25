@@ -20,16 +20,6 @@ namespace Diary.Services {
             roamingSettings.Values[FONT_SIZE_KEY] = fontData.FontSize;
         }
 
-        public static void SetDefaultFontFamily(string fontFamily) {
-            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values[FONT_FAMILY_KEY] = fontFamily;
-        }
-
-        public static void SetDefaultFontSize(string fontSizeString) {
-            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values[FONT_SIZE_KEY] = fontSizeString;
-        }
-
         public static DefaultFont GetDefaultFont() {
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             string fontFamily = roamingSettings.Values[FONT_FAMILY_KEY] as string;
