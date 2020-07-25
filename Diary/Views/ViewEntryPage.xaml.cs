@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,7 @@ namespace Diary.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ViewEntryPage : Page {
+        private ResourceLoader resourceLoader;
 
         private AbstractPersistorService persistorService;
         private DiaryEntry entry;
@@ -33,6 +35,7 @@ namespace Diary.Views {
         public ViewEntryPage() {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            resourceLoader = ResourceLoader.GetForCurrentView();
 
             this.Loaded += Page_Loaded;
         }
@@ -81,10 +84,10 @@ namespace Diary.Views {
             }
 
             ContentDialog editConfirmationDialog = new ContentDialog {
-                Title = "Eintrag bearbeiten",
-                Content = $"Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({entry.DateString}) bearbeiten willst?",
-                PrimaryButtonText = "Abbrechen",
-                SecondaryButtonText = "Fortfahren"
+                Title = resourceLoader.GetString("editEntry"),
+                Content = string.Format(resourceLoader.GetString("confirmEditDayInPast"), entry.DateString),
+                PrimaryButtonText = resourceLoader.GetString("abort"),
+                SecondaryButtonText = resourceLoader.GetString("continue")
             };
 
             ContentDialogResult result = await editConfirmationDialog.ShowAsync();

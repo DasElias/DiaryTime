@@ -20,7 +20,7 @@
 
         <local:EntryButtonBarControl x:Name="entryButtonBarControl" Grid.Row="0">
             <local:EntryButtonBarControl.Buttons>
-                <AppBarButton Icon="Edit" Label="Bearbeiten" Click="HandleEditBtn_Click"/>
+                <AppBarButton Icon="Edit" Label="{CustomResource edit}" Click="HandleEditBtn_Click"/>
             </local:EntryButtonBarControl.Buttons>
         </local:EntryButtonBarControl>
         <TextBlock x:Name="titleElement" 

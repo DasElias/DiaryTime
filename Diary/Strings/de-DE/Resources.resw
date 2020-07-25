@@ -150,6 +150,9 @@
   <data name="confirmDeleteEntry" xml:space="preserve">
     <value>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</value>
   </data>
+  <data name="confirmEditPastDay" xml:space="preserve">
+    <value>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</value>
+  </data>
   <data name="continue" xml:space="preserve">
     <value>Fortfahren</value>
   </data>
@@ -173,6 +176,12 @@
   </data>
   <data name="deleteEntryLong" xml:space="preserve">
     <value>Tagebucheintrag löschen</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="editEntry" xml:space="preserve">
+    <value>Eintrag bearbeiten</value>
   </data>
   <data name="enterNewPassword" xml:space="preserve">
     <value>Neues Passwort eingeben</value>
