@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,11 +23,15 @@ namespace Diary.Views {
     }
 
     public sealed partial class ChangePasswordDialog : ContentDialog {
+        private ResourceLoader resourceLoader;
         private string oldPassword;
 
         public ChangePasswordDialog(string oldPassword) {
             this.oldPassword = oldPassword;
+
             this.InitializeComponent();
+            resourceLoader = ResourceLoader.GetForCurrentView();
+
             IsPrimaryButtonEnabled = false;
         }
 
@@ -41,8 +46,8 @@ namespace Diary.Views {
                 NewPassword = newPwBox.Password;
             } else {
                 args.Cancel = true;
-                if(! isOldPwEqual) errorMsgField.Text = "Dein altes Passwort ist nicht korrekt.";
-                else if(! isNewPwEqual) errorMsgField.Text = "Die beiden eingegebenen Passwörter stimmen nicht überein.";
+                if(! isOldPwEqual) errorMsgField.Text = resourceLoader.GetString("oldPasswordIsIncorrect");
+                else if(! isNewPwEqual) errorMsgField.Text = resourceLoader.GetString("passwordsAreNotTheSame");
             }
 
             

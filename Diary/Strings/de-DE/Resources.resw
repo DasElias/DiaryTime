@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="abort" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
   <data name="appName" xml:space="preserve">
     <value>DiaryTime</value>
   </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="enterNewPassword" xml:space="preserve">
+    <value>Neues Passwort eingeben</value>
+  </data>
+  <data name="enterOldPassword" xml:space="preserve">
+    <value>Altes Passwort eingeben</value>
+  </data>
+  <data name="oldPasswordIsIncorrect" xml:space="preserve">
+    <value>Dein altes Passwort ist nicht korrekt.</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>Passwort</value>
+  </data>
+  <data name="passwordsAreNotTheSame" xml:space="preserve">
+    <value>Die beiden eingegebenen Passwörter stimmen nicht überein.</value>
+  </data>
+  <data name="repeatNewPassword" xml:space="preserve">
+    <value>Neues Passwort wiederholen</value>
   </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>
