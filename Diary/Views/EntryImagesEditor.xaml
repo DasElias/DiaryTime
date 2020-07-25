@@ -21,7 +21,7 @@
                 <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill">
                     <Image.ContextFlyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Icon="Save" Text="In Datei speichern" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
+                            <MenuFlyoutItem Icon="Save" Text="{CustomResource saveInFile}" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
                         </MenuFlyout>
                     </Image.ContextFlyout>
                 </Image>
@@ -31,7 +31,7 @@
                     <Image Width="100" Height="100" Source="{x:Bind BitmapImage}" Stretch="UniformToFill">
                         <Image.ContextFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Icon="Save" Text="In Datei speichern" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
+                                <MenuFlyoutItem Icon="Save" Text="{CustomResource saveInFile}" Tag="{x:Bind}" Click="HandleSaveFlyoutItem_Click" />
                             </MenuFlyout>
                         </Image.ContextFlyout>
                     </Image>
@@ -71,7 +71,7 @@
     <Grid Margin="0, 10, 0, 0">
         <controls:Expander IsExpanded="False" ExpandDirection="Down" HorizontalContentAlignment="Stretch" Background="Transparent">
             <controls:Expander.Header>
-                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Impressionen</TextBlock>
+                <TextBlock Text="{CustomResource impressions}" Style="{StaticResource SubtitleTextBlockStyle}" />
             </controls:Expander.Header>
 
             <Grid DragOver="HandleImageList_DragOver"
@@ -99,7 +99,7 @@
                             <Grid Width="100" Height="100">
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Spacing="10">
                                     <TextBlock FontSize="35" TextLineBounds="Tight" HorizontalAlignment="Center">+</TextBlock>
-                                    <TextBlock TextLineBounds="Tight" HorizontalAlignment="Center">Bild hinzufügen</TextBlock>
+                                    <TextBlock Text="{CustomResource addImage}" TextLineBounds="Tight" HorizontalAlignment="Center" />
                                 </StackPanel>
                             </Grid>
                             <!--<TextBlock Width="100" Height="100" FontSize="35" HorizontalTextAlignment="Center" VerticalAlignment="Center">+</TextBlock>-->

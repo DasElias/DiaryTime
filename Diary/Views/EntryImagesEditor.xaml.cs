@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -26,6 +27,7 @@ using Windows.UI.Xaml.Navigation;
 namespace Diary.Views {
 
     public sealed partial class EntryImagesEditor : UserControl {
+        private ResourceLoader resourceLoader;
 
         private ObservableCollection<ImageWrapper> imagesToDisplay = new ObservableCollection<ImageWrapper>();
         private List<StoredImage> addedImages = new List<StoredImage>();
@@ -34,6 +36,8 @@ namespace Diary.Views {
 
         public EntryImagesEditor() {
             this.InitializeComponent();
+            resourceLoader = ResourceLoader.GetForCurrentView();
+
             IsEditable = false;
         }
 
@@ -94,7 +98,7 @@ namespace Diary.Views {
                 e.AcceptedOperation = DataPackageOperation.Copy;
 
                 if(e.DragUIOverride != null) {
-                    e.DragUIOverride.Caption = "Hinzufügen";
+                    e.DragUIOverride.Caption = resourceLoader.GetString("add");
                     e.DragUIOverride.IsContentVisible = true;
                 }
             }
@@ -175,18 +179,18 @@ namespace Diary.Views {
 
         private async Task DisplayImageAlreadyExistsWarning(string filename) {
             ContentDialog dialog = new ContentDialog() {
-                Title = "Fehler",
-                Content = $"Das Bild \"{filename}\" wurde bereits einmal zum Tagebucheintrag hinzugefügt.",
-                CloseButtonText = "OK"
+                Title = resourceLoader.GetString("error"),
+                Content = string.Format(resourceLoader.GetString("imageWasAlreadyAdded"), filename),
+                CloseButtonText = resourceLoader.GetString("ok")
             };
             await dialog.ShowAsync();
         }
 
         private async Task DisplayInvalidImageError(string filename) {
             ContentDialog dialog = new ContentDialog() {
-                Title = "Fehler",
-                Content = $"Bei der Datei \"{filename}\" handelt es sich nicht um eine gültige Bilddatei.",
-                CloseButtonText = "OK"
+                Title = resourceLoader.GetString("error"),
+                Content = string.Format(resourceLoader.GetString("invalidImage"), filename),
+                CloseButtonText = resourceLoader.GetString("ok")
             };
             await dialog.ShowAsync();
         }
@@ -198,7 +202,7 @@ namespace Diary.Views {
 
             Windows.Storage.Pickers.FileSavePicker savePicker = new Windows.Storage.Pickers.FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            savePicker.FileTypeChoices.Add("Bild", new List<string>() { fileExtension });
+            savePicker.FileTypeChoices.Add(resourceLoader.GetString("image"), new List<string>() { fileExtension });
 
             StorageFile file = await savePicker.PickSaveFileAsync();
             if(file != null) {

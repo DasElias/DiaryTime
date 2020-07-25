@@ -120,6 +120,12 @@
   <data name="abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="addImage" xml:space="preserve">
+    <value>Bild hinzufügen</value>
+  </data>
   <data name="alignTextCenter" xml:space="preserve">
     <value>Zentriert ausrichten</value>
   </data>
@@ -162,11 +168,29 @@
   <data name="entryTitle" xml:space="preserve">
     <value>Titel</value>
   </data>
+  <data name="error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="image" xml:space="preserve">
+    <value>Bild</value>
+  </data>
+  <data name="imageWasAlreadyAdded" xml:space="preserve">
+    <value>Das Bild "{0}" wurde bereits einmal zum Tagebucheintrag hinzugefügt.</value>
+  </data>
+  <data name="impressions" xml:space="preserve">
+    <value>Impressionen</value>
+  </data>
+  <data name="invalidImage" xml:space="preserve">
+    <value>Bei der Datei "{0}" handelt es sich nicht um eine gültige Bilddatei.</value>
+  </data>
   <data name="invalidPassword" xml:space="preserve">
     <value>Falsches Passwort.</value>
   </data>
   <data name="italicText" xml:space="preserve">
     <value>Kursiver Text</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="oldPasswordIsIncorrect" xml:space="preserve">
     <value>Dein altes Passwort ist nicht korrekt.</value>
@@ -188,6 +212,9 @@
   </data>
   <data name="saveEntry" xml:space="preserve">
     <value>Bearbeiten abschließen</value>
+  </data>
+  <data name="saveInFile" xml:space="preserve">
+    <value>In Datei speichern</value>
   </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>
