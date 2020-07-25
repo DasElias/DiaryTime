@@ -32,8 +32,8 @@
             <Button Width="0" Height="0" />
             
             <StackPanel RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312" Padding="0,76,0,0">
-                <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="Heutigen Tagebucheintrag bearbeiten" Foreground="White" RequestedTheme="Dark" Tapped="HandleEditTodayEntry_Tapped"/>
-                <NavigationViewItem x:Uid="TodaysEntryItem" Content="Heutigen Tagebucheintrag lesen" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped">
+                <NavigationViewItem x:Uid="TodaysEntryItem" Icon="Edit" Content="{CustomResource editTodaysEntry}" Foreground="White" RequestedTheme="Dark" Tapped="HandleEditTodayEntry_Tapped"/>
+                <NavigationViewItem x:Uid="TodaysEntryItem" Content="{CustomResource viewTodaysEntry}" Foreground="White" RequestedTheme="Dark" Tapped="HandleViewTodayEntry_Tapped">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE736;" />
                     </NavigationViewItem.Icon>
@@ -65,14 +65,14 @@
                 </Viewbox>
 
                 <NavigationViewItemSeparator FocusVisualPrimaryBrush="White" Foreground="White" RequestedTheme="Dark" />
-                <NavigationViewItem x:Uid="ListViewItem" Content="Listenansicht" Foreground="White" RequestedTheme="Dark" Tapped="HandleOpenListView_Tapped">
+                <NavigationViewItem x:Uid="ListViewItem" Content="{CustomResource listView}" Foreground="White" RequestedTheme="Dark" Tapped="HandleOpenListView_Tapped">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8FD;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </StackPanel>
             <StackPanel RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Width="312">
-                <NavigationViewItem x:Uid="Settings" Icon="Setting" Content="Einstellungen" Foreground="White" RequestedTheme="Dark" Tapped="HandleSettings_Tapped" />
+                <NavigationViewItem x:Uid="Settings" Icon="Setting" Content="{CustomResource settings}" Foreground="White" RequestedTheme="Dark" Tapped="HandleSettings_Tapped" />
             </StackPanel>
             
         </RelativePanel>

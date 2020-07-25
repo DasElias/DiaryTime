@@ -183,6 +183,9 @@
   <data name="editEntry" xml:space="preserve">
     <value>Eintrag bearbeiten</value>
   </data>
+  <data name="editTodaysEntry" xml:space="preserve">
+    <value>Heutigen Tagebucheintrag bearbeiten</value>
+  </data>
   <data name="enterNewPassword" xml:space="preserve">
     <value>Neues Passwort eingeben</value>
   </data>
@@ -224,6 +227,9 @@
   </data>
   <data name="italicText" xml:space="preserve">
     <value>Kursiver Text</value>
+  </data>
+  <data name="listView" xml:space="preserve">
+    <value>Listenansicht</value>
   </data>
   <data name="noEntriesToDisplay" xml:space="preserve">
     <value>Keine Einträge anzuzeigen</value>
@@ -270,6 +276,9 @@
   <data name="searchBarText" xml:space="preserve">
     <value>Suchen...</value>
   </data>
+  <data name="settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>
   </data>
@@ -293,6 +302,9 @@
   </data>
   <data name="unorderedList" xml:space="preserve">
     <value>Aufzählung</value>
+  </data>
+  <data name="viewTodaysEntry" xml:space="preserve">
+    <value>Heutigen Tagebucheintrag lesen</value>
   </data>
   <data name="welcomeMessage" xml:space="preserve">
     <value>Herzlich Willkommen bei DiaryTime!</value>
