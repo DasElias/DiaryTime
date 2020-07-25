@@ -174,6 +174,7 @@
     <Compile Include="Utils\ImageTypeHelper.cs" />
     <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />
     <Compile Include="Utils\StringFromStream.cs" />
+    <Compile Include="Utils\XamlResourceLoader.cs" />
     <Compile Include="Views\ChangePasswordDialog.xaml.cs">
       <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>
     </Compile>
@@ -296,6 +297,7 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\de-DE\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

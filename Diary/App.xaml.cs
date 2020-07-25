@@ -1,4 +1,5 @@
 ﻿using Diary.Services;
+using Diary.Utils;
 using Diary.Views;
 using Nito.AsyncEx;
 using System;
@@ -18,6 +19,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Resources;
 
 namespace Diary {
     /// <summary>
@@ -27,6 +29,7 @@ namespace Diary {
         public App() {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            CustomXamlResourceLoader.Current = new XamlResourceLoader();
         }
 
         /// <summary>
