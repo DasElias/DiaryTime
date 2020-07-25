@@ -141,6 +141,18 @@
   <data name="confirm" xml:space="preserve">
     <value>Bestätigen</value>
   </data>
+  <data name="confirmDeleteEntry" xml:space="preserve">
+    <value>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="deleteEntry" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="deleteEntryLong" xml:space="preserve">
+    <value>Tagebucheintrag löschen</value>
+  </data>
   <data name="enterNewPassword" xml:space="preserve">
     <value>Neues Passwort eingeben</value>
   </data>
@@ -174,8 +186,14 @@
   <data name="repeatNewPassword" xml:space="preserve">
     <value>Neues Passwort wiederholen</value>
   </data>
+  <data name="saveEntry" xml:space="preserve">
+    <value>Bearbeiten abschließen</value>
+  </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>
+  </data>
+  <data name="spellChecking" xml:space="preserve">
+    <value>Rechtschreibprüfung</value>
   </data>
   <data name="strikethroughText" xml:space="preserve">
     <value>Durchgestrichener Text</value>

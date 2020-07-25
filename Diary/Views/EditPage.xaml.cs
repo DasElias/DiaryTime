@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Services.Maps;
@@ -30,6 +31,7 @@ namespace Diary.Views {
         private DispatcherTimer saveTimer = new DispatcherTimer() {
             Interval = TimeSpan.FromSeconds(90)
         };
+        private ResourceLoader resourceLoader;
 
         private AbstractPersistorService persistorService;
         private DiaryEntry diaryEntry = null;
@@ -37,6 +39,7 @@ namespace Diary.Views {
 
         public EditPage() {
             this.InitializeComponent();
+            resourceLoader = ResourceLoader.GetForCurrentView();
 
             this.Loaded += Page_Loaded;
             Application.Current.Suspending += Page_Suspending;
@@ -120,10 +123,10 @@ namespace Diary.Views {
 
         private async void HandleDeleteButton_Click(object sender, RoutedEventArgs e) {
             ContentDialog confirmationDialog = new ContentDialog {
-                Title = "Tagebucheintrag löschen",
-                Content = "Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?",
-                PrimaryButtonText = "Abbrechen",
-                SecondaryButtonText = "Löschen"
+                Title = resourceLoader.GetString("deleteEntryLong"),
+                Content = resourceLoader.GetString("confirmDeleteEntry"),
+                PrimaryButtonText = resourceLoader.GetString("abort"),
+                SecondaryButtonText = resourceLoader.GetString("delete")
             };
 
             ContentDialogResult result = await confirmationDialog.ShowAsync();
