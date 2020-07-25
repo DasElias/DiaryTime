@@ -150,6 +150,9 @@
   <data name="confirmDeleteEntry" xml:space="preserve">
     <value>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</value>
   </data>
+  <data name="couldntReadEntries" xml:space="preserve">
+    <value>Die gespeicherten Tagebucheinträge konnten nicht gelesen werden, da die Datei irreparabel beschädigt ist.</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
@@ -174,6 +177,12 @@
   <data name="error" xml:space="preserve">
     <value>Fehler</value>
   </data>
+  <data name="errorHasOccured" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten</value>
+  </data>
+  <data name="exitApp" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
   <data name="image" xml:space="preserve">
     <value>Bild</value>
   </data>
@@ -188,6 +197,9 @@
   </data>
   <data name="invalidPassword" xml:space="preserve">
     <value>Falsches Passwort.</value>
+  </data>
+  <data name="invalidPasswordTryAgain" xml:space="preserve">
+    <value>Falsches Passwort. Versuche es bitte erneut.</value>
   </data>
   <data name="italicText" xml:space="preserve">
     <value>Kursiver Text</value>
@@ -218,6 +230,9 @@
   </data>
   <data name="repeatNewPassword" xml:space="preserve">
     <value>Neues Passwort wiederholen</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
   </data>
   <data name="saveEntry" xml:space="preserve">
     <value>Bearbeiten abschließen</value>

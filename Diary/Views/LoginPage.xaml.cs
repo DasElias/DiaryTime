@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -21,8 +22,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Diary.Views {
     public sealed partial class LoginPage : Page {
+        private ResourceLoader resourceLoader;
+
         public LoginPage() {
             this.InitializeComponent();
+            resourceLoader = ResourceLoader.GetForCurrentView();
         }
 
         private async void HandleSignInBtn_Click(object sender, RoutedEventArgs e) {
@@ -42,7 +46,7 @@ namespace Diary.Views {
                 PersistorEncryptorArgument arg = new PersistorEncryptorArgument(persistor, encryptor);
                 Frame.Navigate(typeof(ShellPage), arg);
             } catch(InvalidPasswordException) {
-                errorMsgField.Text = "Falsches Passwort. Versuche es bitte erneut.";
+                errorMsgField.Text = resourceLoader.GetString("invalidPasswordTryAgain");
             } catch(SqliteException) {
                 await ShowFileErrorDialogAsync();
             }
@@ -50,10 +54,10 @@ namespace Diary.Views {
 
         private async Task ShowFileErrorDialogAsync() {
             ContentDialog errorDialog = new ContentDialog() {
-                Title = "Ein Fehler ist aufgetreten",
-                Content = "Die gespeicherten Tagebucheinträge konnten nicht gelesen werden, da die Datei irreparabel beschädigt ist.",
-                PrimaryButtonText = "Beenden",
-                SecondaryButtonText = "Zurücksetzen"
+                Title = resourceLoader.GetString("errorHasOccured"),
+                Content = resourceLoader.GetString("couldntReadEntries"),
+                PrimaryButtonText = resourceLoader.GetString("exitApp"),
+                SecondaryButtonText = resourceLoader.GetString("reset")
             };
             ContentDialogResult result = await errorDialog.ShowAsync();
 
