@@ -22,22 +22,22 @@
     <Grid Padding="15">
         <ScrollViewer>
             <StackPanel>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}">Einstellungen</TextBlock>
+                <TextBlock Text="{CustomResource settings}" Style="{StaticResource TitleTextBlockStyle}" />
                 <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Passwort</TextBlock>
-                    <Button Click="HandleChangePasswordBtn_Click">Passwort jetzt ändern</Button>
+                    <TextBlock Text="{CustomResource password}" Style="{ThemeResource SubtitleTextBlockStyle}" />
+                    <Button Content="{CustomResource changePasswordNow}" Click="HandleChangePasswordBtn_Click" />
                 </StackPanel>
                 <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Datenexport</TextBlock>
-                    <TextBlock TextWrapping="WrapWholeWords">Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</TextBlock>
+                    <TextBlock Text="{CustomResource exportData}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <TextBlock Text="{CustomResource exportDataDescription}" TextWrapping="WrapWholeWords" />
                     <StackPanel Margin="0,8,0,0" Spacing="10" Orientation="Horizontal">
-                        <Button Click="HandleExportBtn_Click">Einträge exportieren</Button>
-                        <Button Click="HandleImportBtn_Click">Einträge importieren</Button>
+                        <Button Content="{CustomResource exportEntries}" Click="HandleExportBtn_Click" />
+                        <Button Content="{CustomResource importEntries}" Click="HandleImportBtn_Click" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">Standardschrift</TextBlock>
-                    <TextBlock TextWrapping="WrapWholeWords">Die hier gewählte Schrift wird bei allen neu erstellten Tagebucheinträgen standardmäßig verwendet.</TextBlock>
+                    <TextBlock Text="{CustomResource defaultFont}" Style="{StaticResource SubtitleTextBlockStyle}" />
+                    <TextBlock Text="{CustomResource defaultFontDescription}" TextWrapping="WrapWholeWords" />
                     <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
                         <ComboBox x:Name="fontFamilyBox" 
                       Width="200" 
@@ -54,9 +54,9 @@
                     <TimePicker x:Name="shouldNotifyTimePicker" Margin="{StaticResource XSmallTopMargin}" IsEnabled="{x:Bind shouldNotifyCheckBox.IsChecked, Converter={StaticResource NullBooleanConverter}, Mode=OneWay}" SelectedTimeChanged="HandleTimePicker_SelectedTimeChanged">Uhrzeit</TimePicker>
                 </StackPanel>
                 <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">Über</TextBlock>
+                    <TextBlock Text="{CustomResource about}" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <TextBlock>Elias Horner</TextBlock>
-                    <Button Margin="0,8,0,0" Click="HandleSendMailBtn_Click">Kontaktieren</Button>
+                    <Button Content="{CustomResource contactMe}" Margin="0,8,0,0" Click="HandleSendMailBtn_Click" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

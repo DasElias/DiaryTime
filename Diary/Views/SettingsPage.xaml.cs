@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Email;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -27,6 +28,8 @@ namespace Diary.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class SettingsPage : Page {
+        private ResourceLoader resourceLoader;
+
         private FontSizeService fontSizeService = new FontSizeService();
         private bool isDefaultFontPickerInitialized = false;
 
@@ -36,6 +39,7 @@ namespace Diary.Views {
         public SettingsPage() {
             this.InitializeComponent();
             this.Loaded += Page_Loaded;
+            resourceLoader = ResourceLoader.GetForCurrentView();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
@@ -70,10 +74,10 @@ namespace Diary.Views {
         }
 
         private async void HandleExportBtn_Click(object sender, RoutedEventArgs e) {
-            CheckPasswordDialog contentDialog = new CheckPasswordDialog("Bitte gib dein Passwort ein.", encryptor.PlainPassword) {
-                Title = "Tagebucheinträge exportieren",
-                PrimaryButtonText = "Weiter",
-                SecondaryButtonText = "Abbrechen"
+            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("pleaeseEnterPassword"), encryptor.PlainPassword) {
+                Title = resourceLoader.GetString("exportDiaryEntries"),
+                PrimaryButtonText = resourceLoader.GetString("next"),
+                SecondaryButtonText = resourceLoader.GetString("abort")
 
             };
             ContentDialogResult result = await contentDialog.ShowAsync();
@@ -81,8 +85,8 @@ namespace Diary.Views {
 
             var savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            savePicker.FileTypeChoices.Add("DiaryTime-Export", new List<string>() { ".dt" });
-            savePicker.SuggestedFileName = "DiaryTimeExport";
+            savePicker.FileTypeChoices.Add(resourceLoader.GetString("diaryTimeExport"), new List<string>() { ".dt" });
+            savePicker.SuggestedFileName = resourceLoader.GetString("diaryTimeExport");
             StorageFile file = await savePicker.PickSaveFileAsync();
 
             if(file != null) {
@@ -93,10 +97,10 @@ namespace Diary.Views {
         }
 
         private async void HandleImportBtn_Click(object sender, RoutedEventArgs e) {
-            CheckPasswordDialog contentDialog = new CheckPasswordDialog("Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.\n\nDie aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.", encryptor.PlainPassword) {
-                Title = "Tagebucheinträge importieren",
-                PrimaryButtonText = "Weiter",
-                SecondaryButtonText = "Abbrechen"
+            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("confirmImportDescription"), encryptor.PlainPassword) {
+                Title = resourceLoader.GetString("importDiaryEntries"),
+                PrimaryButtonText = resourceLoader.GetString("next"),
+                SecondaryButtonText = resourceLoader.GetString("abort")
 
             };
             ContentDialogResult result = await contentDialog.ShowAsync();
@@ -111,9 +115,9 @@ namespace Diary.Views {
             bool isValid = await persistorService.VerifyForImport(file);
             if(!isValid) {
                 ContentDialog invalidDialog = new ContentDialog() {
-                    Title = "Import fehlgeschlagen",
-                    Content = "Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.",
-                    PrimaryButtonText = "OK"
+                    Title = resourceLoader.GetString("importFailed"),
+                    Content = resourceLoader.GetString("importFailedDescription"),
+                    PrimaryButtonText = resourceLoader.GetString("ok")
                 };
                 await invalidDialog.ShowAsync();
                 return;
@@ -121,10 +125,10 @@ namespace Diary.Views {
 
 
             ContentDialog successDialog = new ContentDialog() {
-                Title = "Import abgeschlossen",
-                Content = "Deine bisherigen Tagebucheinträge wurden mit den zu importierenden Einträgen überschrieben. DiaryTime wird nun neugestartet.",
-                PrimaryButtonText = "OK",
-                SecondaryButtonText = "Rückgängig machen"
+                Title = resourceLoader.GetString("importSuccessful"),
+                Content = resourceLoader.GetString("importSuccessfulDescription"),
+                PrimaryButtonText = resourceLoader.GetString("ok"),
+                SecondaryButtonText = resourceLoader.GetString("undo")
             };
             result = await successDialog.ShowAsync();
             if(result != ContentDialogResult.Primary) return;

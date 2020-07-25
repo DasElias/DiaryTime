@@ -120,6 +120,9 @@
   <data name="abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="about" xml:space="preserve">
+    <value>Über</value>
+  </data>
   <data name="add" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="changePassword" xml:space="preserve">
     <value>Passwort ändern</value>
   </data>
+  <data name="changePasswordNow" xml:space="preserve">
+    <value>Passwort jetzt ändern</value>
+  </data>
   <data name="confirm" xml:space="preserve">
     <value>Bestätigen</value>
   </data>
@@ -152,6 +158,12 @@
   </data>
   <data name="confirmEditPastDay" xml:space="preserve">
     <value>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</value>
+  </data>
+  <data name="confirmImportDescription" xml:space="preserve">
+    <value>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.\n\nDie aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</value>
+  </data>
+  <data name="contactMe" xml:space="preserve">
+    <value>Kontaktieren</value>
   </data>
   <data name="continue" xml:space="preserve">
     <value>Fortfahren</value>
@@ -168,6 +180,12 @@
   <data name="dayIsInPastBody" xml:space="preserve">
     <value>Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit ({0}) erstellen möchtest?</value>
   </data>
+  <data name="defaultFont" xml:space="preserve">
+    <value>Standardschrift</value>
+  </data>
+  <data name="defaultFontDescription" xml:space="preserve">
+    <value>Die hier gewählte Schrift wird bei allen neu erstellten Tagebucheinträgen standardmäßig verwendet.</value>
+  </data>
   <data name="delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
@@ -176,6 +194,9 @@
   </data>
   <data name="deleteEntryLong" xml:space="preserve">
     <value>Tagebucheintrag löschen</value>
+  </data>
+  <data name="diaryTimeExport" xml:space="preserve">
+    <value>Diary-Time-Export</value>
   </data>
   <data name="edit" xml:space="preserve">
     <value>Bearbeiten</value>
@@ -207,11 +228,41 @@
   <data name="exitApp" xml:space="preserve">
     <value>Beenden</value>
   </data>
+  <data name="exportData" xml:space="preserve">
+    <value>Datenexport</value>
+  </data>
+  <data name="exportDataDescription" xml:space="preserve">
+    <value>Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</value>
+  </data>
+  <data name="exportDiaryEntries" xml:space="preserve">
+    <value>Tagebucheinträge exportieren</value>
+  </data>
+  <data name="exportEntries" xml:space="preserve">
+    <value>Einträge exportieren</value>
+  </data>
   <data name="image" xml:space="preserve">
     <value>Bild</value>
   </data>
   <data name="imageWasAlreadyAdded" xml:space="preserve">
     <value>Das Bild "{0}" wurde bereits einmal zum Tagebucheintrag hinzugefügt.</value>
+  </data>
+  <data name="importDiaryEntries" xml:space="preserve">
+    <value>Tagebucheinträge importieren</value>
+  </data>
+  <data name="importEntries" xml:space="preserve">
+    <value>Einträge importieren</value>
+  </data>
+  <data name="importFailed" xml:space="preserve">
+    <value>Import fehlgeschlagen</value>
+  </data>
+  <data name="importFailedDescription" xml:space="preserve">
+    <value>Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.</value>
+  </data>
+  <data name="importSuccessful" xml:space="preserve">
+    <value>Import abgeschlossen</value>
+  </data>
+  <data name="importSuccessfulDescription" xml:space="preserve">
+    <value>Deine bisherigen Tagebucheinträge wurden mit den zu importierenden Einträgen überschrieben. DiaryTime wird nun neugestartet.</value>
   </data>
   <data name="impressions" xml:space="preserve">
     <value>Impressionen</value>
@@ -230,6 +281,9 @@
   </data>
   <data name="listView" xml:space="preserve">
     <value>Listenansicht</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>Weiter</value>
   </data>
   <data name="noEntriesToDisplay" xml:space="preserve">
     <value>Keine Einträge anzuzeigen</value>
@@ -257,6 +311,9 @@
   </data>
   <data name="passwordsAreNotTheSame" xml:space="preserve">
     <value>Die beiden eingegebenen Passwörter stimmen nicht überein.</value>
+  </data>
+  <data name="pleaseEnterPassword" xml:space="preserve">
+    <value>Bitte gib dein Passwort ein.</value>
   </data>
   <data name="redo" xml:space="preserve">
     <value>Wiederholen</value>
