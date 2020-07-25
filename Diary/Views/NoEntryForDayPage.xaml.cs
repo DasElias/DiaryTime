@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -24,6 +25,7 @@ namespace Diary.Views {
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
     public sealed partial class NoEntryForDayPage : Page {
+        private ResourceLoader resourceLoader;
 
         private AbstractPersistorService persistor;
         private DateTime entryDate;
@@ -34,6 +36,7 @@ namespace Diary.Views {
         public NoEntryForDayPage() {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            this.resourceLoader = ResourceLoader.GetForCurrentView();
 
         }
 
@@ -50,9 +53,9 @@ namespace Diary.Views {
 
         private void UpdateMessageText() {
             if(isForToday) {
-                messageText = "Du hast heute noch keinen Tagebucheintrag erstellt.";
+                messageText = resourceLoader.GetString("noEntryWasCreatedToday");
             } else {
-                messageText = "Du hast am " + DateUtils.ToDateString(entryDate) + " noch keinen Tagebucheintrag erstellt.";
+                messageText = string.Format(resourceLoader.GetString("noEntryWasCreatedOn"), DateUtils.ToDateString(entryDate));
             }
         }
 
@@ -66,10 +69,10 @@ namespace Diary.Views {
 
         private async void CreateForPast() {
             ContentDialog editConfirmationDialog = new ContentDialog {
-                Title = "Tag liegt in der Vergagenheit",
-                Content = "Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit (" + DateUtils.ToDateString(entryDate) + ") erstellen möchtest?",
-                PrimaryButtonText = "Abbrechen",
-                SecondaryButtonText = "Fortfahren"
+                Title = resourceLoader.GetString("dayIsInPast"),
+                Content = string.Format(resourceLoader.GetString("dayIsInPastBody"), DateUtils.ToDateString(entryDate)),
+                PrimaryButtonText = resourceLoader.GetString("abort"),
+                SecondaryButtonText = resourceLoader.GetString("continue")
             };
 
             ContentDialogResult result = await editConfirmationDialog.ShowAsync();

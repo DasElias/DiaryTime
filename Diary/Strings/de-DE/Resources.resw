@@ -150,8 +150,20 @@
   <data name="confirmDeleteEntry" xml:space="preserve">
     <value>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</value>
   </data>
+  <data name="continue" xml:space="preserve">
+    <value>Fortfahren</value>
+  </data>
   <data name="couldntReadEntries" xml:space="preserve">
     <value>Die gespeicherten Tagebucheinträge konnten nicht gelesen werden, da die Datei irreparabel beschädigt ist.</value>
+  </data>
+  <data name="createNow" xml:space="preserve">
+    <value>Jetzt erstellen</value>
+  </data>
+  <data name="dayIsInPast" xml:space="preserve">
+    <value>Tag liegt in der Vergagenheit</value>
+  </data>
+  <data name="dayIsInPastBody" xml:space="preserve">
+    <value>Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit ({0}) erstellen möchtest?</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>Löschen</value>
@@ -206,6 +218,12 @@
   </data>
   <data name="noEntriesToDisplay" xml:space="preserve">
     <value>Keine Einträge anzuzeigen</value>
+  </data>
+  <data name="noEntryWasCreatedOn" xml:space="preserve">
+    <value>Du hast am {0} noch keinen Tagebucheintrag erstellt.</value>
+  </data>
+  <data name="noEntryWasCreatedToday" xml:space="preserve">
+    <value>Du hast heute noch keinen Tagebucheintrag erstellt.</value>
   </data>
   <data name="noPasswordEntered" xml:space="preserve">
     <value>Bitte wähle dein Passwort!</value>
