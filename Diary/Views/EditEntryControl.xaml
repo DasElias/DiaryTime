@@ -85,7 +85,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="titleBox" Margin="0,0,0,35" FontSize="30" FontFamily="Calibri" FontWeight="Light" PlaceholderText="Titel" BorderThickness="1" Grid.Row="0" TextChanged="HandleTextChanged_TitleBox"></TextBox>
+        <TextBox x:Name="titleBox" Margin="0,0,0,35" FontSize="30" FontFamily="Calibri" FontWeight="Light" PlaceholderText="{CustomResource entryTitle}" BorderThickness="1" Grid.Row="0" TextChanged="HandleTextChanged_TitleBox"></TextBox>
 
         <ScrollViewer Grid.Row="1" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled">
             <StackPanel Orientation="Horizontal">
@@ -109,12 +109,12 @@
                         <Setter Property="VerticalAlignment" Value="Center" />
                     </Style>
                 </StackPanel.Resources>
-                <Button x:Name="undoButton" ToolTipService.ToolTip="Rückgängig" Click="HandleUndoButton_Click">
+                <Button x:Name="undoButton" ToolTipService.ToolTip="{CustomResource undo}" Click="HandleUndoButton_Click">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7A7;" />
                     </Button.Content>
                 </Button>
-                <Button x:Name="redoButton" ToolTipService.ToolTip="Wiederholen" Click="HandleRedoButton_Click">
+                <Button x:Name="redoButton" ToolTipService.ToolTip="{CustomResource redo}" Click="HandleRedoButton_Click">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7A6;" />
                     </Button.Content>
@@ -126,30 +126,30 @@
                       Margin="-1,0,8,0"
                       ItemsSource="{x:Bind fontSizeService.FontSizes}" 
                       SelectionChanged="HandleFontSizeBox_SelectionChanged" />
-                <ToggleButton x:Name="boldButton" ToolTipService.ToolTip="Fetter Text" Click="HandleBoldBtn_Click">
+                <ToggleButton x:Name="boldButton" ToolTipService.ToolTip="{CustomResource boldText}" Click="HandleBoldBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DD;" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <ToggleButton x:Name="italicButton" ToolTipService.ToolTip="Kursiver Text" Click="HandleItalicBtn_Click">
+                <ToggleButton x:Name="italicButton" ToolTipService.ToolTip="{CustomResource italicText}" Click="HandleItalicBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DB;" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <ToggleButton x:Name="underlineButton" ToolTipService.ToolTip="Unterstrichener Text" Click="HandleUnderlineBtn_Click">
+                <ToggleButton x:Name="underlineButton" ToolTipService.ToolTip="{CustomResource underlinedText}" Click="HandleUnderlineBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DC;" />
                     </ToggleButton.Content>
                 </ToggleButton>
                 <ToggleButton x:Name="strikeButton"
                         Height="29"
-                        ToolTipService.ToolTip="Durchgestrichener Text"
+                        ToolTipService.ToolTip="{CustomResource strikethroughText}"
                         Click="HandleStrikeThroughBtn_Click">
                     <ToggleButton.Content>
                         <TextBlock FontSize="20" Text="abc" TextDecorations="Strikethrough" TextLineBounds="Tight" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <SplitButton x:Name="textColorButton" Style="{StaticResource SplitButtonStyle}" BorderThickness="0" Background="Transparent" Margin="0,0,0,0" AllowFocusOnInteraction="False" Height="29" ToolTipService.ToolTip="Schriftfarbe" Padding="0,0,0,0" Click="HandleTextColorButton_Click">
+                <SplitButton x:Name="textColorButton" Style="{StaticResource SplitButtonStyle}" BorderThickness="0" Background="Transparent" Margin="0,0,0,0" AllowFocusOnInteraction="False" Height="29" ToolTipService.ToolTip="{CustomResource textColor}" Padding="0,0,0,0" Click="HandleTextColorButton_Click">
                     <SplitButton.Resources>
                         <CollectionViewSource x:Name="ColorSource" Source="{x:Bind colorService.GroupedColors}" IsSourceGrouped="True" />
                     </SplitButton.Resources>
@@ -235,27 +235,27 @@
                     </SplitButton.Flyout>
                 </SplitButton>
                 <AppBarSeparator />
-                <ToggleButton x:Name="alignLeftButton" ToolTipService.ToolTip="Linksbündig ausrichten" Click="HandleAlignLeftBtn_Click">
+                <ToggleButton x:Name="alignLeftButton" ToolTipService.ToolTip="{CustomResource alignTextLeft}" Click="HandleAlignLeftBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E4;" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <ToggleButton x:Name="alignCenterButton" ToolTipService.ToolTip="Zentriert ausrichten" Click="HandleAlignCenterBtn_Click">
+                <ToggleButton x:Name="alignCenterButton" ToolTipService.ToolTip="{CustomResource alignTextCenter}" Click="HandleAlignCenterBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E3;" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <ToggleButton x:Name="alignRightButton" ToolTipService.ToolTip="Rechtsbündig ausrichten" Click="HandleAlignRightBtn_Click">
+                <ToggleButton x:Name="alignRightButton" ToolTipService.ToolTip="{CustomResource alignTextRight}" Click="HandleAlignRightBtn_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E2;" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <Button x:Name="unorderedListButton" ToolTipService.ToolTip="Aufzählung" Click="HandleUnorderedListBtn_Click">
+                <Button x:Name="unorderedListButton" ToolTipService.ToolTip="{CustomResource unorderedList}" Click="HandleUnorderedListBtn_Click">
                     <Button.Content>
                         <symbols:List />
                     </Button.Content>
                 </Button>
-                <Button x:Name="orderedListButton" ToolTipService.ToolTip="Nummerierung" Click="HandleOrderedListBtn_Click">
+                <Button x:Name="orderedListButton" ToolTipService.ToolTip="{CustomResource orderedList}" Click="HandleOrderedListBtn_Click">
                     <Button.Content>
                         <symbols:NumberedList />
                     </Button.Content>

@@ -120,8 +120,20 @@
   <data name="abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="alignTextCenter" xml:space="preserve">
+    <value>Zentriert ausrichten</value>
+  </data>
+  <data name="alignTextLeft" xml:space="preserve">
+    <value>Linksbündig ausrichten</value>
+  </data>
+  <data name="alignTextRight" xml:space="preserve">
+    <value>Rechtsbündig ausrichten</value>
+  </data>
   <data name="appName" xml:space="preserve">
     <value>DiaryTime</value>
+  </data>
+  <data name="boldText" xml:space="preserve">
+    <value>Fetter Text</value>
   </data>
   <data name="changePassword" xml:space="preserve">
     <value>Passwort ändern</value>
@@ -135,11 +147,20 @@
   <data name="enterOldPassword" xml:space="preserve">
     <value>Altes Passwort eingeben</value>
   </data>
+  <data name="entryTitle" xml:space="preserve">
+    <value>Titel</value>
+  </data>
   <data name="invalidPassword" xml:space="preserve">
     <value>Falsches Passwort.</value>
   </data>
+  <data name="italicText" xml:space="preserve">
+    <value>Kursiver Text</value>
+  </data>
   <data name="oldPasswordIsIncorrect" xml:space="preserve">
     <value>Dein altes Passwort ist nicht korrekt.</value>
+  </data>
+  <data name="orderedList" xml:space="preserve">
+    <value>Nummerierung</value>
   </data>
   <data name="password" xml:space="preserve">
     <value>Passwort</value>
@@ -147,10 +168,28 @@
   <data name="passwordsAreNotTheSame" xml:space="preserve">
     <value>Die beiden eingegebenen Passwörter stimmen nicht überein.</value>
   </data>
+  <data name="redo" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
   <data name="repeatNewPassword" xml:space="preserve">
     <value>Neues Passwort wiederholen</value>
   </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>
+  </data>
+  <data name="strikethroughText" xml:space="preserve">
+    <value>Durchgestrichener Text</value>
+  </data>
+  <data name="textColor" xml:space="preserve">
+    <value>Schriftfarbe</value>
+  </data>
+  <data name="underlinedText" xml:space="preserve">
+    <value>Unterstrichener Text</value>
+  </data>
+  <data name="undo" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="unorderedList" xml:space="preserve">
+    <value>Aufzählung</value>
   </data>
 </root>
