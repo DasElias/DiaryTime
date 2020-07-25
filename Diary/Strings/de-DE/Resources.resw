@@ -192,6 +192,9 @@
   <data name="italicText" xml:space="preserve">
     <value>Kursiver Text</value>
   </data>
+  <data name="noEntriesToDisplay" xml:space="preserve">
+    <value>Keine Einträge anzuzeigen</value>
+  </data>
   <data name="noPasswordEntered" xml:space="preserve">
     <value>Bitte wähle dein Passwort!</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="saveInFile" xml:space="preserve">
     <value>In Datei speichern</value>
+  </data>
+  <data name="searchBarText" xml:space="preserve">
+    <value>Suchen...</value>
   </data>
   <data name="signIn" xml:space="preserve">
     <value>Anmelden</value>

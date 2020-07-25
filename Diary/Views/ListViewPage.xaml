@@ -43,7 +43,7 @@
                     </Button.Content>
                 </Button>
             </Grid>-->
-            <AutoSuggestBox x:Name="searchBox" Grid.Row="0" QueryIcon="Find" Background="#FFEEEEEE" PlaceholderText="Suchen..." Style="{StaticResource AutoSuggestWithoutBorder}" Margin="12" QuerySubmitted="HandleSearchBox_QuerySubmitted"/>
+            <AutoSuggestBox x:Name="searchBox" Grid.Row="0" QueryIcon="Find" Background="#FFEEEEEE" PlaceholderText="{CustomResource searchBarText}" Style="{StaticResource AutoSuggestWithoutBorder}" Margin="12" QuerySubmitted="HandleSearchBox_QuerySubmitted"/>
 
             <ListView x:Name="entriesList" ItemsSource="{Binding Source={StaticResource entriesSource}}" SelectionMode="None" IsItemClickEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1" ItemClick="HandleEntriesList_ItemClick">
                 <ListView.Resources>
@@ -97,7 +97,7 @@
             <TextBlock Visibility="{x:Bind diaryEntries.Count, Converter={StaticResource visibleWhenZeroConverter}, Mode=OneWay}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="Keine Einträge anzuzeigen" 
+                       Text="{CustomResource noEntriesToDisplay}" 
                        Foreground="#FF5F5F5F" 
                        Grid.Row="1" />
 
