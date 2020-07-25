@@ -165,6 +165,9 @@
   <data name="enterOldPassword" xml:space="preserve">
     <value>Altes Passwort eingeben</value>
   </data>
+  <data name="entryOfDayWasDeleted" xml:space="preserve">
+    <value>Der Tagebucheintrag vom {0} wurde gelöscht.</value>
+  </data>
   <data name="entryTitle" xml:space="preserve">
     <value>Titel</value>
   </data>
@@ -233,6 +236,9 @@
   </data>
   <data name="undo" xml:space="preserve">
     <value>Rückgängig</value>
+  </data>
+  <data name="undoLong" xml:space="preserve">
+    <value>Rückgängig machen</value>
   </data>
   <data name="unorderedList" xml:space="preserve">
     <value>Aufzählung</value>

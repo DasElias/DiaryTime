@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -24,6 +25,7 @@ namespace Diary.Views {
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
     public sealed partial class EntryWasDeletedPage : Page {
+        private ResourceLoader resourceLoader;
 
         private AbstractPersistorService persistor;
         private DiaryEntry diaryEntry;
@@ -32,6 +34,7 @@ namespace Diary.Views {
 
         public EntryWasDeletedPage() {
             this.InitializeComponent();
+            this.resourceLoader = ResourceLoader.GetForCurrentView();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -43,7 +46,7 @@ namespace Diary.Views {
         }
 
         private void UpdateMessageText() {
-            messageText = $"Der Tagebucheintrag vom {diaryEntry.DateString} wurde gelöscht.";
+            messageText = string.Format(resourceLoader.GetString("entryOfDayWasDeleted"), diaryEntry.DateString);
         }
 
         private void HandleUndoBtn_Click(object sender, RoutedEventArgs e) {
