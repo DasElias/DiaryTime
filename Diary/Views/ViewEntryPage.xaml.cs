@@ -85,7 +85,7 @@ namespace Diary.Views {
 
             ContentDialog editConfirmationDialog = new ContentDialog {
                 Title = resourceLoader.GetString("editEntry"),
-                Content = string.Format(resourceLoader.GetString("confirmEditDayInPast"), entry.DateString),
+                Content = string.Format(resourceLoader.GetString("confirmEditPastDay"), entry.DateString),
                 PrimaryButtonText = resourceLoader.GetString("abort"),
                 SecondaryButtonText = resourceLoader.GetString("continue")
             };
