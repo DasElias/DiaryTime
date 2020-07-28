@@ -30,7 +30,7 @@ namespace Diary.Model {
 
         public string DateString {
             get {
-                return Date.ToString("d.M.yyyy");
+                return DateUtils.ToDateString(Date);
             }
         }
 

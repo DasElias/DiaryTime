@@ -4,10 +4,12 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Globalization.DateTimeFormatting;
 
 namespace Diary.Utils {
     static class DateUtils {
-         public static readonly DateTime UNIXTIME_ZERO_POINT = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        public static readonly DateTime UNIXTIME_ZERO_POINT = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        public static readonly DateTimeFormatter SHORT_DATE_FORMATTER = new DateTimeFormatter("shortdate");
 
         public static bool IsToday(DateTime date) {
             return date.Date == DateTime.Now.Date;
@@ -19,7 +21,7 @@ namespace Diary.Utils {
             return date.Year == DateTime.Now.Year;
         }
         public static string ToDateString(DateTime date) {
-            return date.ToString("d.M.yyyy");
+            return SHORT_DATE_FORMATTER.Format(date);
         }
         public static bool CompareDay(DateTime d1, DateTime d2) {
             return d1.Date == d2.Date;
