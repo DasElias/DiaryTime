@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="de-DE" target-language="en" original="DIARY/STRINGS/DE-DE/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="DIARY/STRINGS/DE-DE/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="abort" translate="yes" xml:space="preserve">
+          <source>Abbrechen</source>
+          <target state="translated">Cancel</target>
+        </trans-unit>
+        <trans-unit id="about" translate="yes" xml:space="preserve">
+          <source>Über</source>
+          <target state="translated">About</target>
+        </trans-unit>
+        <trans-unit id="add" translate="yes" xml:space="preserve">
+          <source>Hinzufügen</source>
+          <target state="translated">Add</target>
+        </trans-unit>
+        <trans-unit id="addImage" translate="yes" xml:space="preserve">
+          <source>Bild hinzufügen</source>
+          <target state="translated">Add image</target>
+        </trans-unit>
+        <trans-unit id="alignTextCenter" translate="yes" xml:space="preserve">
+          <source>Zentriert ausrichten</source>
+          <target state="translated">Center</target>
+        </trans-unit>
+        <trans-unit id="alignTextLeft" translate="yes" xml:space="preserve">
+          <source>Linksbündig ausrichten</source>
+          <target state="translated">Align left</target>
+        </trans-unit>
+        <trans-unit id="alignTextRight" translate="yes" xml:space="preserve">
+          <source>Rechtsbündig ausrichten</source>
+          <target state="translated">Align right</target>
+        </trans-unit>
+        <trans-unit id="appName" translate="yes" xml:space="preserve">
+          <source>DiaryTime</source>
+          <target state="translated">DiaryTime</target>
+        </trans-unit>
+        <trans-unit id="boldText" translate="yes" xml:space="preserve">
+          <source>Fetter Text</source>
+          <target state="translated">Bold</target>
+        </trans-unit>
+        <trans-unit id="changePassword" translate="yes" xml:space="preserve">
+          <source>Passwort ändern</source>
+          <target state="translated">Change password</target>
+        </trans-unit>
+        <trans-unit id="changePasswordNow" translate="yes" xml:space="preserve">
+          <source>Passwort jetzt ändern</source>
+          <target state="translated">Change password now</target>
+        </trans-unit>
+        <trans-unit id="confirm" translate="yes" xml:space="preserve">
+          <source>Bestätigen</source>
+          <target state="translated">Confirm</target>
+        </trans-unit>
+        <trans-unit id="confirmDeleteEntry" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</source>
+          <target state="translated">Are you sure that you want to remove this entry irrevocably?</target>
+        </trans-unit>
+        <trans-unit id="confirmEditPastDay" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</source>
+          <target state="translated">Are you sure that you want to edit this entry of a day in the past ({0})?</target>
+        </trans-unit>
+        <trans-unit id="confirmImportDescription" translate="yes" xml:space="preserve">
+          <source>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
+
+Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</source>
+          <target state="needs-review-translation">Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be irrevocably deleted.</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+        </trans-unit>
+        <trans-unit id="contactMe" translate="yes" xml:space="preserve">
+          <source>Kontaktieren</source>
+          <target state="translated">Contact me</target>
+        </trans-unit>
+        <trans-unit id="continue" translate="yes" xml:space="preserve">
+          <source>Fortfahren</source>
+          <target state="translated">Continue</target>
+        </trans-unit>
+        <trans-unit id="couldntReadEntries" translate="yes" xml:space="preserve">
+          <source>Die gespeicherten Tagebucheinträge konnten nicht gelesen werden, da die Datei irreparabel beschädigt ist.</source>
+          <target state="translated"> The saved entries could not be read because it seems that the database file is damaged.</target>
+        </trans-unit>
+        <trans-unit id="createNow" translate="yes" xml:space="preserve">
+          <source>Jetzt erstellen</source>
+          <target state="translated">Create now</target>
+        </trans-unit>
+        <trans-unit id="dayIsInPast" translate="yes" xml:space="preserve">
+          <source>Tag liegt in der Vergagenheit</source>
+          <target state="translated">Day is in the past</target>
+        </trans-unit>
+        <trans-unit id="dayIsInPastBody" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit ({0}) erstellen möchtest?</source>
+          <target state="translated">Are you sure that you want to create an entry for a day in the past ({0})?</target>
+        </trans-unit>
+        <trans-unit id="defaultFont" translate="yes" xml:space="preserve">
+          <source>Standardschrift</source>
+          <target state="translated">Default font</target>
+        </trans-unit>
+        <trans-unit id="defaultFontDescription" translate="yes" xml:space="preserve">
+          <source>Die hier gewählte Schrift wird bei allen neu erstellten Tagebucheinträgen standardmäßig verwendet.</source>
+          <target state="translated">The chosen font is going to be used as default font for all new diary entries.</target>
+        </trans-unit>
+        <trans-unit id="delete" translate="yes" xml:space="preserve">
+          <source>Löschen</source>
+          <target state="translated">Delete</target>
+        </trans-unit>
+        <trans-unit id="deleteEntry" translate="yes" xml:space="preserve">
+          <source>Löschen</source>
+          <target state="translated">Delete</target>
+        </trans-unit>
+        <trans-unit id="deleteEntryLong" translate="yes" xml:space="preserve">
+          <source>Tagebucheintrag löschen</source>
+          <target state="translated">Remove diary entry</target>
+        </trans-unit>
+        <trans-unit id="diaryTimeExport" translate="yes" xml:space="preserve">
+          <source>Diary-Time-Export</source>
+          <target state="translated">Diary-Time-Export</target>
+        </trans-unit>
+        <trans-unit id="edit" translate="yes" xml:space="preserve">
+          <source>Bearbeiten</source>
+          <target state="translated">Edit</target>
+        </trans-unit>
+        <trans-unit id="editEntry" translate="yes" xml:space="preserve">
+          <source>Eintrag bearbeiten</source>
+          <target state="translated">Edit diary entry</target>
+        </trans-unit>
+        <trans-unit id="editTodaysEntry" translate="yes" xml:space="preserve">
+          <source>Heutigen Tagebucheintrag bearbeiten</source>
+          <target state="translated">Edit today's entry</target>
+        </trans-unit>
+        <trans-unit id="enterNewPassword" translate="yes" xml:space="preserve">
+          <source>Neues Passwort eingeben</source>
+          <target state="translated">View today's entry</target>
+        </trans-unit>
+        <trans-unit id="enterOldPassword" translate="yes" xml:space="preserve">
+          <source>Altes Passwort eingeben</source>
+          <target state="translated">Enter old password</target>
+        </trans-unit>
+        <trans-unit id="entryOfDayWasDeleted" translate="yes" xml:space="preserve">
+          <source>Der Tagebucheintrag vom {0} wurde gelöscht.</source>
+          <target state="translated">The entry of {0} has been deleted.</target>
+        </trans-unit>
+        <trans-unit id="entryTitle" translate="yes" xml:space="preserve">
+          <source>Titel</source>
+          <target state="translated">Title</target>
+        </trans-unit>
+        <trans-unit id="error" translate="yes" xml:space="preserve">
+          <source>Fehler</source>
+          <target state="translated">Error</target>
+        </trans-unit>
+        <trans-unit id="errorHasOccured" translate="yes" xml:space="preserve">
+          <source>Ein Fehler ist aufgetreten</source>
+          <target state="translated">An error has occured</target>
+        </trans-unit>
+        <trans-unit id="exitApp" translate="yes" xml:space="preserve">
+          <source>Beenden</source>
+          <target state="translated">Exit</target>
+        </trans-unit>
+        <trans-unit id="exportData" translate="yes" xml:space="preserve">
+          <source>Datenexport</source>
+          <target state="translated">Export data</target>
+        </trans-unit>
+        <trans-unit id="exportDataDescription" translate="yes" xml:space="preserve">
+          <source>Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</source>
+          <target state="translated">This function can be used to create a backup of your diary entries or to transfer them to a new computer.</target>
+        </trans-unit>
+        <trans-unit id="exportDiaryEntries" translate="yes" xml:space="preserve">
+          <source>Tagebucheinträge exportieren</source>
+          <target state="translated">Export diary entries</target>
+        </trans-unit>
+        <trans-unit id="exportEntries" translate="yes" xml:space="preserve">
+          <source>Einträge exportieren</source>
+          <target state="translated">Export entries</target>
+        </trans-unit>
+        <trans-unit id="image" translate="yes" xml:space="preserve">
+          <source>Bild</source>
+          <target state="translated">Image</target>
+        </trans-unit>
+        <trans-unit id="imageWasAlreadyAdded" translate="yes" xml:space="preserve">
+          <source>Das Bild "{0}" wurde bereits einmal zum Tagebucheintrag hinzugefügt.</source>
+          <target state="translated">The image "{0}" has been already added to the entry.</target>
+        </trans-unit>
+        <trans-unit id="importDiaryEntries" translate="yes" xml:space="preserve">
+          <source>Tagebucheinträge importieren</source>
+          <target state="translated">Import diary entries</target>
+        </trans-unit>
+        <trans-unit id="importEntries" translate="yes" xml:space="preserve">
+          <source>Einträge importieren</source>
+          <target state="translated">Import entries</target>
+        </trans-unit>
+        <trans-unit id="importFailed" translate="yes" xml:space="preserve">
+          <source>Import fehlgeschlagen</source>
+          <target state="translated">Import failed</target>
+        </trans-unit>
+        <trans-unit id="importFailedDescription" translate="yes" xml:space="preserve">
+          <source>Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.</source>
+          <target state="translated">The file to import is not a valid DiaryTime-file.</target>
+        </trans-unit>
+        <trans-unit id="importSuccessful" translate="yes" xml:space="preserve">
+          <source>Import abgeschlossen</source>
+          <target state="translated">Import successful</target>
+        </trans-unit>
+        <trans-unit id="importSuccessfulDescription" translate="yes" xml:space="preserve">
+          <source>Deine bisherigen Tagebucheinträge wurden mit den zu importierenden Einträgen überschrieben. DiaryTime wird nun neugestartet.</source>
+          <target state="translated">Your previous entries have been overwritten with the entries to import. DiaryTime is going to restart now.</target>
+        </trans-unit>
+        <trans-unit id="impressions" translate="yes" xml:space="preserve">
+          <source>Impressionen</source>
+          <target state="translated">Images</target>
+        </trans-unit>
+        <trans-unit id="invalidImage" translate="yes" xml:space="preserve">
+          <source>Bei der Datei "{0}" handelt es sich nicht um eine gültige Bilddatei.</source>
+          <target state="translated">The file "{0}" is not a valid image.</target>
+        </trans-unit>
+        <trans-unit id="invalidPassword" translate="yes" xml:space="preserve">
+          <source>Falsches Passwort.</source>
+          <target state="translated">Invalid password.</target>
+        </trans-unit>
+        <trans-unit id="invalidPasswordTryAgain" translate="yes" xml:space="preserve">
+          <source>Falsches Passwort. Versuche es bitte erneut.</source>
+          <target state="translated">Invalid password. Please try again.</target>
+        </trans-unit>
+        <trans-unit id="italicText" translate="yes" xml:space="preserve">
+          <source>Kursiver Text</source>
+          <target state="translated">Italic</target>
+        </trans-unit>
+        <trans-unit id="listView" translate="yes" xml:space="preserve">
+          <source>Listenansicht</source>
+          <target state="translated">List view</target>
+        </trans-unit>
+        <trans-unit id="next" translate="yes" xml:space="preserve">
+          <source>Weiter</source>
+          <target state="translated">Next</target>
+        </trans-unit>
+        <trans-unit id="noEntriesToDisplay" translate="yes" xml:space="preserve">
+          <source>Keine Einträge anzuzeigen</source>
+          <target state="translated">No entries to display</target>
+        </trans-unit>
+        <trans-unit id="noEntryWasCreatedOn" translate="yes" xml:space="preserve">
+          <source>Du hast am {0} noch keinen Tagebucheintrag erstellt.</source>
+          <target state="translated">You haven't created a diary entry for {0} yet.</target>
+        </trans-unit>
+        <trans-unit id="noEntryWasCreatedToday" translate="yes" xml:space="preserve">
+          <source>Du hast heute noch keinen Tagebucheintrag erstellt.</source>
+          <target state="translated">You haven't created a diary entry for today yet.</target>
+        </trans-unit>
+        <trans-unit id="noPasswordEntered" translate="yes" xml:space="preserve">
+          <source>Bitte wähle dein Passwort!</source>
+          <target state="translated">Please choose your password.</target>
+        </trans-unit>
+        <trans-unit id="ok" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="translated">OK</target>
+        </trans-unit>
+        <trans-unit id="oldPasswordIsIncorrect" translate="yes" xml:space="preserve">
+          <source>Dein altes Passwort ist nicht korrekt.</source>
+          <target state="translated">Your old password is incorrect.</target>
+        </trans-unit>
+        <trans-unit id="orderedList" translate="yes" xml:space="preserve">
+          <source>Nummerierung</source>
+          <target state="translated">Numbering</target>
+        </trans-unit>
+        <trans-unit id="password" translate="yes" xml:space="preserve">
+          <source>Passwort</source>
+          <target state="translated">Password</target>
+        </trans-unit>
+        <trans-unit id="passwordsAreNotTheSame" translate="yes" xml:space="preserve">
+          <source>Die beiden eingegebenen Passwörter stimmen nicht überein.</source>
+          <target state="translated">The entered passwords doesn't match.</target>
+        </trans-unit>
+        <trans-unit id="pleaseEnterPassword" translate="yes" xml:space="preserve">
+          <source>Bitte gib dein Passwort ein.</source>
+          <target state="translated">Please enter your password.</target>
+        </trans-unit>
+        <trans-unit id="redo" translate="yes" xml:space="preserve">
+          <source>Wiederholen</source>
+          <target state="translated">Redo</target>
+        </trans-unit>
+        <trans-unit id="repeatNewPassword" translate="yes" xml:space="preserve">
+          <source>Neues Passwort wiederholen</source>
+          <target state="translated">Repeat new password</target>
+        </trans-unit>
+        <trans-unit id="reset" translate="yes" xml:space="preserve">
+          <source>Zurücksetzen</source>
+          <target state="translated">Reset</target>
+        </trans-unit>
+        <trans-unit id="saveEntry" translate="yes" xml:space="preserve">
+          <source>Bearbeiten abschließen</source>
+          <target state="translated">Finish editing</target>
+        </trans-unit>
+        <trans-unit id="saveInFile" translate="yes" xml:space="preserve">
+          <source>In Datei speichern</source>
+          <target state="translated">Save to file</target>
+        </trans-unit>
+        <trans-unit id="searchBarText" translate="yes" xml:space="preserve">
+          <source>Suchen...</source>
+          <target state="translated">Seach...</target>
+        </trans-unit>
+        <trans-unit id="settings" translate="yes" xml:space="preserve">
+          <source>Einstellungen</source>
+          <target state="translated">Settings</target>
+        </trans-unit>
+        <trans-unit id="signIn" translate="yes" xml:space="preserve">
+          <source>Anmelden</source>
+          <target state="translated">Sign in</target>
+        </trans-unit>
+        <trans-unit id="spellChecking" translate="yes" xml:space="preserve">
+          <source>Rechtschreibprüfung</source>
+          <target state="translated">Spell checking</target>
+        </trans-unit>
+        <trans-unit id="strikethroughText" translate="yes" xml:space="preserve">
+          <source>Durchgestrichener Text</source>
+          <target state="translated">Strikethrough</target>
+        </trans-unit>
+        <trans-unit id="textColor" translate="yes" xml:space="preserve">
+          <source>Schriftfarbe</source>
+          <target state="translated">Font color</target>
+        </trans-unit>
+        <trans-unit id="underlinedText" translate="yes" xml:space="preserve">
+          <source>Unterstrichener Text</source>
+          <target state="translated">Underline</target>
+        </trans-unit>
+        <trans-unit id="undo" translate="yes" xml:space="preserve">
+          <source>Rückgängig</source>
+          <target state="translated">Undo</target>
+        </trans-unit>
+        <trans-unit id="undoLong" translate="yes" xml:space="preserve">
+          <source>Rückgängig machen</source>
+          <target state="translated">Undo</target>
+        </trans-unit>
+        <trans-unit id="unorderedList" translate="yes" xml:space="preserve">
+          <source>Aufzählung</source>
+          <target state="translated">Bullets</target>
+        </trans-unit>
+        <trans-unit id="viewTodaysEntry" translate="yes" xml:space="preserve">
+          <source>Heutigen Tagebucheintrag lesen</source>
+          <target state="translated">View today's entry</target>
+        </trans-unit>
+        <trans-unit id="welcomeMessage" translate="yes" xml:space="preserve">
+          <source>Herzlich Willkommen bei DiaryTime!</source>
+          <target state="translated">Welcome to DiaryTime!</target>
+        </trans-unit>
+        <trans-unit id="welcomeMessageBody" translate="yes" xml:space="preserve">
+          <source>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</source>
+          <target state="translated">It's important to us to protect your personal thoughts, feelings and experiences from any prying eyes. Therefore, please choose a password for your new diary now.</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_default" translate="yes" xml:space="preserve">
+          <source>Normal</source>
+          <target state="translated">Normal</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_heading" translate="yes" xml:space="preserve">
+          <source>Überschrift</source>
+          <target state="translated">Heading</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_title" translate="yes" xml:space="preserve">
+          <source>Titel</source>
+          <target state="translated">Title</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

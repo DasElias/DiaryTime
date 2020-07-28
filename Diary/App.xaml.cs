@@ -40,8 +40,8 @@ namespace Diary {
         protected override void OnLaunched(LaunchActivatedEventArgs e) {
             Start();
 
-          //  DiaryReminderToastService.ShowToastImmediately();
-          // DiaryReminderToastService.ScheduleToast(DateTime.Now.AddSeconds(15));
+            //  DiaryReminderToastService.ShowToastImmediately();
+            // DiaryReminderToastService.ScheduleToast(DateTime.Now.AddSeconds(15));
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {

@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="abort" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="addImage" xml:space="preserve">
+    <value>Add image</value>
+  </data>
+  <data name="alignTextCenter" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="alignTextLeft" xml:space="preserve">
+    <value>Align left</value>
+  </data>
+  <data name="alignTextRight" xml:space="preserve">
+    <value>Align right</value>
+  </data>
+  <data name="appName" xml:space="preserve">
+    <value>DiaryTime</value>
+  </data>
+  <data name="boldText" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="changePasswordNow" xml:space="preserve">
+    <value>Change password now</value>
+  </data>
+  <data name="confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="confirmDeleteEntry" xml:space="preserve">
+    <value>Are you sure that you want to remove this entry irrevocably?</value>
+  </data>
+  <data name="confirmEditPastDay" xml:space="preserve">
+    <value>Are you sure that you want to edit this entry of a day in the past ({0})?</value>
+  </data>
+  <data name="confirmImportDescription" xml:space="preserve">
+    <value>Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be irrevocably deleted.</value>
+  </data>
+  <data name="contactMe" xml:space="preserve">
+    <value>Contact me</value>
+  </data>
+  <data name="continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="couldntReadEntries" xml:space="preserve">
+    <value> The saved entries could not be read because it seems that the database file is damaged.</value>
+  </data>
+  <data name="createNow" xml:space="preserve">
+    <value>Create now</value>
+  </data>
+  <data name="dayIsInPast" xml:space="preserve">
+    <value>Day is in the past</value>
+  </data>
+  <data name="dayIsInPastBody" xml:space="preserve">
+    <value>Are you sure that you want to create an entry for a day in the past ({0})?</value>
+  </data>
+  <data name="defaultFont" xml:space="preserve">
+    <value>Default font</value>
+  </data>
+  <data name="defaultFontDescription" xml:space="preserve">
+    <value>The chosen font is going to be used as default font for all new diary entries.</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="deleteEntry" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="deleteEntryLong" xml:space="preserve">
+    <value>Remove diary entry</value>
+  </data>
+  <data name="diaryTimeExport" xml:space="preserve">
+    <value>Diary-Time-Export</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="editEntry" xml:space="preserve">
+    <value>Edit diary entry</value>
+  </data>
+  <data name="editTodaysEntry" xml:space="preserve">
+    <value>Edit today's entry</value>
+  </data>
+  <data name="enterNewPassword" xml:space="preserve">
+    <value>View today's entry</value>
+  </data>
+  <data name="enterOldPassword" xml:space="preserve">
+    <value>Enter old password</value>
+  </data>
+  <data name="entryOfDayWasDeleted" xml:space="preserve">
+    <value>The entry of {0} has been deleted.</value>
+  </data>
+  <data name="entryTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="errorHasOccured" xml:space="preserve">
+    <value>An error has occured</value>
+  </data>
+  <data name="exitApp" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="exportData" xml:space="preserve">
+    <value>Export data</value>
+  </data>
+  <data name="exportDataDescription" xml:space="preserve">
+    <value>This function can be used to create a backup of your diary entries or to transfer them to a new computer.</value>
+  </data>
+  <data name="exportDiaryEntries" xml:space="preserve">
+    <value>Export diary entries</value>
+  </data>
+  <data name="exportEntries" xml:space="preserve">
+    <value>Export entries</value>
+  </data>
+  <data name="image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="imageWasAlreadyAdded" xml:space="preserve">
+    <value>The image "{0}" has been already added to the entry.</value>
+  </data>
+  <data name="importDiaryEntries" xml:space="preserve">
+    <value>Import diary entries</value>
+  </data>
+  <data name="importEntries" xml:space="preserve">
+    <value>Import entries</value>
+  </data>
+  <data name="importFailed" xml:space="preserve">
+    <value>Import failed</value>
+  </data>
+  <data name="importFailedDescription" xml:space="preserve">
+    <value>The file to import is not a valid DiaryTime-file.</value>
+  </data>
+  <data name="importSuccessful" xml:space="preserve">
+    <value>Import successful</value>
+  </data>
+  <data name="importSuccessfulDescription" xml:space="preserve">
+    <value>Your previous entries have been overwritten with the entries to import. DiaryTime is going to restart now.</value>
+  </data>
+  <data name="impressions" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="invalidImage" xml:space="preserve">
+    <value>The file "{0}" is not a valid image.</value>
+  </data>
+  <data name="invalidPassword" xml:space="preserve">
+    <value>Invalid password.</value>
+  </data>
+  <data name="invalidPasswordTryAgain" xml:space="preserve">
+    <value>Invalid password. Please try again.</value>
+  </data>
+  <data name="italicText" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="listView" xml:space="preserve">
+    <value>List view</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="noEntriesToDisplay" xml:space="preserve">
+    <value>No entries to display</value>
+  </data>
+  <data name="noEntryWasCreatedOn" xml:space="preserve">
+    <value>You haven't created a diary entry for {0} yet.</value>
+  </data>
+  <data name="noEntryWasCreatedToday" xml:space="preserve">
+    <value>You haven't created a diary entry for today yet.</value>
+  </data>
+  <data name="noPasswordEntered" xml:space="preserve">
+    <value>Please choose your password.</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="oldPasswordIsIncorrect" xml:space="preserve">
+    <value>Your old password is incorrect.</value>
+  </data>
+  <data name="orderedList" xml:space="preserve">
+    <value>Numbering</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="passwordsAreNotTheSame" xml:space="preserve">
+    <value>The entered passwords doesn't match.</value>
+  </data>
+  <data name="pleaseEnterPassword" xml:space="preserve">
+    <value>Please enter your password.</value>
+  </data>
+  <data name="redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="repeatNewPassword" xml:space="preserve">
+    <value>Repeat new password</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="saveEntry" xml:space="preserve">
+    <value>Finish editing</value>
+  </data>
+  <data name="saveInFile" xml:space="preserve">
+    <value>Save to file</value>
+  </data>
+  <data name="searchBarText" xml:space="preserve">
+    <value>Seach...</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="signIn" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="spellChecking" xml:space="preserve">
+    <value>Spell checking</value>
+  </data>
+  <data name="strikethroughText" xml:space="preserve">
+    <value>Strikethrough</value>
+  </data>
+  <data name="textColor" xml:space="preserve">
+    <value>Font color</value>
+  </data>
+  <data name="underlinedText" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="undoLong" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="unorderedList" xml:space="preserve">
+    <value>Bullets</value>
+  </data>
+  <data name="viewTodaysEntry" xml:space="preserve">
+    <value>View today's entry</value>
+  </data>
+  <data name="welcomeMessage" xml:space="preserve">
+    <value>Welcome to DiaryTime!</value>
+  </data>
+  <data name="welcomeMessageBody" xml:space="preserve">
+    <value>It's important to us to protect your personal thoughts, feelings and experiences from any prying eyes. Therefore, please choose a password for your new diary now.</value>
+  </data>
+  <data name="styleTemplate_default" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="styleTemplate_heading" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="styleTemplate_title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+</root>
