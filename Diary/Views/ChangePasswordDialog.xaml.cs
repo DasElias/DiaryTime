@@ -32,6 +32,10 @@ namespace Diary.Views {
             this.InitializeComponent();
             resourceLoader = ResourceLoader.GetForCurrentView();
 
+            Title = resourceLoader.GetString("changePassword");
+            PrimaryButtonText = resourceLoader.GetString("confirm");
+            SecondaryButtonText = resourceLoader.GetString("abort");
+
             IsPrimaryButtonEnabled = false;
         }
 
