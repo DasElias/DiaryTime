@@ -66,8 +66,7 @@
           <source>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
 
 Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</source>
-          <target state="needs-review-translation">Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be irrevocably deleted.</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
+          <target state="translated">Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be deleted irrevocably.</target>
         </trans-unit>
         <trans-unit id="contactMe" translate="yes" xml:space="preserve">
           <source>Kontaktieren</source>
@@ -179,7 +178,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="imageWasAlreadyAdded" translate="yes" xml:space="preserve">
           <source>Das Bild "{0}" wurde bereits einmal zum Tagebucheintrag hinzugefügt.</source>
-          <target state="translated">The image "{0}" has been already added to the entry.</target>
+          <target state="translated">The image "{0}" has already been added to the entry.</target>
         </trans-unit>
         <trans-unit id="importDiaryEntries" translate="yes" xml:space="preserve">
           <source>Tagebucheinträge importieren</source>
@@ -267,7 +266,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="passwordsAreNotTheSame" translate="yes" xml:space="preserve">
           <source>Die beiden eingegebenen Passwörter stimmen nicht überein.</source>
-          <target state="translated">The entered passwords doesn't match.</target>
+          <target state="translated">The entered passwords don't match.</target>
         </trans-unit>
         <trans-unit id="pleaseEnterPassword" translate="yes" xml:space="preserve">
           <source>Bitte gib dein Passwort ein.</source>
