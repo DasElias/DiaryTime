@@ -160,7 +160,9 @@
     <value>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</value>
   </data>
   <data name="confirmImportDescription" xml:space="preserve">
-    <value>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.\n\nDie aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</value>
+    <value>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
+
+Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</value>
   </data>
   <data name="contactMe" xml:space="preserve">
     <value>Kontaktieren</value>
@@ -344,6 +346,15 @@
   </data>
   <data name="strikethroughText" xml:space="preserve">
     <value>Durchgestrichener Text</value>
+  </data>
+  <data name="styleTemplate_default" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="styleTemplate_heading" xml:space="preserve">
+    <value>Überschrift</value>
+  </data>
+  <data name="styleTemplate_title" xml:space="preserve">
+    <value>Titel</value>
   </data>
   <data name="textColor" xml:space="preserve">
     <value>Schriftfarbe</value>

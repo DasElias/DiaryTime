@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -23,11 +24,12 @@ namespace Diary.Views {
 
     public sealed partial class StyleTemplateButton : UserControl {
 
-        private StyleTemplateImplementations styleTemplates = new StyleTemplateImplementations();
+        private StyleTemplateImplementations styleTemplates;
         private StyleTemplate lastUsedStyleTemplate;
 
         public StyleTemplateButton() {
             this.InitializeComponent();
+            this.styleTemplates = new StyleTemplateImplementations(ResourceLoader.GetForCurrentView());
             lastUsedStyleTemplate = styleTemplates[1];
         }
 
