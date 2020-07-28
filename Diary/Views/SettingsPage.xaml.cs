@@ -74,7 +74,7 @@ namespace Diary.Views {
         }
 
         private async void HandleExportBtn_Click(object sender, RoutedEventArgs e) {
-            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("pleaeseEnterPassword"), encryptor.PlainPassword) {
+            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("pleaseEnterPassword"), encryptor.PlainPassword) {
                 Title = resourceLoader.GetString("exportDiaryEntries"),
                 PrimaryButtonText = resourceLoader.GetString("next"),
                 SecondaryButtonText = resourceLoader.GetString("abort")
@@ -86,7 +86,7 @@ namespace Diary.Views {
             var savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             savePicker.FileTypeChoices.Add(resourceLoader.GetString("diaryTimeExport"), new List<string>() { ".dt" });
-            savePicker.SuggestedFileName = resourceLoader.GetString("diaryTimeExport");
+            savePicker.SuggestedFileName = "export";
             StorageFile file = await savePicker.PickSaveFileAsync();
 
             if(file != null) {
