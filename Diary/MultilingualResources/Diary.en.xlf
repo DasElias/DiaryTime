@@ -162,7 +162,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="exportDataDescription" translate="yes" xml:space="preserve">
           <source>Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</source>
-          <target state="translated">This function can be used to create a backup of your diary entries or to transfer them to a new computer.</target>
+          <target state="translated">The data export function can be used, for example, to create a backup copy of the diary entries or to transfer them to a new computer.</target>
         </trans-unit>
         <trans-unit id="exportDiaryEntries" translate="yes" xml:space="preserve">
           <source>Tagebucheinträge exportieren</source>
@@ -342,7 +342,8 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="welcomeMessageBody" translate="yes" xml:space="preserve">
           <source>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</source>
-          <target state="translated">It's important to us to protect your personal thoughts, feelings and experiences from any prying eyes. Therefore, please choose a password for your new diary now.</target>
+          <target state="translated">It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.
+</target>
         </trans-unit>
         <trans-unit id="styleTemplate_default" translate="yes" xml:space="preserve">
           <source>Normal</source>
