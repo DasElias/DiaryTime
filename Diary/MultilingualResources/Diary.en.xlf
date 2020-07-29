@@ -356,6 +356,10 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
           <source>Titel</source>
           <target state="translated">Title</target>
         </trans-unit>
+        <trans-unit id="diaryEntryOf" translate="yes" xml:space="preserve">
+          <source>Tagebucheintrag vom</source>
+          <target state="translated">Diary entry of</target>
+        </trans-unit>
       </group>
     </body>
   </file>

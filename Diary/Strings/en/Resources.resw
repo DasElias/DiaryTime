@@ -55,7 +55,7 @@
     <value>Are you sure that you want to edit this entry of a day in the past ({0})?</value>
   </data>
   <data name="confirmImportDescription" xml:space="preserve">
-    <value>Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be irrevocably deleted.</value>
+    <value>Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be deleted irrevocably.</value>
   </data>
   <data name="contactMe" xml:space="preserve">
     <value>Contact me</value>
@@ -139,7 +139,7 @@
     <value>Image</value>
   </data>
   <data name="imageWasAlreadyAdded" xml:space="preserve">
-    <value>The image "{0}" has been already added to the entry.</value>
+    <value>The image "{0}" has already been added to the entry.</value>
   </data>
   <data name="importDiaryEntries" xml:space="preserve">
     <value>Import diary entries</value>
@@ -205,7 +205,7 @@
     <value>Password</value>
   </data>
   <data name="passwordsAreNotTheSame" xml:space="preserve">
-    <value>The entered passwords doesn't match.</value>
+    <value>The entered passwords don't match.</value>
   </data>
   <data name="pleaseEnterPassword" xml:space="preserve">
     <value>Please enter your password.</value>
@@ -272,5 +272,8 @@
   </data>
   <data name="styleTemplate_title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="diaryEntryOf" xml:space="preserve">
+    <value>Diary entry of</value>
   </data>
 </root>

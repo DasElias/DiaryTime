@@ -11,7 +11,7 @@ namespace Diary.Model {
         private List<StoredImage> imagesToRemove = new List<StoredImage>();
         private List<StoredImage> imagesToAdd = new List<StoredImage>();
 
-        public DiaryEntry(DateTime date) : base(date) {
+        public DiaryEntry(DateTime date, string title) : base(date, title) {
         }
 
         public DiaryEntry(DateTime date, string title, string plainText, string rtfText) : base(date, title, plainText) {

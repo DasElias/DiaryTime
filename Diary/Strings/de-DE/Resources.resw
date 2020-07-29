@@ -197,6 +197,9 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   <data name="deleteEntryLong" xml:space="preserve">
     <value>Tagebucheintrag löschen</value>
   </data>
+  <data name="diaryEntryOf" xml:space="preserve">
+    <value>Tagebucheintrag vom</value>
+  </data>
   <data name="diaryTimeExport" xml:space="preserve">
     <value>Diary-Time-Export</value>
   </data>

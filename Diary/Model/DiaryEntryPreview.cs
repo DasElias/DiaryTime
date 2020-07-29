@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 
 namespace Diary.Model {
     public class DiaryEntryPreview : IEquatable<DiaryEntryPreview>, IComparable<DiaryEntryPreview> {
-        public DiaryEntryPreview(DateTime date){
+        public DiaryEntryPreview(DateTime date, string title){
             Date = date;
-            Title = "Tagebucheintrag vom " + DateUtils.ToDateString(date);
+            Title = title;
             PlainContent = "";
         }
 

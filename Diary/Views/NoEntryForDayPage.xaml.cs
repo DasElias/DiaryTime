@@ -86,7 +86,9 @@ namespace Diary.Views {
         }
 
         private void Navigate() {
-            DiaryEntry entry = new DiaryEntry(entryDate);
+            string title = resourceLoader.GetString("diaryEntryOf") + " " + DateUtils.ToDateString(entryDate);
+            DiaryEntry entry = new DiaryEntry(entryDate, title);
+
             Frame.Navigate(typeof(EditPage), new EntryArgument(entry, persistor));
         }
     }
