@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 
 namespace Diary.Services {
-    class ColorService {
+    class FontColorService {
         private List<ColorGroup> colorGroups = new List<ColorGroup>();
+        private ResourceLoader resourceLoader;
 
-        public ColorService() {
+        public FontColorService(ResourceLoader resourceLoader) {
+            this.resourceLoader = resourceLoader;
+
             AddDesignColors();
             AddDefaultColors();
         }
@@ -19,7 +23,7 @@ namespace Diary.Services {
         public IEnumerable<ColorGroup> GroupedColors => colorGroups;
 
         private void AddDesignColors() {
-            colorGroups.Add(new ColorGroup("Designfarben", new SolidColorBrush[] {
+            colorGroups.Add(new ColorGroup(resourceLoader.GetString("designColors"), new SolidColorBrush[] {
                 new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)), new SolidColorBrush(Color.FromArgb(255, 0, 0, 0)), new SolidColorBrush(Color.FromArgb(255, 231, 230, 230)),
                 new SolidColorBrush(Color.FromArgb(255, 68, 84, 106)), new SolidColorBrush(Color.FromArgb(255, 68, 114, 196)), new SolidColorBrush(Color.FromArgb(255, 237, 125, 49)), 
                 new SolidColorBrush(Color.FromArgb(255, 165, 165, 165)), new SolidColorBrush(Color.FromArgb(255, 255, 192, 0)), new SolidColorBrush(Color.FromArgb(255, 91, 155, 213)), 
@@ -53,7 +57,7 @@ namespace Diary.Services {
         }
 
         private void AddDefaultColors() {
-            colorGroups.Add(new ColorGroup("Standardfarben", new SolidColorBrush[] {
+            colorGroups.Add(new ColorGroup(resourceLoader.GetString("basicColors"), new SolidColorBrush[] {
                 new SolidColorBrush(Color.FromArgb(255, 192, 0, 0)), new SolidColorBrush(Color.FromArgb(255, 255, 0, 0)), new SolidColorBrush(Color.FromArgb(255, 255, 192, 0)),
                 new SolidColorBrush(Color.FromArgb(255, 255, 255, 0)), new SolidColorBrush(Color.FromArgb(255, 146, 208, 80)), new SolidColorBrush(Color.FromArgb(255, 0, 176, 80)), 
                 new SolidColorBrush(Color.FromArgb(255, 0, 176, 240)), new SolidColorBrush(Color.FromArgb(255, 0, 112, 192)), new SolidColorBrush(Color.FromArgb(255, 0, 32, 96)), 

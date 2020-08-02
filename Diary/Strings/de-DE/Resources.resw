@@ -141,6 +141,9 @@
   <data name="appName" xml:space="preserve">
     <value>DiaryTime</value>
   </data>
+  <data name="basicColors" xml:space="preserve">
+    <value>Standardfarben</value>
+  </data>
   <data name="boldText" xml:space="preserve">
     <value>Fetter Text</value>
   </data>
@@ -196,6 +199,9 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   </data>
   <data name="deleteEntryLong" xml:space="preserve">
     <value>Tagebucheintrag löschen</value>
+  </data>
+  <data name="designColors" xml:space="preserve">
+    <value>Designfarben</value>
   </data>
   <data name="diaryEntryOf" xml:space="preserve">
     <value>Tagebucheintrag vom</value>

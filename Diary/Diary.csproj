@@ -157,7 +157,7 @@
     <Compile Include="Model\StoredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AbstractEncryptor.cs" />
-    <Compile Include="Services\ColorService.cs" />
+    <Compile Include="Services\FontColorService.cs" />
     <Compile Include="Services\DatabasePersistorService.cs" />
     <Compile Include="Services\DatabaseStructureService.cs" />
     <Compile Include="Services\DatabaseVersionService.cs" />

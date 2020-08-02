@@ -361,6 +361,14 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
           <source>Tagebucheintrag vom</source>
           <target state="translated">Diary entry of</target>
         </trans-unit>
+        <trans-unit id="basicColors" translate="yes" xml:space="preserve">
+          <source>Standardfarben</source>
+          <target state="translated">Basic colors</target>
+        </trans-unit>
+        <trans-unit id="designColors" translate="yes" xml:space="preserve">
+          <source>Designfarben</source>
+          <target state="translated">Design colors</target>
+        </trans-unit>
       </group>
     </body>
   </file>

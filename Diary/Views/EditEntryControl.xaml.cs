@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Streams;
@@ -28,7 +29,7 @@ namespace Diary.Views {
     public sealed partial class EditEntryControl : UserControl {
         public event RoutedEventHandler EntryChanged;
 
-        private ColorService colorService = new ColorService();
+        private FontColorService colorService;
         private SolidColorBrush currentColorBrush = null;
 
         private FontFamilyOptions fontFamilies = new FontFamilyOptions();
@@ -40,6 +41,8 @@ namespace Diary.Views {
         public EditEntryControl() {
             this.InitializeComponent();
             this.Loaded += Control_Loaded;
+            ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
+            colorService = new FontColorService(resourceLoader);
 
             // init font family picker
             InitFontFamilyPicker();
