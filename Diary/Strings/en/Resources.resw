@@ -127,7 +127,7 @@
     <value>Export data</value>
   </data>
   <data name="exportDataDescription" xml:space="preserve">
-    <value>This function can be used to create a backup of your diary entries or to transfer them to a new computer.</value>
+    <value>The data export function can be used, for example, to create a backup copy of the diary entries or to transfer them to a new computer.</value>
   </data>
   <data name="exportDiaryEntries" xml:space="preserve">
     <value>Export diary entries</value>
@@ -262,7 +262,8 @@
     <value>Welcome to DiaryTime!</value>
   </data>
   <data name="welcomeMessageBody" xml:space="preserve">
-    <value>It's important to us to protect your personal thoughts, feelings and experiences from any prying eyes. Therefore, please choose a password for your new diary now.</value>
+    <value>It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.
+</value>
   </data>
   <data name="styleTemplate_default" xml:space="preserve">
     <value>Normal</value>
