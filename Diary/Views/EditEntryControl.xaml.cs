@@ -32,6 +32,9 @@ namespace Diary.Views {
         private FontColorService colorService;
         private SolidColorBrush currentColorBrush = null;
 
+        private HighlightColorService highlightColorService = new HighlightColorService();
+        private HighlightColor currentHightlightColorBrush = null;
+
         private FontFamilyOptions fontFamilies = new FontFamilyOptions();
         private bool shouldSuppressFontFamilyChange = false;
 
@@ -300,6 +303,26 @@ namespace Diary.Views {
             }
         }
 
+        private void HandleTextHighlightColorButton_Click(SplitButton sender, SplitButtonClickEventArgs args) {
+            // button part of the split button was clicked
+            ChangeHighlightColor();
+        }
+
+        private void HandleTextHightlightColorButton_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // color in flyout was selected
+            currentHightlightColorBrush = ((HighlightColor) e.AddedItems[0]);
+            ChangeHighlightColor();
+            textHighlightColorButtonFlyout.Hide();
+
+        }
+
+        private void ChangeHighlightColor() {
+            ITextSelection selection = Editor.Document.Selection;
+            if(selection != null) {
+                selection.CharacterFormat.BackgroundColor = currentHightlightColorBrush.Color;
+            }
+        }
+
         private void HandleTemplatePicker_ApplyStyleTemplate(StyleTemplateButton sender, StyleTemplate chosenTemplate) {
             chosenTemplate.Apply(Editor.Document.Selection);
         }
@@ -369,5 +392,7 @@ namespace Diary.Views {
             undoButton.IsEnabled = Editor.Document.CanUndo();
             redoButton.IsEnabled = Editor.Document.CanRedo();
         }
+
+
     }
 }

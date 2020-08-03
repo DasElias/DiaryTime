@@ -277,4 +277,10 @@
   <data name="diaryEntryOf" xml:space="preserve">
     <value>Diary entry of</value>
   </data>
+  <data name="basicColors" xml:space="preserve">
+    <value>Basic colors</value>
+  </data>
+  <data name="designColors" xml:space="preserve">
+    <value>Design colors</value>
+  </data>
 </root>
