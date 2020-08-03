@@ -53,7 +53,7 @@
     <value>确认</value>
   </data>
   <data name="confirmDeleteEntry" xml:space="preserve">
-    <value>Standardfarben</value>
+    <value>你确定你要永久删除这条日记内容吗？</value>
   </data>
   <data name="confirmEditPastDay" xml:space="preserve">
     <value>你确定你要编辑过去的日记内容（{0}）吗？</value>
@@ -77,8 +77,7 @@
     <value>这是过去的一天</value>
   </data>
   <data name="dayIsInPastBody" xml:space="preserve">
-    <value> 你确认要为过去的一天（{0}）填写日记内容吗？
-</value>
+    <value> 你确认要为过去的一天（{0}）填写日记内容吗？</value>
   </data>
   <data name="defaultFont" xml:space="preserve">
     <value>标准字体</value>
@@ -273,9 +272,7 @@
     <value>撤销</value>
   </data>
   <data name="unorderedList" xml:space="preserve">
-    <value>要点
-
-</value>
+    <value>要点</value>
   </data>
   <data name="viewTodaysEntry" xml:space="preserve">
     <value>阅读今天的日记内容</value>

@@ -8,8 +8,7 @@
       <group id="DIARY/STRINGS/DE-DE/RESOURCES.RESW" datatype="resx">
         <trans-unit id="abort" translate="yes" xml:space="preserve">
           <source>Abbrechen</source>
-          <target state="translated">取消
-</target>
+          <target state="translated">取消</target>
         </trans-unit>
         <trans-unit id="about" translate="yes" xml:space="preserve">
           <source>Über</source>
@@ -61,7 +60,7 @@
         </trans-unit>
         <trans-unit id="confirmDeleteEntry" translate="yes" xml:space="preserve">
           <source>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</source>
-          <target state="translated">Standardfarben</target>
+          <target state="translated">你确定你要永久删除这条日记内容吗？</target>
         </trans-unit>
         <trans-unit id="confirmEditPastDay" translate="yes" xml:space="preserve">
           <source>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</source>
@@ -95,8 +94,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="dayIsInPastBody" translate="yes" xml:space="preserve">
           <source>Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit ({0}) erstellen möchtest?</source>
-          <target state="translated"> 你确认要为过去的一天（{0}）填写日记内容吗？
-</target>
+          <target state="translated"> 你确认要为过去的一天（{0}）填写日记内容吗？</target>
         </trans-unit>
         <trans-unit id="defaultFont" translate="yes" xml:space="preserve">
           <source>Standardschrift</source>
@@ -356,9 +354,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="unorderedList" translate="yes" xml:space="preserve">
           <source>Aufzählung</source>
-          <target state="translated">要点
-
-</target>
+          <target state="translated">要点</target>
         </trans-unit>
         <trans-unit id="viewTodaysEntry" translate="yes" xml:space="preserve">
           <source>Heutigen Tagebucheintrag lesen</source>
