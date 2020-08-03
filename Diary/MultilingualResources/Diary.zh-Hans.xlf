@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="de-DE" target-language="zh-Hans" original="DIARY/STRINGS/DE-DE/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="DIARY/STRINGS/DE-DE/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="abort" translate="yes" xml:space="preserve">
+          <source>Abbrechen</source>
+          <target state="translated">取消
+</target>
+        </trans-unit>
+        <trans-unit id="about" translate="yes" xml:space="preserve">
+          <source>Über</source>
+          <target state="translated">关于</target>
+        </trans-unit>
+        <trans-unit id="add" translate="yes" xml:space="preserve">
+          <source>Hinzufügen</source>
+          <target state="translated">添加</target>
+        </trans-unit>
+        <trans-unit id="addImage" translate="yes" xml:space="preserve">
+          <source>Bild hinzufügen</source>
+          <target state="translated">添加图片</target>
+        </trans-unit>
+        <trans-unit id="alignTextCenter" translate="yes" xml:space="preserve">
+          <source>Zentriert ausrichten</source>
+          <target state="translated">居中</target>
+        </trans-unit>
+        <trans-unit id="alignTextLeft" translate="yes" xml:space="preserve">
+          <source>Linksbündig ausrichten</source>
+          <target state="translated">左对齐</target>
+        </trans-unit>
+        <trans-unit id="alignTextRight" translate="yes" xml:space="preserve">
+          <source>Rechtsbündig ausrichten</source>
+          <target state="translated">右对齐</target>
+        </trans-unit>
+        <trans-unit id="appName" translate="yes" xml:space="preserve">
+          <source>DiaryTime</source>
+          <target state="translated">DiaryTime</target>
+        </trans-unit>
+        <trans-unit id="basicColors" translate="yes" xml:space="preserve">
+          <source>Standardfarben</source>
+          <target state="translated">标准颜色</target>
+        </trans-unit>
+        <trans-unit id="boldText" translate="yes" xml:space="preserve">
+          <source>Fetter Text</source>
+          <target state="translated">加粗文本</target>
+        </trans-unit>
+        <trans-unit id="changePassword" translate="yes" xml:space="preserve">
+          <source>Passwort ändern</source>
+          <target state="translated">修改密码</target>
+        </trans-unit>
+        <trans-unit id="changePasswordNow" translate="yes" xml:space="preserve">
+          <source>Passwort jetzt ändern</source>
+          <target state="translated">现在修改密码</target>
+        </trans-unit>
+        <trans-unit id="confirm" translate="yes" xml:space="preserve">
+          <source>Bestätigen</source>
+          <target state="translated">确认</target>
+        </trans-unit>
+        <trans-unit id="confirmDeleteEntry" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du diesen Tagebucheintrag unwiderruflich entfernen möchtest?</source>
+          <target state="translated">Standardfarben</target>
+        </trans-unit>
+        <trans-unit id="confirmEditPastDay" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du diesen Tagebucheintrag für einen vergangenen Tag ({0}) bearbeiten willst?</source>
+          <target state="translated">你确定你要编辑过去的日记内容（{0}）吗？</target>
+        </trans-unit>
+        <trans-unit id="confirmImportDescription" translate="yes" xml:space="preserve">
+          <source>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
+
+Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</source>
+          <target state="translated">输入密码，确认用新导入的内容替代你现在的日记内容。\n\n最新的日记内容将被永久删除。</target>
+        </trans-unit>
+        <trans-unit id="contactMe" translate="yes" xml:space="preserve">
+          <source>Kontaktieren</source>
+          <target state="translated">联系</target>
+        </trans-unit>
+        <trans-unit id="continue" translate="yes" xml:space="preserve">
+          <source>Fortfahren</source>
+          <target state="translated">继续</target>
+        </trans-unit>
+        <trans-unit id="couldntReadEntries" translate="yes" xml:space="preserve">
+          <source>Die gespeicherten Tagebucheinträge konnten nicht gelesen werden, da die Datei irreparabel beschädigt ist.</source>
+          <target state="translated">保存的日记内容无法读取，资料已被永久损害。</target>
+        </trans-unit>
+        <trans-unit id="createNow" translate="yes" xml:space="preserve">
+          <source>Jetzt erstellen</source>
+          <target state="translated">现在创建</target>
+        </trans-unit>
+        <trans-unit id="dayIsInPast" translate="yes" xml:space="preserve">
+          <source>Tag liegt in der Vergagenheit</source>
+          <target state="translated">这是过去的一天</target>
+        </trans-unit>
+        <trans-unit id="dayIsInPastBody" translate="yes" xml:space="preserve">
+          <source>Bist du dir sicher, dass du einen Tagebucheintrag für einen Tag in der Vergangenheit ({0}) erstellen möchtest?</source>
+          <target state="translated"> 你确认要为过去的一天（{0}）填写日记内容吗？
+</target>
+        </trans-unit>
+        <trans-unit id="defaultFont" translate="yes" xml:space="preserve">
+          <source>Standardschrift</source>
+          <target state="translated">标准字体</target>
+        </trans-unit>
+        <trans-unit id="defaultFontDescription" translate="yes" xml:space="preserve">
+          <source>Die hier gewählte Schrift wird bei allen neu erstellten Tagebucheinträgen standardmäßig verwendet.</source>
+          <target state="translated">选择的字体将标准化适用于所有新创建的日记内容</target>
+        </trans-unit>
+        <trans-unit id="delete" translate="yes" xml:space="preserve">
+          <source>Löschen</source>
+          <target state="translated">删除</target>
+        </trans-unit>
+        <trans-unit id="deleteEntry" translate="yes" xml:space="preserve">
+          <source>Löschen</source>
+          <target state="translated">删除</target>
+        </trans-unit>
+        <trans-unit id="deleteEntryLong" translate="yes" xml:space="preserve">
+          <source>Tagebucheintrag löschen</source>
+          <target state="translated">删除日记内容</target>
+        </trans-unit>
+        <trans-unit id="designColors" translate="yes" xml:space="preserve">
+          <source>Designfarben</source>
+          <target state="translated">主题颜色</target>
+        </trans-unit>
+        <trans-unit id="diaryEntryOf" translate="yes" xml:space="preserve">
+          <source>Tagebucheintrag vom</source>
+          <target state="translated">日记内容从</target>
+        </trans-unit>
+        <trans-unit id="diaryTimeExport" translate="yes" xml:space="preserve">
+          <source>Diary-Time-Export</source>
+          <target state="translated">导出日记</target>
+        </trans-unit>
+        <trans-unit id="edit" translate="yes" xml:space="preserve">
+          <source>Bearbeiten</source>
+          <target state="translated">编辑</target>
+        </trans-unit>
+        <trans-unit id="editEntry" translate="yes" xml:space="preserve">
+          <source>Eintrag bearbeiten</source>
+          <target state="translated">编辑内容</target>
+        </trans-unit>
+        <trans-unit id="editTodaysEntry" translate="yes" xml:space="preserve">
+          <source>Heutigen Tagebucheintrag bearbeiten</source>
+          <target state="translated">编辑今天的日记内容</target>
+        </trans-unit>
+        <trans-unit id="enterNewPassword" translate="yes" xml:space="preserve">
+          <source>Neues Passwort eingeben</source>
+          <target state="translated">输入新密码</target>
+        </trans-unit>
+        <trans-unit id="enterOldPassword" translate="yes" xml:space="preserve">
+          <source>Altes Passwort eingeben</source>
+          <target state="translated">输入旧密码</target>
+        </trans-unit>
+        <trans-unit id="entryOfDayWasDeleted" translate="yes" xml:space="preserve">
+          <source>Der Tagebucheintrag vom {0} wurde gelöscht.</source>
+          <target state="translated">{0} 的日记内容已被删除</target>
+        </trans-unit>
+        <trans-unit id="entryTitle" translate="yes" xml:space="preserve">
+          <source>Titel</source>
+          <target state="translated">标题</target>
+        </trans-unit>
+        <trans-unit id="error" translate="yes" xml:space="preserve">
+          <source>Fehler</source>
+          <target state="translated">错误</target>
+        </trans-unit>
+        <trans-unit id="errorHasOccured" translate="yes" xml:space="preserve">
+          <source>Ein Fehler ist aufgetreten</source>
+          <target state="translated">发生了错误</target>
+        </trans-unit>
+        <trans-unit id="exitApp" translate="yes" xml:space="preserve">
+          <source>Beenden</source>
+          <target state="translated">结束</target>
+        </trans-unit>
+        <trans-unit id="exportData" translate="yes" xml:space="preserve">
+          <source>Datenexport</source>
+          <target state="translated">导出数据</target>
+        </trans-unit>
+        <trans-unit id="exportDataDescription" translate="yes" xml:space="preserve">
+          <source>Die Funktion zum Datenexport kann beispielsweise dazu verwendet werden, eine Sicherungskopie der Tagebucheinträge zu erstellen oder diese auf einen neuen Rechner zu übertragen.</source>
+          <target state="translated">数据导出可以创建日记内容的安全副本或者上传到新的电脑上。</target>
+        </trans-unit>
+        <trans-unit id="exportDiaryEntries" translate="yes" xml:space="preserve">
+          <source>Tagebucheinträge exportieren</source>
+          <target state="translated">导出日记内容</target>
+        </trans-unit>
+        <trans-unit id="exportEntries" translate="yes" xml:space="preserve">
+          <source>Einträge exportieren</source>
+          <target state="translated">导出内容</target>
+        </trans-unit>
+        <trans-unit id="image" translate="yes" xml:space="preserve">
+          <source>Bild</source>
+          <target state="translated">图片</target>
+        </trans-unit>
+        <trans-unit id="imageWasAlreadyAdded" translate="yes" xml:space="preserve">
+          <source>Das Bild "{0}" wurde bereits einmal zum Tagebucheintrag hinzugefügt.</source>
+          <target state="translated">图片"{0}" 已经被添加到日记内容</target>
+        </trans-unit>
+        <trans-unit id="importDiaryEntries" translate="yes" xml:space="preserve">
+          <source>Tagebucheinträge importieren</source>
+          <target state="translated">导入日记内容</target>
+        </trans-unit>
+        <trans-unit id="importEntries" translate="yes" xml:space="preserve">
+          <source>Einträge importieren</source>
+          <target state="translated">导入内容</target>
+        </trans-unit>
+        <trans-unit id="importFailed" translate="yes" xml:space="preserve">
+          <source>Import fehlgeschlagen</source>
+          <target state="translated">导入出错</target>
+        </trans-unit>
+        <trans-unit id="importFailedDescription" translate="yes" xml:space="preserve">
+          <source>Bei der zu importierenden Datei handelt es sich nicht um eine gültige DiaryTime-Datenbankdatei.</source>
+          <target state="translated">导入的文件不是DiaryTime资料库文件</target>
+        </trans-unit>
+        <trans-unit id="importSuccessful" translate="yes" xml:space="preserve">
+          <source>Import abgeschlossen</source>
+          <target state="translated">导入结束</target>
+        </trans-unit>
+        <trans-unit id="importSuccessfulDescription" translate="yes" xml:space="preserve">
+          <source>Deine bisherigen Tagebucheinträge wurden mit den zu importierenden Einträgen überschrieben. DiaryTime wird nun neugestartet.</source>
+          <target state="translated">你现有的日记内容将被导入的内容覆盖。日记时间将重新启动。</target>
+        </trans-unit>
+        <trans-unit id="impressions" translate="yes" xml:space="preserve">
+          <source>Impressionen</source>
+          <target state="translated">印象</target>
+        </trans-unit>
+        <trans-unit id="invalidImage" translate="yes" xml:space="preserve">
+          <source>Bei der Datei "{0}" handelt es sich nicht um eine gültige Bilddatei.</source>
+          <target state="translated">文件"{0}"不是一个有效的图片文件。</target>
+        </trans-unit>
+        <trans-unit id="invalidPassword" translate="yes" xml:space="preserve">
+          <source>Falsches Passwort.</source>
+          <target state="translated">密码错误</target>
+        </trans-unit>
+        <trans-unit id="invalidPasswordTryAgain" translate="yes" xml:space="preserve">
+          <source>Falsches Passwort. Versuche es bitte erneut.</source>
+          <target state="translated">密码错误，请重试。</target>
+        </trans-unit>
+        <trans-unit id="italicText" translate="yes" xml:space="preserve">
+          <source>Kursiver Text</source>
+          <target state="translated">斜体文本</target>
+        </trans-unit>
+        <trans-unit id="listView" translate="yes" xml:space="preserve">
+          <source>Listenansicht</source>
+          <target state="translated">列表一览</target>
+        </trans-unit>
+        <trans-unit id="next" translate="yes" xml:space="preserve">
+          <source>Weiter</source>
+          <target state="translated">下一步</target>
+        </trans-unit>
+        <trans-unit id="noEntriesToDisplay" translate="yes" xml:space="preserve">
+          <source>Keine Einträge anzuzeigen</source>
+          <target state="translated">内容无法显示</target>
+        </trans-unit>
+        <trans-unit id="noEntryWasCreatedOn" translate="yes" xml:space="preserve">
+          <source>Du hast am {0} noch keinen Tagebucheintrag erstellt.</source>
+          <target state="translated">你在{0}还没有创建日记内容。</target>
+        </trans-unit>
+        <trans-unit id="noEntryWasCreatedToday" translate="yes" xml:space="preserve">
+          <source>Du hast heute noch keinen Tagebucheintrag erstellt.</source>
+          <target state="translated">你今天还没有创建日记内容。</target>
+        </trans-unit>
+        <trans-unit id="noPasswordEntered" translate="yes" xml:space="preserve">
+          <source>Bitte wähle dein Passwort!</source>
+          <target state="translated">请输入你的密码！</target>
+        </trans-unit>
+        <trans-unit id="ok" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="translated">好的</target>
+        </trans-unit>
+        <trans-unit id="oldPasswordIsIncorrect" translate="yes" xml:space="preserve">
+          <source>Dein altes Passwort ist nicht korrekt.</source>
+          <target state="translated">你的密码不正确。</target>
+        </trans-unit>
+        <trans-unit id="orderedList" translate="yes" xml:space="preserve">
+          <source>Nummerierung</source>
+          <target state="translated">编号</target>
+        </trans-unit>
+        <trans-unit id="password" translate="yes" xml:space="preserve">
+          <source>Passwort</source>
+          <target state="translated">密码</target>
+        </trans-unit>
+        <trans-unit id="passwordsAreNotTheSame" translate="yes" xml:space="preserve">
+          <source>Die beiden eingegebenen Passwörter stimmen nicht überein.</source>
+          <target state="translated">两次输入的密码不一样。</target>
+        </trans-unit>
+        <trans-unit id="pleaseEnterPassword" translate="yes" xml:space="preserve">
+          <source>Bitte gib dein Passwort ein.</source>
+          <target state="translated">输入你的密码。</target>
+        </trans-unit>
+        <trans-unit id="redo" translate="yes" xml:space="preserve">
+          <source>Wiederholen</source>
+          <target state="translated">再来一遍</target>
+        </trans-unit>
+        <trans-unit id="repeatNewPassword" translate="yes" xml:space="preserve">
+          <source>Neues Passwort wiederholen</source>
+          <target state="translated">再次输入新密码</target>
+        </trans-unit>
+        <trans-unit id="reset" translate="yes" xml:space="preserve">
+          <source>Zurücksetzen</source>
+          <target state="translated">重置</target>
+        </trans-unit>
+        <trans-unit id="saveEntry" translate="yes" xml:space="preserve">
+          <source>Bearbeiten abschließen</source>
+          <target state="translated">结束编辑</target>
+        </trans-unit>
+        <trans-unit id="saveInFile" translate="yes" xml:space="preserve">
+          <source>In Datei speichern</source>
+          <target state="translated">保存文档</target>
+        </trans-unit>
+        <trans-unit id="searchBarText" translate="yes" xml:space="preserve">
+          <source>Suchen...</source>
+          <target state="translated">寻找…</target>
+        </trans-unit>
+        <trans-unit id="settings" translate="yes" xml:space="preserve">
+          <source>Einstellungen</source>
+          <target state="translated">设置</target>
+        </trans-unit>
+        <trans-unit id="signIn" translate="yes" xml:space="preserve">
+          <source>Anmelden</source>
+          <target state="translated">登录</target>
+        </trans-unit>
+        <trans-unit id="spellChecking" translate="yes" xml:space="preserve">
+          <source>Rechtschreibprüfung</source>
+          <target state="translated">拼写检查</target>
+        </trans-unit>
+        <trans-unit id="strikethroughText" translate="yes" xml:space="preserve">
+          <source>Durchgestrichener Text</source>
+          <target state="translated">划掉的文本</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_default" translate="yes" xml:space="preserve">
+          <source>Normal</source>
+          <target state="translated">标准</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_heading" translate="yes" xml:space="preserve">
+          <source>Überschrift</source>
+          <target state="translated">标题</target>
+        </trans-unit>
+        <trans-unit id="styleTemplate_title" translate="yes" xml:space="preserve">
+          <source>Titel</source>
+          <target state="translated">标题</target>
+        </trans-unit>
+        <trans-unit id="textColor" translate="yes" xml:space="preserve">
+          <source>Schriftfarbe</source>
+          <target state="translated">文字颜色</target>
+        </trans-unit>
+        <trans-unit id="underlinedText" translate="yes" xml:space="preserve">
+          <source>Unterstrichener Text</source>
+          <target state="translated">下划文本</target>
+        </trans-unit>
+        <trans-unit id="undo" translate="yes" xml:space="preserve">
+          <source>Rückgängig</source>
+          <target state="translated">撤销</target>
+        </trans-unit>
+        <trans-unit id="undoLong" translate="yes" xml:space="preserve">
+          <source>Rückgängig machen</source>
+          <target state="translated">撤销</target>
+        </trans-unit>
+        <trans-unit id="unorderedList" translate="yes" xml:space="preserve">
+          <source>Aufzählung</source>
+          <target state="translated">要点
+
+</target>
+        </trans-unit>
+        <trans-unit id="viewTodaysEntry" translate="yes" xml:space="preserve">
+          <source>Heutigen Tagebucheintrag lesen</source>
+          <target state="translated">阅读今天的日记内容</target>
+        </trans-unit>
+        <trans-unit id="welcomeMessage" translate="yes" xml:space="preserve">
+          <source>Herzlich Willkommen bei DiaryTime!</source>
+          <target state="translated">欢迎来到DiaryTime！</target>
+        </trans-unit>
+        <trans-unit id="welcomeMessageBody" translate="yes" xml:space="preserve">
+          <source>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</source>
+          <target state="translated">我们真切地希望从好奇的目光中保护你个人的想法，感觉和经历。请为你新的日记设定密码。</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
