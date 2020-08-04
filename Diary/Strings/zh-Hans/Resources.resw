@@ -13,8 +13,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="abort" xml:space="preserve">
-    <value>取消
-</value>
+    <value>取消</value>
   </data>
   <data name="about" xml:space="preserve">
     <value>关于</value>
@@ -282,5 +281,26 @@
   </data>
   <data name="welcomeMessageBody" xml:space="preserve">
     <value>我们真切地希望从好奇的目光中保护你个人的想法，感觉和经历。请为你新的日记设定密码。</value>
+  </data>
+  <data name="abbrFriday" xml:space="preserve">
+    <value>五</value>
+  </data>
+  <data name="abbrMonday" xml:space="preserve">
+    <value>一</value>
+  </data>
+  <data name="abbrSaturday" xml:space="preserve">
+    <value>六</value>
+  </data>
+  <data name="abbrSunday" xml:space="preserve">
+    <value>七</value>
+  </data>
+  <data name="abbrThursday" xml:space="preserve">
+    <value>四</value>
+  </data>
+  <data name="abbrTuesday" xml:space="preserve">
+    <value>二</value>
+  </data>
+  <data name="abbrWednesday" xml:space="preserve">
+    <value>三</value>
   </data>
 </root>

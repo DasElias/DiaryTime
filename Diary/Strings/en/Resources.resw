@@ -283,4 +283,25 @@
   <data name="designColors" xml:space="preserve">
     <value>Design colors</value>
   </data>
+  <data name="abbrFriday" xml:space="preserve">
+    <value>FRI</value>
+  </data>
+  <data name="abbrMonday" xml:space="preserve">
+    <value>MON</value>
+  </data>
+  <data name="abbrSaturday" xml:space="preserve">
+    <value>SAT</value>
+  </data>
+  <data name="abbrSunday" xml:space="preserve">
+    <value>SUN</value>
+  </data>
+  <data name="abbrThursday" xml:space="preserve">
+    <value>THU</value>
+  </data>
+  <data name="abbrTuesday" xml:space="preserve">
+    <value>TUE</value>
+  </data>
+  <data name="abbrWednesday" xml:space="preserve">
+    <value>WED</value>
+  </data>
 </root>

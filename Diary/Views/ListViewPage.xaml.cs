@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,12 +26,12 @@ namespace Diary.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ListViewPage : Page {
+        private static readonly WeekdayNameFormatter weekdayNameFormatter = new WeekdayNameFormatter(ResourceLoader.GetForCurrentView());
         private AbstractPersistorService persistorService;
         private GroupedObservableCollection<MonthGroupKey, DiaryEntryPreview> diaryEntries;
 
         public ListViewPage() {
             this.InitializeComponent();
-
             this.Loaded += Page_Loaded;
         }
 
@@ -53,19 +54,19 @@ namespace Diary.Views {
         internal static string FormatWeekday(DateTime date) {
             switch(date.DayOfWeek) {
                 case DayOfWeek.Monday:
-                    return "MO";
+                    return weekdayNameFormatter.Monday;
                 case DayOfWeek.Tuesday:
-                    return "DI";
+                    return weekdayNameFormatter.Tuesday;
                 case DayOfWeek.Wednesday:
-                    return "MI";
+                    return weekdayNameFormatter.Wednesday;
                 case DayOfWeek.Thursday:
-                    return "DO";
+                    return weekdayNameFormatter.Thursday;
                 case DayOfWeek.Friday:
-                    return "FR";
+                    return weekdayNameFormatter.Friday;
                 case DayOfWeek.Saturday:
-                    return "SA";
+                    return weekdayNameFormatter.Saturday;
                 case DayOfWeek.Sunday:
-                    return "SO";
+                    return weekdayNameFormatter.Sunday;
                 default:
                     return "";
             }

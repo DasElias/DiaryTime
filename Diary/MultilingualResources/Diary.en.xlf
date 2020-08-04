@@ -369,6 +369,34 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
           <source>Designfarben</source>
           <target state="translated">Design colors</target>
         </trans-unit>
+        <trans-unit id="abbrFriday" translate="yes" xml:space="preserve">
+          <source>FR</source>
+          <target state="translated">FRI</target>
+        </trans-unit>
+        <trans-unit id="abbrMonday" translate="yes" xml:space="preserve">
+          <source>MO</source>
+          <target state="translated">MON</target>
+        </trans-unit>
+        <trans-unit id="abbrSaturday" translate="yes" xml:space="preserve">
+          <source>SA</source>
+          <target state="translated">SAT</target>
+        </trans-unit>
+        <trans-unit id="abbrSunday" translate="yes" xml:space="preserve">
+          <source>SO</source>
+          <target state="translated">SUN</target>
+        </trans-unit>
+        <trans-unit id="abbrThursday" translate="yes" xml:space="preserve">
+          <source>DO</source>
+          <target state="translated">THU</target>
+        </trans-unit>
+        <trans-unit id="abbrTuesday" translate="yes" xml:space="preserve">
+          <source>DI</source>
+          <target state="translated">TUE</target>
+        </trans-unit>
+        <trans-unit id="abbrWednesday" translate="yes" xml:space="preserve">
+          <source>MI</source>
+          <target state="translated">WED</target>
+        </trans-unit>
       </group>
     </body>
   </file>

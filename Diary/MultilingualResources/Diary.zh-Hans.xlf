@@ -368,6 +368,34 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
           <source>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</source>
           <target state="translated">我们真切地希望从好奇的目光中保护你个人的想法，感觉和经历。请为你新的日记设定密码。</target>
         </trans-unit>
+        <trans-unit id="abbrFriday" translate="yes" xml:space="preserve">
+          <source>FR</source>
+          <target state="translated">五</target>
+        </trans-unit>
+        <trans-unit id="abbrMonday" translate="yes" xml:space="preserve">
+          <source>MO</source>
+          <target state="translated">一</target>
+        </trans-unit>
+        <trans-unit id="abbrSaturday" translate="yes" xml:space="preserve">
+          <source>SA</source>
+          <target state="translated">六</target>
+        </trans-unit>
+        <trans-unit id="abbrSunday" translate="yes" xml:space="preserve">
+          <source>SO</source>
+          <target state="translated">七</target>
+        </trans-unit>
+        <trans-unit id="abbrThursday" translate="yes" xml:space="preserve">
+          <source>DO</source>
+          <target state="translated">四</target>
+        </trans-unit>
+        <trans-unit id="abbrTuesday" translate="yes" xml:space="preserve">
+          <source>DI</source>
+          <target state="translated">二</target>
+        </trans-unit>
+        <trans-unit id="abbrWednesday" translate="yes" xml:space="preserve">
+          <source>MI</source>
+          <target state="translated">三</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <AppInstallerUri>C:\Users\Elias\source\repos\Diary\Diary\AppPackages</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateKeyFile>Diary_TemporaryKey.pfx</PackageCertificateKeyFile>
@@ -180,6 +180,7 @@
     <Compile Include="Utils\ImageTypeHelper.cs" />
     <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />
     <Compile Include="Utils\StringFromStream.cs" />
+    <Compile Include="Utils\WeekdayNameFormatter.cs" />
     <Compile Include="Utils\XamlResourceLoader.cs" />
     <Compile Include="Views\ChangePasswordDialog.xaml.cs">
       <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>

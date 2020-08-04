@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="abbrFriday" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="abbrMonday" xml:space="preserve">
+    <value>MO</value>
+  </data>
+  <data name="abbrSaturday" xml:space="preserve">
+    <value>SA</value>
+  </data>
+  <data name="abbrSunday" xml:space="preserve">
+    <value>SO</value>
+  </data>
+  <data name="abbrThursday" xml:space="preserve">
+    <value>DO</value>
+  </data>
+  <data name="abbrTuesday" xml:space="preserve">
+    <value>DI</value>
+  </data>
+  <data name="abbrWednesday" xml:space="preserve">
+    <value>MI</value>
+  </data>
   <data name="abort" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
