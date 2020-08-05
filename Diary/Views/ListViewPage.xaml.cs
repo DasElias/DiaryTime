@@ -26,7 +26,7 @@ namespace Diary.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ListViewPage : Page {
-        private static readonly WeekdayNameFormatter weekdayNameFormatter = new WeekdayNameFormatter(ResourceLoader.GetForCurrentView());
+        private static readonly WeekdayNameFormatter weekdayNameFormatter = new WeekdayNameFormatter(ResourceLoader.GetForCurrentView("Resources"));
         private AbstractPersistorService persistorService;
         private GroupedObservableCollection<MonthGroupKey, DiaryEntryPreview> diaryEntries;
 
