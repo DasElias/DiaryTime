@@ -52,6 +52,18 @@ namespace Diary.Model {
             imagesToRemove.AddRange(newImagesToRemove);
         }
 
+        public void UndoDeletion() {
+            foreach(StoredImage i in imagesToRemove) {
+                bool wasSuccessful = this.images.Remove(i);
+                if(!wasSuccessful) throw new InvalidOperationException("Tried to remove an non-existing image.");
+            }
+
+            imagesToAdd.AddRange(images);
+
+            images.Clear();
+            imagesToRemove.Clear();
+        }
+
         public void InsertImageImmediately(StoredImage i) {
             images.Add(i);
         }

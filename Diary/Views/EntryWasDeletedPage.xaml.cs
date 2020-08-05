@@ -50,6 +50,7 @@ namespace Diary.Views {
         }
 
         private void HandleUndoBtn_Click(object sender, RoutedEventArgs e) {
+            diaryEntry.UndoDeletion();
             persistor.SaveEntryDraft(diaryEntry);
 
             EntryArgument arg = new EntryArgument(diaryEntry, persistor);
