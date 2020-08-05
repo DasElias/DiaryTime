@@ -273,6 +273,8 @@ namespace Diary.Services {
         }
 
         protected override void RemoveEntryImpl(DiaryEntryPreview entry) {
+            RemoveAllImagesForEntry(entry);
+
             using(var command = new SqliteCommand()) {
                 command.CommandText = @"DELETE FROM entries WHERE date = @date;";
                 command.Connection = connection;
@@ -282,8 +284,6 @@ namespace Diary.Services {
 
                 command.ExecuteNonQuery();
             }
-
-            RemoveAllImagesForEntry(entry);
         }
 
         private void RemoveAllImagesForEntry(DiaryEntryPreview entry) {
