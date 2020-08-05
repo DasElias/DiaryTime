@@ -58,7 +58,7 @@
     <value>你确定你要编辑过去的日记内容（{0}）吗？</value>
   </data>
   <data name="confirmImportDescription" xml:space="preserve">
-    <value>输入密码，确认用新导入的内容替代你现在的日记内容。\n\n最新的日记内容将被永久删除。</value>
+    <value>输入密码，确认用新导入的内容替代你现在的日记内容。最新的日记内容将被永久删除。</value>
   </data>
   <data name="contactMe" xml:space="preserve">
     <value>联系</value>
@@ -292,7 +292,7 @@
     <value>六</value>
   </data>
   <data name="abbrSunday" xml:space="preserve">
-    <value>七</value>
+    <value>日</value>
   </data>
   <data name="abbrThursday" xml:space="preserve">
     <value>四</value>

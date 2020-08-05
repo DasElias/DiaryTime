@@ -55,7 +55,9 @@
     <value>Are you sure that you want to edit this entry of a day in the past ({0})?</value>
   </data>
   <data name="confirmImportDescription" xml:space="preserve">
-    <value>Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be deleted irrevocably.</value>
+    <value>Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.
+          
+Your current entries will be deleted irrevocably.</value>
   </data>
   <data name="contactMe" xml:space="preserve">
     <value>Contact me</value>
@@ -103,7 +105,7 @@
     <value>Edit today's entry</value>
   </data>
   <data name="enterNewPassword" xml:space="preserve">
-    <value>View today's entry</value>
+    <value>Enter new password</value>
   </data>
   <data name="enterOldPassword" xml:space="preserve">
     <value>Enter old password</value>
@@ -262,8 +264,7 @@
     <value>Welcome to DiaryTime!</value>
   </data>
   <data name="welcomeMessageBody" xml:space="preserve">
-    <value>It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.
-</value>
+    <value>It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.</value>
   </data>
   <data name="styleTemplate_default" xml:space="preserve">
     <value>Normal</value>
@@ -284,24 +285,24 @@
     <value>Design colors</value>
   </data>
   <data name="abbrFriday" xml:space="preserve">
-    <value>FRI</value>
+    <value>FR</value>
   </data>
   <data name="abbrMonday" xml:space="preserve">
-    <value>MON</value>
+    <value>MO</value>
   </data>
   <data name="abbrSaturday" xml:space="preserve">
-    <value>SAT</value>
+    <value>SA</value>
   </data>
   <data name="abbrSunday" xml:space="preserve">
-    <value>SUN</value>
+    <value>SU</value>
   </data>
   <data name="abbrThursday" xml:space="preserve">
-    <value>THU</value>
+    <value>TH</value>
   </data>
   <data name="abbrTuesday" xml:space="preserve">
-    <value>TUE</value>
+    <value>TU</value>
   </data>
   <data name="abbrWednesday" xml:space="preserve">
-    <value>WED</value>
+    <value>WE</value>
   </data>
 </root>

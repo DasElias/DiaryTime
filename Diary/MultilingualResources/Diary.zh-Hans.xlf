@@ -70,7 +70,7 @@
           <source>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
 
 Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</source>
-          <target state="translated">输入密码，确认用新导入的内容替代你现在的日记内容。\n\n最新的日记内容将被永久删除。</target>
+          <target state="translated">输入密码，确认用新导入的内容替代你现在的日记内容。最新的日记内容将被永久删除。</target>
         </trans-unit>
         <trans-unit id="contactMe" translate="yes" xml:space="preserve">
           <source>Kontaktieren</source>
@@ -382,7 +382,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="abbrSunday" translate="yes" xml:space="preserve">
           <source>SO</source>
-          <target state="translated">七</target>
+          <target state="translated">日</target>
         </trans-unit>
         <trans-unit id="abbrThursday" translate="yes" xml:space="preserve">
           <source>DO</source>

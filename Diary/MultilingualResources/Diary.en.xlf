@@ -66,7 +66,9 @@
           <source>Bitte bestätige durch Eingabe deines Passworts, dass du deine momentanen Tagebucheinträge durch die zu importierenden ersetzen möchtest.
 
 Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden.</source>
-          <target state="translated">Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.\n\nYour current entries will be deleted irrevocably.</target>
+          <target state="translated">Please confirm by entering your password that you want to overwrite the current diary entries with the ones to import.
+          
+Your current entries will be deleted irrevocably.</target>
         </trans-unit>
         <trans-unit id="contactMe" translate="yes" xml:space="preserve">
           <source>Kontaktieren</source>
@@ -130,7 +132,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="enterNewPassword" translate="yes" xml:space="preserve">
           <source>Neues Passwort eingeben</source>
-          <target state="translated">View today's entry</target>
+          <target state="translated">Enter new password</target>
         </trans-unit>
         <trans-unit id="enterOldPassword" translate="yes" xml:space="preserve">
           <source>Altes Passwort eingeben</source>
@@ -342,8 +344,7 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="welcomeMessageBody" translate="yes" xml:space="preserve">
           <source>Uns ist es ein Anliegen, deine persönlichen Gedanken, Gefühle und Erlebnisse vor neugierigen Blicken zu schützen. Bitte lege deshalb nun ein Passwort für dein neues Tagebuch fest.</source>
-          <target state="translated">It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.
-</target>
+          <target state="translated">It is our concern to protect your personal thoughts, feelings and experiences from prying eyes. Therefore please set a password for your new diary now.</target>
         </trans-unit>
         <trans-unit id="styleTemplate_default" translate="yes" xml:space="preserve">
           <source>Normal</source>
@@ -371,31 +372,31 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
         </trans-unit>
         <trans-unit id="abbrFriday" translate="yes" xml:space="preserve">
           <source>FR</source>
-          <target state="translated">FRI</target>
+          <target state="translated">FR</target>
         </trans-unit>
         <trans-unit id="abbrMonday" translate="yes" xml:space="preserve">
           <source>MO</source>
-          <target state="translated">MON</target>
+          <target state="translated">MO</target>
         </trans-unit>
         <trans-unit id="abbrSaturday" translate="yes" xml:space="preserve">
           <source>SA</source>
-          <target state="translated">SAT</target>
+          <target state="translated">SA</target>
         </trans-unit>
         <trans-unit id="abbrSunday" translate="yes" xml:space="preserve">
           <source>SO</source>
-          <target state="translated">SUN</target>
+          <target state="translated">SU</target>
         </trans-unit>
         <trans-unit id="abbrThursday" translate="yes" xml:space="preserve">
           <source>DO</source>
-          <target state="translated">THU</target>
+          <target state="translated">TH</target>
         </trans-unit>
         <trans-unit id="abbrTuesday" translate="yes" xml:space="preserve">
           <source>DI</source>
-          <target state="translated">TUE</target>
+          <target state="translated">TU</target>
         </trans-unit>
         <trans-unit id="abbrWednesday" translate="yes" xml:space="preserve">
           <source>MI</source>
-          <target state="translated">WED</target>
+          <target state="translated">WE</target>
         </trans-unit>
       </group>
     </body>
