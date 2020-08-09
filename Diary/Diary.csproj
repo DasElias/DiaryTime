@@ -253,6 +253,7 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\NoFill.svg" />
     <Content Include="Assets\shellPageTop.jpg" />
     <Content Include="Assets\shellPageBottom.jpg" />
     <Content Include="Assets\SmallTile.scale-100.png" />

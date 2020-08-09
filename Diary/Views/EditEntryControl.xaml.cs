@@ -311,6 +311,7 @@ namespace Diary.Views {
         private void HandleTextHightlightColorButton_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             // color in flyout was selected
             currentHightlightColorBrush = ((HighlightColor) e.AddedItems[0]);
+            currentSelectedColorRectangleFill.Color = currentHightlightColorBrush.Color;
             ChangeHighlightColor();
             textHighlightColorButtonFlyout.Hide();
 
