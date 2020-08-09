@@ -149,14 +149,17 @@
                         <TextBlock FontSize="20" Text="abc" TextDecorations="Strikethrough" TextLineBounds="Tight" />
                     </ToggleButton.Content>
                 </ToggleButton>
-                <SplitButton x:Name="textColorButton" Style="{StaticResource SplitButtonStyle}" BorderThickness="0" Background="Transparent" Margin="0,0,0,0" AllowFocusOnInteraction="False" Height="29" ToolTipService.ToolTip="{CustomResource textColor}" Padding="0,0,0,0" Click="HandleTextColorButton_Click">
+                <SplitButton x:Name="textColorButton" Style="{StaticResource SplitButtonStyle}" BorderThickness="0" Background="Transparent" Margin="0,0,8,0" AllowFocusOnInteraction="False" Height="29" ToolTipService.ToolTip="{CustomResource textColor}" Padding="0,0,0,0" Click="HandleTextColorButton_Click">
                     <SplitButton.Resources>
                         <CollectionViewSource x:Name="ColorSource" Source="{x:Bind colorService.GroupedColors}" IsSourceGrouped="True" />
                     </SplitButton.Resources>
                     <SplitButton.Content>
-                        <StackPanel Width="20" Height="25">
+                        <StackPanel Width="25" Height="25">
                             <TextBlock FontSize="14" HorizontalAlignment="Center">A</TextBlock>
-                            <Rectangle x:Name="currentSelectedColorRectangle" Width="15" Height="3" Fill="White" Margin="0,-1,0,0"></Rectangle>
+                            <Rectangle x:Name="currentSelectedColorRectangle" 
+                                       Width="20" Height="4" 
+                                       Fill="White" 
+                                       Margin="0,-1,0,0"></Rectangle>
                         </StackPanel>
                     </SplitButton.Content>
                     <SplitButton.Flyout>
@@ -228,6 +231,81 @@
                                 <GridView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <ItemsWrapGrid MaximumRowsOrColumns="10" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </GridView.ItemsPanel>
+                            </GridView>
+                        </Flyout>
+                    </SplitButton.Flyout>
+                </SplitButton>
+                <SplitButton x:Name="textHighlightColorButton" 
+                             Style="{StaticResource SplitButtonStyle}" 
+                             BorderThickness="0" 
+                             Background="Transparent" 
+                             Margin="0, 0, 0, 0" 
+                             AllowFocusOnInteraction="False" 
+                             Height="29" 
+                             Padding="0,0,0,0"
+                             Click="HandleTextHighlightColorButton_Click">
+                    <SplitButton.Resources>
+                        <CollectionViewSource x:Name="HighlightColorSource" Source="{x:Bind highlightColorService.Colors}" />
+                    </SplitButton.Resources>
+                    <SplitButton.Content>
+                        <StackPanel Width="25" Height="25">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="14" Glyph="&#xE7E6;" MinHeight="18.62">
+                                <FontIcon.RenderTransform>
+                                    <RotateTransform Angle="0" CenterY="-14" />
+                                </FontIcon.RenderTransform>
+                            </FontIcon>
+                            <Rectangle x:Name="currentSelectedHighlightColorRectangle" 
+                                       Width="20" Height="4"
+                                       Margin="0,-1,0,0" 
+                                       Stroke="LightGray"
+                                       StrokeThickness="0.6">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="currentSelectedColorRectangleFill" Color="White" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </StackPanel>
+                    </SplitButton.Content>
+                    <SplitButton.Flyout>
+                        <Flyout x:Name="textHighlightColorButtonFlyout" Placement="Bottom">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Border Background="White" BorderBrush="LightGray" Padding="12.5" BorderThickness="2">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <GridView ItemsSource="{Binding Source={StaticResource HighlightColorSource}}" 
+                                      SingleSelectionFollowsFocus="False" 
+                                      SelectedIndex="1" 
+                                      Padding="0"
+                                      SelectionChanged="HandleTextHightlightColorButton_SelectionChanged">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate x:DataType="model:HighlightColor">
+                                        <Rectangle Fill="{Binding Fill}" 
+                                                       Width="30" 
+                                                       Height="30"
+                                                       Stroke="LightGray"
+                                                       StrokeThickness="1"/>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                                <GridView.ItemContainerStyle>
+                                    <Style TargetType="GridViewItem">
+                                        <Setter Property="Margin" Value="0.75"/>
+                                        <Setter Property="MinWidth" Value="0"/>
+                                        <Setter Property="MinHeight" Value="0"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+                                <GridView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="6" Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </GridView.ItemsPanel>
                             </GridView>

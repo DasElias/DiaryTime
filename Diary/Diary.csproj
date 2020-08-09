@@ -152,6 +152,7 @@
     <Compile Include="Model\DiaryEntry.cs" />
     <Compile Include="Model\DiaryEntryPreview.cs" />
     <Compile Include="Model\GroupedObservableCollection.cs" />
+    <Compile Include="Model\HighlightColor.cs" />
     <Compile Include="Model\ImageViewModel.cs" />
     <Compile Include="Model\ImageWrapper.cs" />
     <Compile Include="Model\StoredImage.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Services\AbstractPersistorService.cs" />
     <Compile Include="Services\FilterService.cs" />
     <Compile Include="Services\FontSizeService.cs" />
+    <Compile Include="Services\HighlightColorService.cs" />
     <Compile Include="Services\InvalidPasswordException.cs" />
     <Compile Include="Services\MockEncryptionService.cs" />
     <Compile Include="Services\ReminderTimeSaveService.cs" />
@@ -252,6 +254,7 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\NoFill.svg" />
     <Content Include="Assets\shellPageTop.jpg" />
     <Content Include="Assets\shellPageBottom.jpg" />
     <Content Include="Assets\SmallTile.scale-100.png" />
