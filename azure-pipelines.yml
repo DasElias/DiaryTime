@@ -14,7 +14,7 @@ variables:
   buildPlatform: 'x86|x64|ARM'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
-  - group: uwp-pipeline
+  group: uwp-pipeline
 
 steps:
 - task: NuGetToolInstaller@1
@@ -22,7 +22,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-  
+
 - task: DownloadSecureFile@1
   name: mySecureFile
   displayName: 'Get the pfx file certificat'
