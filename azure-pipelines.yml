@@ -63,3 +63,13 @@ steps:
                   /p:PackageCertificateThumbprint="$(signingCert.thumbprint)" 
                   /p:PackageCertificateKeyFile="$(mySecureFile.secureFilePath)"
                   /p:PackageCertificatePassword="$(signingCert.password)"'
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'AppCenter'
+    appSlug: 'EliasH/DiaryTime'
+    appFile: 'build/output/AzurePipelineBuild'
+    symbolsOption: 'UWP'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'aa'
+    destinationType: 'groups'
+    distributionGroupId: 'd4937579-70f3-428d-bfd8-3081823069af'
