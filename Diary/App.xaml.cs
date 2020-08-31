@@ -20,6 +20,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Resources;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 
 namespace Diary {
     /// <summary>
@@ -30,6 +34,10 @@ namespace Diary {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             CustomXamlResourceLoader.Current = new XamlResourceLoader();
+
+            AppCenter.Start("24bd87e3-d4f1-43b5-aab1-b86c841de6b7", typeof(Analytics), typeof(Crashes));
+            CrashReportConfirmationService.LoadValue();
+
         }
 
         /// <summary>

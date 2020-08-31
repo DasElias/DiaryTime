@@ -303,4 +303,22 @@
   <data name="abbrWednesday" xml:space="preserve">
     <value>三</value>
   </data>
+  <data name="privacy" xml:space="preserve">
+    <value>数据保护</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="privacyConsentText" xml:space="preserve">
+    <value>我同意将调试信息传递给开发人员。</value>
+  </data>
+  <data name="privacyDescription" xml:space="preserve">
+    <value>我们永远不会转移您的日记条目或个人数据，而只是在应用程序崩溃时传输有关错误的信息。您可以在我们的隐私政策中找到更多信息。</value>
+  </data>
+  <data name="privacyLink" xml:space="preserve">
+    <value>https://docs.google.com/document/d/1q4hPhhR4LJ2gaFrqPoVAj0olnHuHGQm870jkk3AzaC8/edit?usp=sharing</value>
+  </data>
+  <data name="privacyLinkText" xml:space="preserve">
+    <value>到我们的隐私政策</value>
+  </data>
 </root>

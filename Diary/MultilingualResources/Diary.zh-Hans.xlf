@@ -396,6 +396,30 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
           <source>MI</source>
           <target state="translated">三</target>
         </trans-unit>
+        <trans-unit id="privacy" translate="yes" xml:space="preserve">
+          <source>Datenschutz</source>
+          <target state="translated">数据保护</target>
+        </trans-unit>
+        <trans-unit id="save" translate="yes" xml:space="preserve">
+          <source>Speichern</source>
+          <target state="translated">保存</target>
+        </trans-unit>
+        <trans-unit id="privacyConsentText" translate="yes" xml:space="preserve">
+          <source>Ich bin damit einverstanden, dass Debugging-Informationen an die Entwickler übertragen werden.</source>
+          <target state="translated">我同意将调试信息传递给开发人员。</target>
+        </trans-unit>
+        <trans-unit id="privacyDescription" translate="yes" xml:space="preserve">
+          <source>Wir übertragen niemals deine Tagebucheinträge oder personenbezogene Daten, sondern bloß Informationen zum Fehler, wenn ein Absturz der App auftrat. Nähere Informationen findest du in unserer Datenschutzerklärung.</source>
+          <target state="translated">我们永远不会转移您的日记条目或个人数据，而只是在应用程序崩溃时传输有关错误的信息。您可以在我们的隐私政策中找到更多信息。</target>
+        </trans-unit>
+        <trans-unit id="privacyLink" translate="yes" xml:space="preserve">
+          <source>https://docs.google.com/document/d/1yPw1s4DWDRbLe1dPqvGrbjBy4p69_S_kO9TJLc2VJjs/edit</source>
+          <target state="translated">https://docs.google.com/document/d/1q4hPhhR4LJ2gaFrqPoVAj0olnHuHGQm870jkk3AzaC8/edit?usp=sharing</target>
+        </trans-unit>
+        <trans-unit id="privacyLinkText" translate="yes" xml:space="preserve">
+          <source>Zu unserer Datenschutzerklärung</source>
+          <target state="translated">到我们的隐私政策</target>
+        </trans-unit>
       </group>
     </body>
   </file>

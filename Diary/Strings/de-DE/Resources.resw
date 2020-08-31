@@ -347,6 +347,21 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   <data name="pleaseEnterPassword" xml:space="preserve">
     <value>Bitte gib dein Passwort ein.</value>
   </data>
+  <data name="privacy" xml:space="preserve">
+    <value>Datenschutz</value>
+  </data>
+  <data name="privacyConsentText" xml:space="preserve">
+    <value>Ich bin damit einverstanden, dass Debugging-Informationen an die Entwickler übertragen werden.</value>
+  </data>
+  <data name="privacyDescription" xml:space="preserve">
+    <value>Wir übertragen niemals deine Tagebucheinträge oder personenbezogene Daten, sondern ausschließlich Informationen zum Fehler, wenn ein Absturz der App auftrat. Nähere Informationen findest du in unserer Datenschutzerklärung.</value>
+  </data>
+  <data name="privacyLink" xml:space="preserve">
+    <value>https://docs.google.com/document/d/1yPw1s4DWDRbLe1dPqvGrbjBy4p69_S_kO9TJLc2VJjs/edit</value>
+  </data>
+  <data name="privacyLinkText" xml:space="preserve">
+    <value>Zu unserer Datenschutzerklärung</value>
+  </data>
   <data name="redo" xml:space="preserve">
     <value>Wiederholen</value>
   </data>
@@ -355,6 +370,9 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   </data>
   <data name="reset" xml:space="preserve">
     <value>Zurücksetzen</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Speichern</value>
   </data>
   <data name="saveEntry" xml:space="preserve">
     <value>Bearbeiten abschließen</value>

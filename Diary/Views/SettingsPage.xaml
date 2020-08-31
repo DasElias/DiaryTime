@@ -56,7 +56,10 @@
                 <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
                     <TextBlock Text="{CustomResource about}" Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <TextBlock>Elias Horner</TextBlock>
-                    <Button Content="{CustomResource contactMe}" Margin="0,8,0,0" Click="HandleSendMailBtn_Click" />
+                    <StackPanel Margin="0,8,0,0" Spacing="10" Orientation="Horizontal">
+                        <Button Content="{CustomResource contactMe}" Click="HandleSendMailBtn_Click" />
+                        <Button Content="{CustomResource privacy}" Click="HandlePrivacyBtn_Click" />
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

@@ -158,6 +158,7 @@
     <Compile Include="Model\StoredImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AbstractEncryptor.cs" />
+    <Compile Include="Services\CrashReportConfirmationService.cs" />
     <Compile Include="Services\FontColorService.cs" />
     <Compile Include="Services\DatabasePersistorService.cs" />
     <Compile Include="Services\DatabaseStructureService.cs" />
@@ -222,6 +223,9 @@
     <Compile Include="Views\MonthGroupKey.cs" />
     <Compile Include="Views\NoEntryForDayPage.xaml.cs">
       <DependentUpon>NoEntryForDayPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrivacyDialog.xaml.cs">
+      <DependentUpon>PrivacyDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -381,6 +385,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\NoEntryForDayPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrivacyDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -305,4 +305,22 @@ Your current entries will be deleted irrevocably.</value>
   <data name="abbrWednesday" xml:space="preserve">
     <value>WE</value>
   </data>
+  <data name="privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="privacyConsentText" xml:space="preserve">
+    <value>I agree that debugging information is transferred to the developers.</value>
+  </data>
+  <data name="privacyDescription" xml:space="preserve">
+    <value>We never transfer your diary entries or personal data, but only information about the error when the app crashed. You can find more information in our privacy policy.</value>
+  </data>
+  <data name="privacyLink" xml:space="preserve">
+    <value>https://docs.google.com/document/d/1c5cZNBtmoCNQ3hybQI90uZs2l9jkD1r2JtfEtN-EdG4/edit?usp=sharing</value>
+  </data>
+  <data name="privacyLinkText" xml:space="preserve">
+    <value>To our privacy policy</value>
+  </data>
 </root>
