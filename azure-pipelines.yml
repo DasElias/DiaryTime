@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- develop
 
 pool:
   vmImage: 'windows-latest'
@@ -14,7 +15,7 @@ variables:
   - name: solution
     value: '**/*.sln'
   - name: buildPlatform
-    value: 'x86|x64|ARM'
+    value: 'x64'
   - name: buildConfiguration
     value: 'Release'
   - name: appxPackageDir
@@ -52,7 +53,7 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    platform: 'x86'
+    platform: 'x64'
     solution: '$(solution)'
     configuration: '$(buildConfiguration)'
     msbuildArgs: '/p:AppxBundlePlatforms="$(buildPlatform)"
@@ -63,13 +64,15 @@ steps:
                   /p:PackageCertificateThumbprint="$(signingCert.thumbprint)" 
                   /p:PackageCertificateKeyFile="$(mySecureFile.secureFilePath)"
                   /p:PackageCertificatePassword="$(signingCert.password)"'
-- task: AppCenterDistribute@3
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
-    serverEndpoint: 'AppCenter'
-    appSlug: 'EliasH/DiaryTime'
-    appFile: 'build/output/AzurePipelineBuild'
-    symbolsOption: 'UWP'
-    releaseNotesOption: 'input'
-    releaseNotesInput: 'aa'
-    destinationType: 'groups'
-    distributionGroupId: 'd4937579-70f3-428d-bfd8-3081823069af'
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**\bin\$(BuildConfiguration)\**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
