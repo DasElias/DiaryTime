@@ -183,5 +183,10 @@ namespace Diary.Views {
             DefaultFont f = new DefaultFont(fontFamily, fontSize);
             DefaultFontSaveService.SetDefaultFont(f);
         }
+
+        private async void HandlePrivacyBtn_Click(object sender, RoutedEventArgs e) {
+            PrivacyDialog dialog = new PrivacyDialog();
+            await dialog.ShowAsync();
+        }
     }
 }

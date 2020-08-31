@@ -36,6 +36,7 @@ namespace Diary {
             CustomXamlResourceLoader.Current = new XamlResourceLoader();
 
             AppCenter.Start("24bd87e3-d4f1-43b5-aab1-b86c841de6b7", typeof(Analytics), typeof(Crashes));
+            CrashReportConfirmationService.LoadValue();
 
         }
 
