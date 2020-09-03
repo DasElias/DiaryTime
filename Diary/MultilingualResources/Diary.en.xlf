@@ -411,7 +411,7 @@ Your current entries will be deleted irrevocably.</target>
           <target state="translated">I agree that debugging information is transferred to the developers.</target>
         </trans-unit>
         <trans-unit id="privacyDescription" translate="yes" xml:space="preserve">
-          <source>Wir übertragen niemals deine Tagebucheinträge oder personenbezogene Daten, sondern bloß Informationen zum Fehler, wenn ein Absturz der App auftrat. Nähere Informationen findest du in unserer Datenschutzerklärung.</source>
+          <source>Wir übertragen niemals deine Tagebucheinträge oder personenbezogene Daten, sondern ausschließlich Informationen zum Fehler, wenn ein Absturz der App auftrat. Nähere Informationen findest du in unserer Datenschutzerklärung.</source>
           <target state="translated">We never transfer your diary entries or personal data, but only information about the error when the app crashed. You can find more information in our privacy policy.</target>
         </trans-unit>
         <trans-unit id="privacyLink" translate="yes" xml:space="preserve">
