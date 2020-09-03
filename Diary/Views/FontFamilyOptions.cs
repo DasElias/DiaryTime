@@ -1,6 +1,7 @@
 ﻿using Microsoft.Graphics.Canvas.Text;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Media;
 
 namespace Diary.Views {
-    class FontFamilyOptions : List<FontFamilyWrapper> {
+    class FontFamilyOptions {
         private static readonly string[] IGNORED_FONT_NAMES = new string[] {
             "HoloLens MDL2 Assets",
             "Marlett",
@@ -20,7 +21,26 @@ namespace Diary.Views {
             "Wingdings"
         };
 
-        public FontFamilyOptions() {
+        private static List<FontFamilyWrapper> fontFamilies;
+
+        public ReadOnlyCollection<FontFamilyWrapper> FontFamilies {
+            get {
+                if(fontFamilies == null) InitFontFamilies();
+                return fontFamilies.AsReadOnly();
+            }
+        }
+
+        public FontFamilyWrapper Find(string fontFamilyName) {
+            return fontFamilies.Find(font => font.Source == fontFamilyName);
+        }
+
+        public int FindIndex(string fontFamilyName) {
+            return fontFamilies.FindIndex(font => font.Source == fontFamilyName);
+        }
+
+        private void InitFontFamilies() {
+            fontFamilies = new List<FontFamilyWrapper>();
+
             List<string> fontNames = GetFontFamilies().OrderBy(f => f).ToList();
             foreach(string f in fontNames) {
                 // check if we want to ignore that font
@@ -28,16 +48,8 @@ namespace Diary.Views {
                     continue;
                 }
 
-                Add(new FontFamilyWrapper(f));
+                fontFamilies.Add(new FontFamilyWrapper(f));
             }
-        }
-
-        public FontFamilyWrapper Find(string fontFamilyName) {
-            return Find(font => font.Source == fontFamilyName);
-        }
-
-        public int FindIndex(string fontFamilyName) {
-            return FindIndex(font => font.Source == fontFamilyName);
         }
 
         private static List<string> GetFontFamilies() {

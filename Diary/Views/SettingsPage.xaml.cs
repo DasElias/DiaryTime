@@ -147,7 +147,7 @@ namespace Diary.Views {
 
         private void InitDefaultFontPicker() {
             FontFamilyOptions fontFamilies = new FontFamilyOptions();
-            foreach(FontFamily ff in fontFamilies) {
+            foreach(FontFamily ff in fontFamilies.FontFamilies) {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = ff;
                 item.FontFamily = ff;
@@ -156,7 +156,7 @@ namespace Diary.Views {
 
             DefaultFont defaultFont = DefaultFontSaveService.GetDefaultFont();
             fontSizeBox.SelectedValue = defaultFont.FontSize;
-            fontFamilyBox.SelectedIndex = fontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
+            fontFamilyBox.SelectedIndex = fontFamilies.FontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
 
             isDefaultFontPickerInitialized = true;
         }

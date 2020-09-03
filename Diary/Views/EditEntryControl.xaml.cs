@@ -128,7 +128,7 @@ namespace Diary.Views {
 
             Editor.Document.SetText(TextSetOptions.None, "");
 
-            int defaultFontFamily = fontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
+            int defaultFontFamily = fontFamilies.FontFamilies.IndexOf(fontFamilies.Find(defaultFont.FontFamily));
             fontFamilyBox.SelectedIndex = defaultFontFamily;
 
             // clear undo history
@@ -147,7 +147,7 @@ namespace Diary.Views {
         }
 
         private void InitFontFamilyPicker() {
-            foreach(FontFamily ff in fontFamilies) {
+            foreach(FontFamily ff in fontFamilies.FontFamilies) {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = ff;
                 item.FontFamily = ff;
