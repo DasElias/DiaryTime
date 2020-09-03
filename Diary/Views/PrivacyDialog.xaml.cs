@@ -29,7 +29,9 @@ namespace Diary.Views {
 
             this.Title = resourceLoader.GetString("privacy");
             this.PrimaryButtonText = resourceLoader.GetString("save");
+            this.PrimaryButtonClick += ContentDialog_PrimaryButtonClick;
             this.SecondaryButtonText = resourceLoader.GetString("abort");
+            this.SecondaryButtonClick += ContentDialog_SecondaryButtonClick;
         }
 
         private void HandlePrivacyDialog_Loaded(object sender, RoutedEventArgs e) {
