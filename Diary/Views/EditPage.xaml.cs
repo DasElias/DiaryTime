@@ -1,6 +1,7 @@
 ﻿using Diary.Events;
 using Diary.Model;
 using Diary.Services;
+using Diary.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace Diary.Views {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class EditPage : Page {
+    public sealed partial class EditPage : NoDoubleClickPage {
         private DispatcherTimer saveTimer = new DispatcherTimer() {
             Interval = TimeSpan.FromSeconds(90)
         };
@@ -117,34 +118,41 @@ namespace Diary.Views {
         }
 
         private void HandleViewButton_Click(object sender, RoutedEventArgs e) {
+            if(!IsReadyToPressButton()) return;
+
             EntryArgument arg = new EntryArgument(diaryEntry, persistorService);
             Frame.Navigate(typeof(ViewEntryPage), arg);
         }
 
         private async void HandleDeleteButton_Click(object sender, RoutedEventArgs e) {
-            ContentDialog confirmationDialog = new ContentDialog {
-                Title = resourceLoader.GetString("deleteEntryLong"),
-                Content = resourceLoader.GetString("confirmDeleteEntry"),
-                PrimaryButtonText = resourceLoader.GetString("abort"),
-                SecondaryButtonText = resourceLoader.GetString("delete")
-            };
+            if(!IsReadyToPressButton()) return;
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                ContentDialog confirmationDialog = new ContentDialog {
+                    Title = resourceLoader.GetString("deleteEntryLong"),
+                    Content = resourceLoader.GetString("confirmDeleteEntry"),
+                    PrimaryButtonText = resourceLoader.GetString("abort"),
+                    SecondaryButtonText = resourceLoader.GetString("delete")
+                };
 
-            ContentDialogResult result = await confirmationDialog.ShowAsync();
-            if(result == ContentDialogResult.Secondary) {
-                UpdateEntry();
+                ContentDialogResult result = await confirmationDialog.ShowAsync();
+                if(result == ContentDialogResult.Secondary) {
+                    UpdateEntry();
 
-                // before deleting, we set diaryEntry to null to prevent an autosave in meantime
-                DiaryEntry temp = diaryEntry;
-                diaryEntry = null;
+                    // before deleting, we set diaryEntry to null to prevent an autosave in meantime
+                    DiaryEntry temp = diaryEntry;
+                    diaryEntry = null;
 
-                persistorService.RemoveEntry(temp);
+                    persistorService.RemoveEntry(temp);
 
-                EntryArgument entryArg = new EntryArgument(temp, persistorService);
-                Frame.Navigate(typeof(EntryWasDeletedPage), entryArg);
+                    EntryArgument entryArg = new EntryArgument(temp, persistorService);
+                    Frame.Navigate(typeof(EntryWasDeletedPage), entryArg);
+                }
             }
         }
 
         private void HandleSpellCheckingButton_Click(object sender, RoutedEventArgs e) {
+            if(!IsReadyToPressButton()) return;
+
             AppBarToggleButton btn = (AppBarToggleButton) sender;
             bool isChecked = btn.IsChecked.GetValueOrDefault();
             editor.IsSpellCheckingEnabled = isChecked;
@@ -153,5 +161,5 @@ namespace Diary.Views {
         }
     }
 
-    
+
 }

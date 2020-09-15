@@ -178,6 +178,7 @@
     <Compile Include="Utils\ByteArrayHasher.cs" />
     <Compile Include="Utils\ChildElementHelper.cs" />
     <Compile Include="Utils\DateUtils.cs" />
+    <Compile Include="Utils\DoubleClickPreventer.cs" />
     <Compile Include="Utils\FloatingPointComparison.cs" />
     <Compile Include="Utils\ImageTypeHelper.cs" />
     <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />
@@ -220,6 +221,7 @@
       <DependentUpon>EntryWasDeletedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MonthGroupKey.cs" />
+    <Compile Include="Views\NoDoubleClickPage.cs" />
     <Compile Include="Views\NoEntryForDayPage.xaml.cs">
       <DependentUpon>NoEntryForDayPage.xaml</DependentUpon>
     </Compile>

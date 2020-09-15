@@ -1,6 +1,7 @@
 ﻿using Diary.Events;
 using Diary.Model;
 using Diary.Services;
+using Diary.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,12 +57,14 @@ namespace Diary.Views {
         }
 
         private async void HandleChangePasswordBtn_Click(object sender, RoutedEventArgs e) {
-            ChangePasswordDialog dialog = new ChangePasswordDialog(encryptor.PlainPassword);
-            await dialog.ShowAsync();
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                ChangePasswordDialog dialog = new ChangePasswordDialog(encryptor.PlainPassword);
+                await dialog.ShowAsync();
 
-            if(dialog.Result == ChangePasswortResult.SUCCESSFULLY_CHANGED) {
-                string newPassword = dialog.NewPassword;
-                encryptor.PlainPassword = newPassword;
+                if(dialog.Result == ChangePasswortResult.SUCCESSFULLY_CHANGED) {
+                    string newPassword = dialog.NewPassword;
+                    encryptor.PlainPassword = newPassword;
+                }
             }
         }
 
@@ -74,75 +77,81 @@ namespace Diary.Views {
         }
 
         private async void HandleExportBtn_Click(object sender, RoutedEventArgs e) {
-            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("pleaseEnterPassword"), encryptor.PlainPassword) {
-                Title = resourceLoader.GetString("exportDiaryEntries"),
-                PrimaryButtonText = resourceLoader.GetString("next"),
-                SecondaryButtonText = resourceLoader.GetString("abort")
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("pleaseEnterPassword"), encryptor.PlainPassword) {
+                    Title = resourceLoader.GetString("exportDiaryEntries"),
+                    PrimaryButtonText = resourceLoader.GetString("next"),
+                    SecondaryButtonText = resourceLoader.GetString("abort")
 
-            };
-            ContentDialogResult result = await contentDialog.ShowAsync();
-            if(result != ContentDialogResult.Primary) return;
+                };
+                ContentDialogResult result = await contentDialog.ShowAsync();
+                if(result != ContentDialogResult.Primary) return;
 
-            var savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            savePicker.FileTypeChoices.Add(resourceLoader.GetString("diaryTimeExport"), new List<string>() { ".dt" });
-            savePicker.SuggestedFileName = "export";
-            StorageFile file = await savePicker.PickSaveFileAsync();
+                var savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                savePicker.FileTypeChoices.Add(resourceLoader.GetString("diaryTimeExport"), new List<string>() { ".dt" });
+                savePicker.SuggestedFileName = "export";
+                StorageFile file = await savePicker.PickSaveFileAsync();
 
-            if(file != null) {
-                CachedFileManager.DeferUpdates(file);
-                persistorService.Export(file);
-                await CachedFileManager.CompleteUpdatesAsync(file);
+                if(file != null) {
+                    CachedFileManager.DeferUpdates(file);
+                    persistorService.Export(file);
+                    await CachedFileManager.CompleteUpdatesAsync(file);
+                }
             }
         }
 
         private async void HandleImportBtn_Click(object sender, RoutedEventArgs e) {
-            CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("confirmImportDescription"), encryptor.PlainPassword) {
-                Title = resourceLoader.GetString("importDiaryEntries"),
-                PrimaryButtonText = resourceLoader.GetString("next"),
-                SecondaryButtonText = resourceLoader.GetString("abort")
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                CheckPasswordDialog contentDialog = new CheckPasswordDialog(resourceLoader.GetString("confirmImportDescription"), encryptor.PlainPassword) {
+                    Title = resourceLoader.GetString("importDiaryEntries"),
+                    PrimaryButtonText = resourceLoader.GetString("next"),
+                    SecondaryButtonText = resourceLoader.GetString("abort")
 
-            };
-            ContentDialogResult result = await contentDialog.ShowAsync();
-            if(result != ContentDialogResult.Primary) return;
-
-            FileOpenPicker openPicker = new FileOpenPicker();
-            openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            openPicker.FileTypeFilter.Add(".dt");
-            StorageFile file = await openPicker.PickSingleFileAsync();
-            if(file == null) return;
-
-            bool isValid = await persistorService.VerifyForImport(file);
-            if(!isValid) {
-                ContentDialog invalidDialog = new ContentDialog() {
-                    Title = resourceLoader.GetString("importFailed"),
-                    Content = resourceLoader.GetString("importFailedDescription"),
-                    PrimaryButtonText = resourceLoader.GetString("ok")
                 };
-                await invalidDialog.ShowAsync();
-                return;
+                ContentDialogResult result = await contentDialog.ShowAsync();
+                if(result != ContentDialogResult.Primary) return;
+
+                FileOpenPicker openPicker = new FileOpenPicker();
+                openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                openPicker.FileTypeFilter.Add(".dt");
+                StorageFile file = await openPicker.PickSingleFileAsync();
+                if(file == null) return;
+
+                bool isValid = await persistorService.VerifyForImport(file);
+                if(!isValid) {
+                    ContentDialog invalidDialog = new ContentDialog() {
+                        Title = resourceLoader.GetString("importFailed"),
+                        Content = resourceLoader.GetString("importFailedDescription"),
+                        PrimaryButtonText = resourceLoader.GetString("ok")
+                    };
+                    await invalidDialog.ShowAsync();
+                    return;
+                }
+
+
+                ContentDialog successDialog = new ContentDialog() {
+                    Title = resourceLoader.GetString("importSuccessful"),
+                    Content = resourceLoader.GetString("importSuccessfulDescription"),
+                    PrimaryButtonText = resourceLoader.GetString("ok"),
+                    SecondaryButtonText = resourceLoader.GetString("undo")
+                };
+                result = await successDialog.ShowAsync();
+                if(result != ContentDialogResult.Primary) return;
+
+                persistorService.Import(file);
+                await CoreApplication.RequestRestartAsync("");
             }
-
-
-            ContentDialog successDialog = new ContentDialog() {
-                Title = resourceLoader.GetString("importSuccessful"),
-                Content = resourceLoader.GetString("importSuccessfulDescription"),
-                PrimaryButtonText = resourceLoader.GetString("ok"),
-                SecondaryButtonText = resourceLoader.GetString("undo")
-            };
-            result = await successDialog.ShowAsync();
-            if(result != ContentDialogResult.Primary) return;
-
-            persistorService.Import(file);
-            await CoreApplication.RequestRestartAsync("");
         }
 
         private async void HandleSendMailBtn_Click(object sender, RoutedEventArgs e) {
-            EmailMessage msg = new EmailMessage();
-            EmailRecipient recipient = new EmailRecipient("diarytime@icloud.com", "DiaryTime");
-            msg.To.Add(recipient);
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                EmailMessage msg = new EmailMessage();
+                EmailRecipient recipient = new EmailRecipient("diarytime@icloud.com", "DiaryTime");
+                msg.To.Add(recipient);
 
-            await EmailManager.ShowComposeNewEmailAsync(msg);
+                await EmailManager.ShowComposeNewEmailAsync(msg);
+            }
         }
 
         private void InitDefaultFontPicker() {
@@ -185,8 +194,10 @@ namespace Diary.Views {
         }
 
         private async void HandlePrivacyBtn_Click(object sender, RoutedEventArgs e) {
-            PrivacyDialog dialog = new PrivacyDialog();
-            await dialog.ShowAsync();
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                PrivacyDialog dialog = new PrivacyDialog();
+                await dialog.ShowAsync();
+            }
         }
     }
 }

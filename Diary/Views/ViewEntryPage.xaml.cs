@@ -25,7 +25,7 @@ namespace Diary.Views {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ViewEntryPage : Page {
+    public sealed partial class ViewEntryPage : NoDoubleClickPage {
         private ResourceLoader resourceLoader;
 
         private AbstractPersistorService persistorService;
@@ -52,7 +52,7 @@ namespace Diary.Views {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
-            if(! wasFirstLoaded) {
+            if(!wasFirstLoaded) {
                 UpdateContent();
                 wasFirstLoaded = true;
             }
@@ -78,21 +78,25 @@ namespace Diary.Views {
         }
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
-            if(entry.IsToday) {
-                StartEdit();
-                return;
-            }
+            if(!IsReadyToPressButton()) return;
 
-            ContentDialog editConfirmationDialog = new ContentDialog {
-                Title = resourceLoader.GetString("editEntry"),
-                Content = string.Format(resourceLoader.GetString("confirmEditPastDay"), entry.DateString),
-                PrimaryButtonText = resourceLoader.GetString("abort"),
-                SecondaryButtonText = resourceLoader.GetString("continue")
-            };
+            using(var btnLock = new DoubleClickPreventer(sender)) {
+                if(entry.IsToday) {
+                    StartEdit();
+                    return;
+                }
 
-            ContentDialogResult result = await editConfirmationDialog.ShowAsync();
-            if(result == ContentDialogResult.Secondary) {
-                StartEdit();
+                ContentDialog editConfirmationDialog = new ContentDialog {
+                    Title = resourceLoader.GetString("editEntry"),
+                    Content = string.Format(resourceLoader.GetString("confirmEditPastDay"), entry.DateString),
+                    PrimaryButtonText = resourceLoader.GetString("abort"),
+                    SecondaryButtonText = resourceLoader.GetString("continue")
+                };
+
+                ContentDialogResult result = await editConfirmationDialog.ShowAsync();
+                if(result == ContentDialogResult.Secondary) {
+                    StartEdit();
+                }
             }
         }
 
