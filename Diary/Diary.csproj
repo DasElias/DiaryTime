@@ -179,6 +179,7 @@
     <Compile Include="Utils\ChildElementHelper.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="Utils\DoubleClickPreventer.cs" />
+    <Compile Include="Utils\ExecutorAtMidnight.cs" />
     <Compile Include="Utils\FloatingPointComparison.cs" />
     <Compile Include="Utils\ImageTypeHelper.cs" />
     <Compile Include="Utils\StorageFileToByteArrayHelper.cs" />

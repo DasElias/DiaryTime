@@ -2,6 +2,8 @@
 using Diary.Model;
 using Diary.Services;
 using Diary.Utils;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -41,7 +43,7 @@ namespace Diary.Views {
 
         private AbstractEncryptor encryptor = null;
         private AbstractPersistorService persistorService = null;
-
+        private ExecutorAtMidnight executorAtMidnight = null;
 
         /*
          * Sometimes, we want programmatically to unselect all dates in the CalendarView, for example when navigating to ListViewPage.
@@ -59,6 +61,7 @@ namespace Diary.Views {
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             SelectToday();
+            executorAtMidnight = new ExecutorAtMidnight(HandleOnMidnight);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -127,6 +130,15 @@ namespace Diary.Views {
 
         }
 
+        private void HandleOnMidnight() {
+            var dayItems = calendarView.GetChildren().OfType<CalendarViewDayItem>();
+            foreach(CalendarViewDayItem elem in dayItems) {
+                if(DateUtils.IsToday(elem.Date)) {
+                    elem.IsBlackout = false;
+                }
+            }
+        }
+
         private void HandleDiaryEntries_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
             var dayItems = calendarView.GetChildren().OfType<CalendarViewDayItem>();
             foreach(CalendarViewDayItem elem in dayItems) {
@@ -143,7 +155,7 @@ namespace Diary.Views {
                 args.RegisterUpdateCallback(HandleCalendar_CalendarViewDayItemChanging);
             } else if(args.Phase == 1) {
                 // set blackout dates
-                bool isDayInFuture = args.Item.Date > DateTimeOffset.Now;
+                bool isDayInFuture = DateUtils.IsInFuture(args.Item.Date);
                 if(isDayInFuture) {
                     args.Item.IsBlackout = true;
                 }
@@ -158,7 +170,7 @@ namespace Diary.Views {
         }
 
         private void UpdateDensityBars(CalendarViewDayItem item) {
-            bool isDayInFuture = item.Date > DateTimeOffset.Now;
+            bool isDayInFuture = DateUtils.IsInFuture(item.Date);
             if(!isDayInFuture && persistorService.ContainsEntryForDate(item.Date.Date)) {
                 item.SetDensityColors(DENSITY_COLORS);
             } else {
@@ -167,7 +179,7 @@ namespace Diary.Views {
         }
 
         private void UpdateSelectedBackground(CalendarViewDayItem item) {
-            bool isDayInFuture = item.Date > DateTimeOffset.Now;
+            bool isDayInFuture = DateUtils.IsInFuture(item.Date);
             if(!isDayInFuture) {
                 if(calendarView.SelectedDates.Contains(item.Date)) {
                     item.Background = SELECTED_BACKGROUND_COLOR;
@@ -182,9 +194,13 @@ namespace Diary.Views {
         }
 
         private void SelectDate(DateTimeOffset d) {
-            UnselectDate();
-            calendarView.SelectedDates.Add(d);
-            calendarView.SetDisplayDate(d);
+            try {
+                UnselectDate();
+                calendarView.SelectedDates.Add(d);
+                calendarView.SetDisplayDate(d);
+            } catch(Exception e) {
+                Crashes.TrackError(e);
+            }
         }
 
         private void UnselectDate() {
