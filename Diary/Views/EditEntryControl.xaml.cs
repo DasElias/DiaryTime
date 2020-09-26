@@ -381,12 +381,12 @@ namespace Diary.Views {
         }
 
         private void HandleEditor_TextChanged(object sender, RoutedEventArgs e) {
-            EntryChanged.Invoke(sender, e);
+            EntryChanged?.Invoke(sender, e);
             UpdateUndoRedoButtons();
         }
 
         private void HandleTextChanged_TitleBox(object sender, TextChangedEventArgs e) {
-            EntryChanged.Invoke(sender, e);
+            EntryChanged?.Invoke(sender, e);
         }
 
         private void UpdateUndoRedoButtons() {
