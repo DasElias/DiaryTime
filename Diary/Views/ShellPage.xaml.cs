@@ -50,6 +50,13 @@ namespace Diary.Views {
          * Nevertheless, the user should not be able to unselect an entry, therefore we cancel all unselect events, except this flag is set.
          */
         private bool allowEntryUnselect = false;
+
+        /*
+         * When editing today's entry, we don't need want ViewEntryPage to open first. Therefore, this flag allows to supress to open ViewEntryPage
+         * when the calendar's selection has changed. Please remember that you have to set this flag to false by yourself.
+         */
+        private bool shouldSuppressOpenViewOnCalendarChange = false;
+
         private DateTimeOffset? calendarViewSelectedDate;
 
         public ShellPage() {
@@ -80,8 +87,9 @@ namespace Diary.Views {
         }
 
         private void HandleEditTodayEntry_Tapped(object sender, TappedRoutedEventArgs e) {
-            // we don't want an event to be fired
+            shouldSuppressOpenViewOnCalendarChange = true;
             SelectToday();
+            shouldSuppressOpenViewOnCalendarChange = false;
 
             if(persistorService.ContainsEntryForDate(DateTime.Today)) {
                 DiaryEntry entry = persistorService.LoadEntry(DateTime.Today);
@@ -110,8 +118,11 @@ namespace Diary.Views {
                 // we don't want to navigate, if this event was only fired because of the undo of an unselection event
                 if(selected != this.calendarViewSelectedDate) {
                     this.calendarViewSelectedDate = selected;
-                    DateTime dateTime = selected.DateTime;
-                    NavigateOnCalenderClick(dateTime);
+                    
+                    if(! shouldSuppressOpenViewOnCalendarChange) {
+                        DateTime dateTime = selected.DateTime;
+                        NavigateOnCalenderClick(dateTime);
+                    }
                 }
             } else if(args.RemovedDates.Count > 0 && !allowEntryUnselect) {
                 // cancel unselect event
