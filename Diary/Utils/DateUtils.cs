@@ -14,11 +14,20 @@ namespace Diary.Utils {
         public static bool IsToday(DateTime date) {
             return date.Date == DateTime.Now.Date;
         }
+        public static bool IsToday(DateTimeOffset date) {
+            return date.Date == DateTime.Now.Date;
+        }
         public static bool IsYesterday(DateTime date) {
             return IsToday(date.AddDays(1));
         }
         public static bool IsThisYear(DateTime date) {
             return date.Year == DateTime.Now.Year;
+        }
+        public static bool IsInFuture(DateTime date) {
+            return date.Date > DateTime.Now.Date;
+        }
+        public static bool IsInFuture(DateTimeOffset date) {
+            return date.Date > DateTime.Now.Date;
         }
         public static string ToDateString(DateTime date) {
             return SHORT_DATE_FORMATTER.Format(date);

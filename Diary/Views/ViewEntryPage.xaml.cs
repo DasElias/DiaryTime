@@ -51,9 +51,16 @@ namespace Diary.Views {
 
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e) {
+            entryImagesEditor.StopImageLoading();
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             if(!wasFirstLoaded) {
-                UpdateContent();
+                // if the page wasn't unloaded in the meantime
+                if(entry != null) {
+                    UpdateContent();
+                }
                 wasFirstLoaded = true;
             }
         }

@@ -37,6 +37,7 @@ namespace Diary.Views {
         private AbstractPersistorService persistorService;
         private DiaryEntry diaryEntry = null;
         private int changedCharactersCount = 0;
+        private bool wasEntryLoaded = false;
 
         public EditPage() {
             this.InitializeComponent();
@@ -48,29 +49,30 @@ namespace Diary.Views {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
-            editor.EntryChanged += HandleEditor_EntryChanged;
+            // if the page wasn't unloaded in the meantime
+            if(diaryEntry != null) {
+                editor.EntryChanged += HandleEditor_EntryChanged;
 
-            entryButtonBarControl.DateText = diaryEntry.DateString;
-            editor.Title = diaryEntry.Title;
-            if(diaryEntry.RtfText != null && diaryEntry.PlainContent.Trim().Length > 0) {
-                editor.RtfText = diaryEntry.RtfText;
-            } else {
-                editor.Clear();
+                entryButtonBarControl.DateText = diaryEntry.DateString;
+                editor.Title = diaryEntry.Title;
+                if(diaryEntry.RtfText != null && diaryEntry.PlainContent.Trim().Length > 0) {
+                    editor.RtfText = diaryEntry.RtfText;
+                } else {
+                    editor.Clear();
+                }
+
+                _ = editor.LoadImages(diaryEntry.StoredImages);
+
+                bool isSpellCheckingEnabled = SpellCheckingSettingService.GetSpellCheckingPreference();
+                spellCheckingToggleButton.IsChecked = isSpellCheckingEnabled;
+                editor.IsSpellCheckingEnabled = isSpellCheckingEnabled;
+
+                wasEntryLoaded = true;
             }
-
-            _ = editor.LoadImages(diaryEntry.StoredImages);
-
-            bool isSpellCheckingEnabled = SpellCheckingSettingService.GetSpellCheckingPreference();
-            spellCheckingToggleButton.IsChecked = isSpellCheckingEnabled;
-            editor.IsSpellCheckingEnabled = isSpellCheckingEnabled;
         }
 
         private void Page_Suspending(object sender, SuspendingEventArgs e) {
-            if(diaryEntry != null) {
-                UpdateEntry();
-                persistorService.SaveEntryFinal(diaryEntry);
-                diaryEntry = null;
-            }
+            SaveFinal();
         }
 
         private void OnAutoSave(object sender, object e) {
@@ -99,13 +101,21 @@ namespace Diary.Views {
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             saveTimer.Stop();
 
+            editor.StopImageLoading();
+            SaveFinal();
+        }
+
+        private void SaveFinal() {
             if(diaryEntry != null) {
-                UpdateEntry();
-                persistorService.SaveEntryFinal(diaryEntry);
+                if(wasEntryLoaded) {
+                    UpdateEntry();
+                    persistorService.SaveEntryFinal(diaryEntry);
+                    wasEntryLoaded = false;
+                }
                 diaryEntry = null;
             }
         }
-
+             
         private void HandleEditor_EntryChanged(object sender, RoutedEventArgs e) {
             changedCharactersCount++;
         }

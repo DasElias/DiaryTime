@@ -2,6 +2,8 @@
 using Diary.Model;
 using Diary.Services;
 using Diary.Utils;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -41,13 +43,20 @@ namespace Diary.Views {
 
         private AbstractEncryptor encryptor = null;
         private AbstractPersistorService persistorService = null;
-
+        private ExecutorAtMidnight executorAtMidnight = null;
 
         /*
          * Sometimes, we want programmatically to unselect all dates in the CalendarView, for example when navigating to ListViewPage.
          * Nevertheless, the user should not be able to unselect an entry, therefore we cancel all unselect events, except this flag is set.
          */
         private bool allowEntryUnselect = false;
+
+        /*
+         * When editing today's entry, we don't need want ViewEntryPage to open first. Therefore, this flag allows to supress to open ViewEntryPage
+         * when the calendar's selection has changed. Please remember that you have to set this flag to false by yourself.
+         */
+        private bool shouldSuppressOpenViewOnCalendarChange = false;
+
         private DateTimeOffset? calendarViewSelectedDate;
 
         public ShellPage() {
@@ -59,6 +68,7 @@ namespace Diary.Views {
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             SelectToday();
+            executorAtMidnight = new ExecutorAtMidnight(HandleOnMidnight);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -77,8 +87,9 @@ namespace Diary.Views {
         }
 
         private void HandleEditTodayEntry_Tapped(object sender, TappedRoutedEventArgs e) {
-            // we don't want an event to be fired
+            shouldSuppressOpenViewOnCalendarChange = true;
             SelectToday();
+            shouldSuppressOpenViewOnCalendarChange = false;
 
             if(persistorService.ContainsEntryForDate(DateTime.Today)) {
                 DiaryEntry entry = persistorService.LoadEntry(DateTime.Today);
@@ -107,8 +118,11 @@ namespace Diary.Views {
                 // we don't want to navigate, if this event was only fired because of the undo of an unselection event
                 if(selected != this.calendarViewSelectedDate) {
                     this.calendarViewSelectedDate = selected;
-                    DateTime dateTime = selected.DateTime;
-                    NavigateOnCalenderClick(dateTime);
+                    
+                    if(! shouldSuppressOpenViewOnCalendarChange) {
+                        DateTime dateTime = selected.DateTime;
+                        NavigateOnCalenderClick(dateTime);
+                    }
                 }
             } else if(args.RemovedDates.Count > 0 && !allowEntryUnselect) {
                 // cancel unselect event
@@ -127,6 +141,15 @@ namespace Diary.Views {
 
         }
 
+        private void HandleOnMidnight() {
+            var dayItems = calendarView.GetChildren().OfType<CalendarViewDayItem>();
+            foreach(CalendarViewDayItem elem in dayItems) {
+                if(DateUtils.IsToday(elem.Date)) {
+                    elem.IsBlackout = false;
+                }
+            }
+        }
+
         private void HandleDiaryEntries_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
             var dayItems = calendarView.GetChildren().OfType<CalendarViewDayItem>();
             foreach(CalendarViewDayItem elem in dayItems) {
@@ -143,7 +166,7 @@ namespace Diary.Views {
                 args.RegisterUpdateCallback(HandleCalendar_CalendarViewDayItemChanging);
             } else if(args.Phase == 1) {
                 // set blackout dates
-                bool isDayInFuture = args.Item.Date > DateTimeOffset.Now;
+                bool isDayInFuture = DateUtils.IsInFuture(args.Item.Date);
                 if(isDayInFuture) {
                     args.Item.IsBlackout = true;
                 }
@@ -158,7 +181,7 @@ namespace Diary.Views {
         }
 
         private void UpdateDensityBars(CalendarViewDayItem item) {
-            bool isDayInFuture = item.Date > DateTimeOffset.Now;
+            bool isDayInFuture = DateUtils.IsInFuture(item.Date);
             if(!isDayInFuture && persistorService.ContainsEntryForDate(item.Date.Date)) {
                 item.SetDensityColors(DENSITY_COLORS);
             } else {
@@ -167,7 +190,7 @@ namespace Diary.Views {
         }
 
         private void UpdateSelectedBackground(CalendarViewDayItem item) {
-            bool isDayInFuture = item.Date > DateTimeOffset.Now;
+            bool isDayInFuture = DateUtils.IsInFuture(item.Date);
             if(!isDayInFuture) {
                 if(calendarView.SelectedDates.Contains(item.Date)) {
                     item.Background = SELECTED_BACKGROUND_COLOR;
@@ -182,9 +205,13 @@ namespace Diary.Views {
         }
 
         private void SelectDate(DateTimeOffset d) {
-            UnselectDate();
-            calendarView.SelectedDates.Add(d);
-            calendarView.SetDisplayDate(d);
+            try {
+                UnselectDate();
+                calendarView.SelectedDates.Add(d);
+                calendarView.SetDisplayDate(d);
+            } catch(Exception e) {
+                Crashes.TrackError(e);
+            }
         }
 
         private void UnselectDate() {

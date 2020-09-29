@@ -63,16 +63,28 @@ namespace Diary.Views {
             }
         }
 
+        private long UnloadCounterOnLastLoad { get; set; }
+
         public async Task LoadImages(ReadOnlyCollection<StoredImage> images) {
-            foreach(StoredImage img in images) {
+            long unloadCounter = UnloadCounterOnLastLoad;
+
+            for(int i = 0; i < images.Count; i++) {
+                var img = images[i];
                 BitmapImage bitmapImage = await ByteArrayToBitmapImageHelper.ConvertByteArrayToBitmapImage(img.ImageData);
                 ImageWrapper imageWrapper = new ImageWrapper() {
                     StoredImage = img,
                     BitmapImage = bitmapImage
                 };
 
+                // StopImageLoading was called in the meantime
+                if(unloadCounter != UnloadCounterOnLastLoad) return;
                 imagesToDisplay.Add(imageWrapper);
             }
+
+        }
+
+        public void StopImageLoading() {
+            UnloadCounterOnLastLoad++;
         }
 
         public void ClearImageChanges() {
