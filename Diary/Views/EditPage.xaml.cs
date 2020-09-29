@@ -101,6 +101,7 @@ namespace Diary.Views {
         protected override void OnNavigatedFrom(NavigationEventArgs e) {
             saveTimer.Stop();
 
+            editor.StopImageLoading();
             SaveFinal();
         }
 

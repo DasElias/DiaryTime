@@ -141,6 +141,10 @@ namespace Diary.Views {
             await EntryImagesEditor.LoadImages(images);
         }
 
+        public void StopImageLoading() {
+            EntryImagesEditor.StopImageLoading();
+        }
+
         public void UpdateEntryWithImageChanges(DiaryEntry entry) {
             entry.UpdateImages(EntryImagesEditor.AddedImages, EntryImagesEditor.RemovedImages);
             EntryImagesEditor.ClearImageChanges();
