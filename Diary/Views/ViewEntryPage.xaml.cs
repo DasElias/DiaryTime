@@ -45,7 +45,7 @@ namespace Diary.Views {
             persistorService = arg.PersistorService;
             entry = arg.Entry;
 
-            if(wasFirstLoaded) {
+            if(wasFirstLoaded && entry != null) {
                 UpdateContent();
             }
 

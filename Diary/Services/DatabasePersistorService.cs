@@ -21,19 +21,20 @@ namespace Diary.Services {
         private const string PW_CHECK_ENTRY_PLAIN_TEXT = "DiaryTime Password Check";
         private static readonly DateTime PW_CHECK_ENTRY_DATE = DateTime.MinValue;
 
-        private const string DB_NAME = "diary.db";
         private SqliteConnection connection;
         private AbstractEncryptor encryptor;
 
-        public DatabasePersistorService(AbstractEncryptor encryptor) : this(encryptor, AsyncContext.Run(GetPath)) {
+        public DatabasePersistorService(AbstractEncryptor encryptor, string databaseName) : this(encryptor, AsyncContext.Run(() => GetStorageFileFromDatabaseName(databaseName))) {
+
         }
 
-        private DatabasePersistorService(AbstractEncryptor encryptor, string path) {
+        public DatabasePersistorService(AbstractEncryptor encryptor, StorageFile dbFile) {
             this.encryptor = encryptor;
+            this.StorageFile = dbFile;
             // handler needs to be removed
             encryptor.OnPasswordChanged += HandleEncryptor_PasswordChanged;
 
-            string connectionString = $"Filename={path}";
+            string connectionString = $"Filename={dbFile.Path}";
             connection = new SqliteConnection(connectionString);
 
             try {
@@ -56,15 +57,21 @@ namespace Diary.Services {
             }
         }
 
-        public static async Task<bool> DoesDatabaseExist() {
+        private static async Task<StorageFile> GetStorageFileFromDatabaseName(string databaseName) {
             StorageFolder folder = ApplicationData.Current.LocalFolder;
-            IStorageItem item = await folder.TryGetItemAsync(DB_NAME);
+            StorageFile file = await folder.CreateFileAsync(databaseName, CreationCollisionOption.OpenIfExists);
+            return file;
+        }
+
+        public static async Task<bool> DoesDatabaseExist(string dbName) {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            IStorageItem item = await folder.TryGetItemAsync(dbName);
             return item != null;
         }
 
-        public static async Task DropDatabase() {
+        public static async Task DropDatabase(string dbName) {
             StorageFolder folder = ApplicationData.Current.LocalFolder;
-            IStorageItem item = await folder.TryGetItemAsync(DB_NAME);
+            IStorageItem item = await folder.TryGetItemAsync(dbName);
 
             if(item != null) {
 
@@ -73,13 +80,7 @@ namespace Diary.Services {
 
         }
 
-        private static async Task<string> GetPath() {
-            StorageFolder folder = ApplicationData.Current.LocalFolder;
-            await folder.CreateFileAsync(DB_NAME, CreationCollisionOption.OpenIfExists);
-            string path = Path.Combine(folder.Path, DB_NAME);
-            return path;
-        }
-
+        public override StorageFile StorageFile { get; }
 
         private void HandleEncryptor_PasswordChanged(string oldPlainPw, string newPlainPw) {
             var entries = GetAllEntries(oldPlainPw);
@@ -292,40 +293,6 @@ namespace Diary.Services {
                 command.Parameters.AddWithValue("@date", DateUtils.ToUnixtime(entry.Date));
                 command.ExecuteNonQuery();
             }
-        }
-
-        public async override void Export(IStorageFile storageFile) {
-            StorageFolder folder = ApplicationData.Current.LocalFolder;
-            StorageFile databaseFile = await folder.GetFileAsync(DB_NAME);
-            await databaseFile.CopyAndReplaceAsync(storageFile);
-        }
-
-        public async override void Import(StorageFile storageFile) {
-            StorageFolder folder = ApplicationData.Current.LocalFolder;
-            StorageFile databaseFile = await folder.GetFileAsync(DB_NAME);
-
-            await storageFile.CopyAndReplaceAsync(databaseFile);
-        }
-
-        public override async Task<bool> VerifyForImport(StorageFile storageFile) {
-            const string TEMP_FILE_NAME = "temp.db";
-
-            StorageFolder folder = ApplicationData.Current.TemporaryFolder;
-            IStorageItem tempStorageItem = await folder.TryGetItemAsync(TEMP_FILE_NAME);
-            StorageFile tempFile = await (tempStorageItem == null ? folder.CreateFileAsync(TEMP_FILE_NAME) : folder.GetFileAsync(TEMP_FILE_NAME));
-            await storageFile.CopyAndReplaceAsync(tempFile);
-
-            AbstractEncryptor mockEncryptor = new MockEncryptionService();
-
-            try {
-                var newService = new DatabasePersistorService(mockEncryptor, tempFile.Path);
-            } catch(SqliteException) {
-                return false;
-            } catch(InvalidPasswordException) {
-                // do nothing
-            }
-
-            return true;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,10 +24,16 @@ using Windows.UI.Xaml.Navigation;
 namespace Diary.Views {
     public sealed partial class LoginPage : Page {
         private ResourceLoader resourceLoader;
+        private object lastDoubleTappedRect = null;
+        private string databaseName;
 
         public LoginPage() {
             this.InitializeComponent();
             resourceLoader = ResourceLoader.GetForCurrentView();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            databaseName = ((LaunchArgument) e.Parameter).DatabaseName;
         }
 
         private async void HandleSignInBtn_Click(object sender, RoutedEventArgs e) {
@@ -42,7 +49,7 @@ namespace Diary.Views {
         private async Task Login() {
             try {
                 var encryptor = new EncryptionService(passwordBox.Password);
-                var persistor = new DatabasePersistorService(encryptor);
+                var persistor = new DatabasePersistorService(encryptor, databaseName);
                 PersistorEncryptorArgument arg = new PersistorEncryptorArgument(persistor, encryptor);
                 Frame.Navigate(typeof(ShellPage), arg);
             } catch(InvalidPasswordException) {
@@ -62,12 +69,19 @@ namespace Diary.Views {
             ContentDialogResult result = await errorDialog.ShowAsync();
 
             if(result == ContentDialogResult.Primary) {
-                Windows.ApplicationModel.Core.CoreApplication.Exit();
+                CoreApplication.Exit();
             } else {
-                await DatabasePersistorService.DropDatabase();
-                await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync("");
+                await DatabasePersistorService.DropDatabase(databaseName);
+                await CoreApplication.RequestRestartAsync("");
             }
 
+        }
+
+        private async void HandleRect_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e) {
+            if(lastDoubleTappedRect == null) lastDoubleTappedRect = sender;
+            else if(lastDoubleTappedRect != sender) {
+                await CoreApplication.RequestRestartAsync("-private");
+            }
         }
     }
 

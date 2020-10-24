@@ -20,11 +20,16 @@ using Windows.UI.Xaml.Navigation;
 namespace Diary.Views {
     public sealed partial class FirstLoginPage : Page {
         private ResourceLoader resourceLoader;
+        private string databaseName;
 
         public FirstLoginPage() {
             this.InitializeComponent();
             this.resourceLoader = ResourceLoader.GetForCurrentView();
             this.Loaded += Page_Loaded;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            databaseName = ((LaunchArgument) e.Parameter).DatabaseName;
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e) {
@@ -58,7 +63,7 @@ namespace Diary.Views {
             }
 
             var encryptor = new EncryptionService(pw);
-            var persistor = new DatabasePersistorService(encryptor);
+            var persistor = new DatabasePersistorService(encryptor, databaseName);
             PersistorEncryptorArgument arg = new PersistorEncryptorArgument(persistor, encryptor);
             Frame.Navigate(typeof(ShellPage), arg);
         }

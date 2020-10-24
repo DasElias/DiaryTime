@@ -95,7 +95,9 @@ namespace Diary.Views {
 
                 if(file != null) {
                     CachedFileManager.DeferUpdates(file);
-                    persistorService.Export(file);
+                    var exportService = new DatabaseExportService(persistorService);
+                    exportService.Export(file);
+                    
                     await CachedFileManager.CompleteUpdatesAsync(file);
                 }
             }
@@ -118,7 +120,8 @@ namespace Diary.Views {
                 StorageFile file = await openPicker.PickSingleFileAsync();
                 if(file == null) return;
 
-                bool isValid = await persistorService.VerifyForImport(file);
+                DatabaseExportService exportService = new DatabaseExportService(persistorService);
+                bool isValid = await exportService.VerifyForImport(file);
                 if(!isValid) {
                     ContentDialog invalidDialog = new ContentDialog() {
                         Title = resourceLoader.GetString("importFailed"),
@@ -139,7 +142,7 @@ namespace Diary.Views {
                 result = await successDialog.ShowAsync();
                 if(result != ContentDialogResult.Primary) return;
 
-                persistorService.Import(file);
+                exportService.Import(file);
                 await CoreApplication.RequestRestartAsync("");
             }
         }
