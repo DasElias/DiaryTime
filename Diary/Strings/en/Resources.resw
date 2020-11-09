@@ -323,4 +323,13 @@ Your current entries will be deleted irrevocably.</value>
   <data name="privacyLinkText" xml:space="preserve">
     <value>To our privacy policy</value>
   </data>
+  <data name="restart" xml:space="preserve">
+    <value>Restart DiaryTime</value>
+  </data>
+  <data name="timeZoneChanged" xml:space="preserve">
+    <value>System time has changed</value>
+  </data>
+  <data name="timeZoneChangedExplanation" xml:space="preserve">
+    <value>We have noticed that your computer's system time has changed during the course of today (possibly due to a different time zone). To ensure the correct functioning of DiaryTime, it is now necessary to restart the app.</value>
+  </data>
 </root>
