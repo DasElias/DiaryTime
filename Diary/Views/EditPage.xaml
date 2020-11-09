@@ -30,7 +30,7 @@
                 <AppBarButton Icon="Delete" Label="{CustomResource deleteEntry}" Click="HandleDeleteButton_Click"/>
                 <AppBarToggleButton x:Name="spellCheckingToggleButton" Label="{CustomResource spellChecking}" Click="HandleSpellCheckingButton_Click">
                     <AppBarToggleButton.Content>
-                        <FontIcon FontFamily="Assets/iconfont.ttf#icomoon"  Glyph="&#xe900;" />
+                        <FontIcon FontFamily="/Assets/iconfont.ttf#iconfont"  Glyph="&#xe900;" />
 
 
 
