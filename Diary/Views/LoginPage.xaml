@@ -52,5 +52,9 @@
 
         </RelativePanel>
         <local:StartScreenImage Grid.Column="1" />
+        <RelativePanel Grid.ColumnSpan="2">
+            <Rectangle Width="40" Height="40" Fill="Transparent" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" DoubleTapped="HandleRect_DoubleTapped" />
+            <Rectangle Width="40" Height="40" Fill="Transparent" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" DoubleTapped="HandleRect_DoubleTapped" />
+        </RelativePanel>
     </Grid>
 </Page>

@@ -23,7 +23,7 @@ using Windows.UI.Xaml.Resources;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using Diary.Events;
 
 namespace Diary {
     /// <summary>
@@ -46,27 +46,29 @@ namespace Diary {
         /// </summary>
         /// <param name="e">Details über Startanforderung und -prozess.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e) {
-            Start();
+            bool shouldLaunchPrivate = e.Arguments == "-private";
+            string databaseName = GetDatabaseName(shouldLaunchPrivate);
 
+            Start(new LaunchArgument(databaseName));           
             //  DiaryReminderToastService.ShowToastImmediately();
             // DiaryReminderToastService.ScheduleToast(DateTime.Now.AddSeconds(15));
         }
 
         protected override void OnActivated(IActivatedEventArgs args) {
-            Start();
+            Start(new LaunchArgument(GetDatabaseName()));
         }
 
-        private void Start() {
+        private void Start(LaunchArgument arg) {
             Frame frame = Window.Current.Content as Frame;
 
             if(frame == null) {
                 frame = new Frame();
                 Window.Current.Content = frame;
-                if(AsyncContext.Run(DatabasePersistorService.DoesDatabaseExist)) {
-                    frame.Navigate(typeof(LoginPage));
+                if(AsyncContext.Run(() => DatabasePersistorService.DoesDatabaseExist(arg.DatabaseName))) {
+                    frame.Navigate(typeof(LoginPage), arg);
 
                 } else {
-                    frame.Navigate(typeof(FirstLoginPage));
+                    frame.Navigate(typeof(FirstLoginPage), arg);
 
                 }
             }
@@ -86,6 +88,10 @@ namespace Diary {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Anwendungszustand speichern und alle Hintergrundaktivitäten beenden
             deferral.Complete();
+        }
+
+        private string GetDatabaseName(bool shouldLaunchPrivate = false) {
+            return shouldLaunchPrivate ? "secret.db" : "diary.db";
         }
     }
 }

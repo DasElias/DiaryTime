@@ -422,6 +422,18 @@ Your current entries will be deleted irrevocably.</target>
           <source>Zu unserer Datenschutzerklärung</source>
           <target state="translated">To our privacy policy</target>
         </trans-unit>
+        <trans-unit id="restart" translate="yes" xml:space="preserve">
+          <source>DiaryTime neustarten</source>
+          <target state="translated">Restart DiaryTime</target>
+        </trans-unit>
+        <trans-unit id="timeZoneChanged" translate="yes" xml:space="preserve">
+          <source>Geänderte Systemzeit</source>
+          <target state="translated">System time has changed</target>
+        </trans-unit>
+        <trans-unit id="timeZoneChangedExplanation" translate="yes" xml:space="preserve">
+          <source>Wir haben bemerkt, dass sich die Systemzeit deines Computers im Laufe des heutigen Tags geändert wurde (evtl. durch eine andere Zeitzone oder Umstellung auf Sommer- oder Winterzeit). Um die korrekte Funktion von DiaryTime zu gewährleisten, ist nun ein Neustart der App erforderlich.</source>
+          <target state="translated">We have noticed that your computer's system time has changed during the course of today (possibly due to a different time zone). To ensure the correct functioning of DiaryTime, it is now necessary to restart the app.</target>
+        </trans-unit>
       </group>
     </body>
   </file>

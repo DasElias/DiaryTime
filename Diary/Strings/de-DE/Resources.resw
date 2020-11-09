@@ -371,6 +371,9 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   <data name="reset" xml:space="preserve">
     <value>Zurücksetzen</value>
   </data>
+  <data name="restart" xml:space="preserve">
+    <value>DiaryTime neustarten</value>
+  </data>
   <data name="save" xml:space="preserve">
     <value>Speichern</value>
   </data>
@@ -406,6 +409,12 @@ Die aktuellen Tagebucheinträge werden hierdurch unwiderruflich gelöscht werden
   </data>
   <data name="textColor" xml:space="preserve">
     <value>Schriftfarbe</value>
+  </data>
+  <data name="timeZoneChanged" xml:space="preserve">
+    <value>Geänderte Systemzeit</value>
+  </data>
+  <data name="timeZoneChangedExplanation" xml:space="preserve">
+    <value>Wir haben bemerkt, dass sich die Systemzeit deines Computers im Laufe des heutigen Tags geändert wurde (evtl. durch eine andere Zeitzone oder Umstellung auf Sommer- oder Winterzeit). Um die korrekte Funktion von DiaryTime zu gewährleisten, ist nun ein Neustart der App erforderlich.</value>
   </data>
   <data name="underlinedText" xml:space="preserve">
     <value>Unterstrichener Text</value>

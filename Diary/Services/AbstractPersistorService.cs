@@ -21,6 +21,8 @@ namespace Diary.Services {
             }
         }
 
+        public abstract StorageFile StorageFile { get; }
+
         public bool ContainsEntryForDate(DateTime date) {
             return DiaryEntries.Any(entry => DateUtils.CompareDay(entry.Date, date));
         }
@@ -66,10 +68,6 @@ namespace Diary.Services {
             bool wasSuccessfullyRemoved = DiaryEntries.Remove(entry);
             if(wasSuccessfullyRemoved) RemoveEntryImpl(entry);
         }
-
-        public abstract void Export(IStorageFile storageFile);
-        public abstract Task<bool> VerifyForImport(StorageFile storageFile);
-        public abstract void Import(StorageFile storageFile);
 
         protected abstract ObservableCollection<DiaryEntryPreview> LoadPreviewsImpl();
         protected abstract DiaryEntry LoadImpl(DateTime date);

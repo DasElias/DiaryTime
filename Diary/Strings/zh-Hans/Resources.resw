@@ -321,4 +321,13 @@
   <data name="privacyLinkText" xml:space="preserve">
     <value>到我们的隐私政策</value>
   </data>
+  <data name="restart" xml:space="preserve">
+    <value>重新启动DiaryTime</value>
+  </data>
+  <data name="timeZoneChanged" xml:space="preserve">
+    <value>改变了系统时间</value>
+  </data>
+  <data name="timeZoneChangedExplanation" xml:space="preserve">
+    <value>我们注意到您的电脑系统时间在今天的过程中发生了变化（可能是由于时区不同）。为了保证DiaryTime的正确功能，现在需要重新启动应用程序。</value>
+  </data>
 </root>
