@@ -43,16 +43,11 @@ namespace Diary.Views {
 
         public EditEntryControl() {
             this.InitializeComponent();
-            this.Loaded += Control_Loaded;
             ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
             colorService = new FontColorService(resourceLoader);
 
             // init font family picker
             InitFontFamilyPicker();
-        }
-
-        private void Control_Loaded(object sender, RoutedEventArgs e) {
-            Editor.SelectionFlyout.ShouldConstrainToRootBounds = true;
         }
 
         public string RawText {
