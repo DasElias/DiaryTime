@@ -127,7 +127,7 @@ namespace Diary.Views {
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
             if(!IsReadyToPressButton()) return;
 
-            using(var btnLock = new DoubleClickPreventer(sender)) {
+            using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 if(entry.IsToday) {
                     StartEdit();
                     return;

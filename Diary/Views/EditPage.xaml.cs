@@ -136,7 +136,8 @@ namespace Diary.Views {
 
         private async void HandleDeleteButton_Click(object sender, RoutedEventArgs e) {
             if(!IsReadyToPressButton()) return;
-            using(var btnLock = new DoubleClickPreventer(sender)) {
+
+            using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 ContentDialog confirmationDialog = new ContentDialog {
                     Title = resourceLoader.GetString("deleteEntryLong"),
                     Content = resourceLoader.GetString("confirmDeleteEntry"),
