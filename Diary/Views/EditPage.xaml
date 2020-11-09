@@ -23,13 +23,17 @@
                 <SolidColorBrush x:Key="AppBarToggleButtonBackgroundChecked" Color="#C8C6C4" />
                 <SolidColorBrush x:Key="AppBarToggleButtonBackgroundCheckedPointerOver" Color="#C8C6C4" />
                 <SolidColorBrush x:Key="AppBarToggleButtonBackgroundCheckedPressed" Color="#C8C6C4" />
+                <SolidColorBrush x:Key="AppBarToggleButtonBackgroundCheckedDisabled" Color="#C8C6C4" />
             </local:EntryButtonBarControl.Resources>
             <local:EntryButtonBarControl.Buttons>
                 <AppBarButton Icon="View" Label="{CustomResource saveEntry}" Click="HandleViewButton_Click"/>
                 <AppBarButton Icon="Delete" Label="{CustomResource deleteEntry}" Click="HandleDeleteButton_Click"/>
                 <AppBarToggleButton x:Name="spellCheckingToggleButton" Label="{CustomResource spellChecking}" Click="HandleSpellCheckingButton_Click">
                     <AppBarToggleButton.Content>
-                        <Image Source="/Assets/SpellChecking2.svg" />
+                        <FontIcon FontFamily="Assets/iconfont.ttf#icomoon"  Glyph="&#xe900;" />
+
+
+
                     </AppBarToggleButton.Content>
                 </AppBarToggleButton>
             </local:EntryButtonBarControl.Buttons>
