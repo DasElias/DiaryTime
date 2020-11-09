@@ -33,6 +33,7 @@ namespace Diary.Views {
         private DiaryEntry entry;
         private bool wasFirstLoaded = false;
         private List<int> debugList = new List<int>();
+        private List<long> timeDebugList = new List<long>();
 
         public ViewEntryPage() {
             this.InitializeComponent();
@@ -84,7 +85,17 @@ namespace Diary.Views {
             }
         }
 
+        private void AddToTimeDebugList() {
+            long unixSecond = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            timeDebugList.Add(unixSecond);
+            if(timeDebugList.Count > 100) {
+                timeDebugList.RemoveRange(0, 50);
+            }
+        }
+
         private void UpdateContent() {
+            AddToTimeDebugList();
+
             try {
                 entryButtonBarControl.DateText = entry.DateString;
                 titleElement.Text = entry.Title;
@@ -107,6 +118,12 @@ namespace Diary.Views {
                     str += ", ";
                 }
 
+                var timeStr = "";
+                foreach(long i in timeDebugList) {
+                    timeStr += i;
+                    timeStr += ", ";
+                }
+
                 Crashes.TrackError(e, new Dictionary<string, string>{
                     { "entryButtonBarControl", Print(entryButtonBarControl) },
                     { "entry", Print(entry) },
@@ -117,15 +134,17 @@ namespace Diary.Views {
                     { "contentElement.Document", Print(contentElement?.Document) },
                     { "entry.StoredImages", Print(entry?.StoredImages) },
                     { "entryImagesEditor", Print(entryImagesEditor) },
-                    { "str", str }
+                    { "str", str },
+                    { "timeStr", timeStr }
                 });
-                throw;
             }
 
         }
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
+            AddToDebugList(6);
             if(!IsReadyToPressButton()) return;
+            AddToDebugList(7);
 
             using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 if(entry.IsToday) {
