@@ -12,6 +12,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Core;
+using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Devices.Core;
@@ -44,6 +46,7 @@ namespace Diary.Views {
         private AbstractEncryptor encryptor = null;
         private AbstractPersistorService persistorService = null;
         private ExecutorAtMidnight executorAtMidnight = null;
+        private ResourceLoader resourceLoader;
 
         /*
          * Sometimes, we want programmatically to unselect all dates in the CalendarView, for example when navigating to ListViewPage.
@@ -61,6 +64,8 @@ namespace Diary.Views {
 
         public ShellPage() {
             this.InitializeComponent();
+            resourceLoader = ResourceLoader.GetForCurrentView();
+
             Loaded += Page_Loaded;
             instance = this;
         }
@@ -204,13 +209,23 @@ namespace Diary.Views {
             SelectDate(DateTimeOffset.Now);
         }
 
-        private void SelectDate(DateTimeOffset d) {
+        private async void SelectDate(DateTimeOffset d) {
             try {
                 UnselectDate();
                 calendarView.SelectedDates.Add(d);
                 calendarView.SetDisplayDate(d);
-            } catch(Exception e) {
-                Crashes.TrackError(e);
+            } catch(Exception) {         
+                try {
+                    var msgbox = new ContentDialog {
+                        Title = resourceLoader.GetString("timeZoneChanged"),
+                        Content = resourceLoader.GetString("timeZoneChangedExplanation"),
+                        CloseButtonText = resourceLoader.GetString("restart")
+                    };
+                    await msgbox.ShowAsync();
+                    await CoreApplication.RequestRestartAsync("");
+                } catch(Exception e) {
+                    Crashes.TrackError(e);
+                }
             }
         }
 
