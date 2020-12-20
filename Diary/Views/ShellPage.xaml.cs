@@ -62,6 +62,8 @@ namespace Diary.Views {
 
         private DateTimeOffset? calendarViewSelectedDate;
 
+        private DateTime maxSelectableDate;
+
         public ShellPage() {
             this.InitializeComponent();
             resourceLoader = ResourceLoader.GetForCurrentView();
@@ -74,6 +76,8 @@ namespace Diary.Views {
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             SelectToday();
             executorAtMidnight = new ExecutorAtMidnight(HandleOnMidnight);
+
+            maxSelectableDate = DateTime.Now;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -117,14 +121,19 @@ namespace Diary.Views {
         }
 
         private void HandleCalendar_SelectedDateChange(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args) {
+            if(DateUtils.IsInFuture(maxSelectableDate)) {
+                ShowTimeZoneChangedError();
+                return;
+            }
+
             if(args.AddedDates.Count > 0) {
                 DateTimeOffset selected = args.AddedDates[0];
 
                 // we don't want to navigate, if this event was only fired because of the undo of an unselection event
                 if(selected != this.calendarViewSelectedDate) {
                     this.calendarViewSelectedDate = selected;
-                    
-                    if(! shouldSuppressOpenViewOnCalendarChange) {
+
+                    if(!shouldSuppressOpenViewOnCalendarChange) {
                         DateTime dateTime = selected.DateTime;
                         NavigateOnCalenderClick(dateTime);
                     }
@@ -209,23 +218,27 @@ namespace Diary.Views {
             SelectDate(DateTimeOffset.Now);
         }
 
-        private async void SelectDate(DateTimeOffset d) {
+        private void SelectDate(DateTimeOffset d) {
             try {
                 UnselectDate();
                 calendarView.SelectedDates.Add(d);
                 calendarView.SetDisplayDate(d);
-            } catch(Exception) {         
-                try {
-                    var msgbox = new ContentDialog {
-                        Title = resourceLoader.GetString("timeZoneChanged"),
-                        Content = resourceLoader.GetString("timeZoneChangedExplanation"),
-                        CloseButtonText = resourceLoader.GetString("restart")
-                    };
-                    await msgbox.ShowAsync();
-                    await CoreApplication.RequestRestartAsync("");
-                } catch(Exception e) {
-                    Crashes.TrackError(e);
-                }
+            } catch(Exception) {
+                ShowTimeZoneChangedError();
+            }
+        }
+
+        private async void ShowTimeZoneChangedError() {
+            try {
+                var msgbox = new ContentDialog {
+                    Title = resourceLoader.GetString("timeZoneChanged"),
+                    Content = resourceLoader.GetString("timeZoneChangedExplanation"),
+                    CloseButtonText = resourceLoader.GetString("restart")
+                };
+                await msgbox.ShowAsync();
+                await CoreApplication.RequestRestartAsync("");
+            } catch(Exception e) {
+                Crashes.TrackError(e);
             }
         }
 

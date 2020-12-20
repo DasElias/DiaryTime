@@ -3,6 +3,7 @@ using Diary.Model;
 using Diary.Services;
 using Diary.Utils;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,8 +33,6 @@ namespace Diary.Views {
         private AbstractPersistorService persistorService;
         private DiaryEntry entry;
         private bool wasFirstLoaded = false;
-        private List<int> debugList = new List<int>();
-        private List<long> timeDebugList = new List<long>();
 
         public ViewEntryPage() {
             this.InitializeComponent();
@@ -48,9 +47,12 @@ namespace Diary.Views {
             persistorService = arg.PersistorService;
             entry = arg.Entry;
 
-            AddToDebugList(1);
+            Analytics.TrackEvent("OnNavigatedTo ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() },
+                { "wasFirstLoaded", wasFirstLoaded.ToString() }
+            });
+
             if(wasFirstLoaded && entry != null) {
-                AddToDebugList(2);
                 UpdateContent();
             }
 
@@ -61,90 +63,44 @@ namespace Diary.Views {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
-            AddToDebugList(3);
+            Analytics.TrackEvent("PageLoaded ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() },
+                { "wasFirstLoaded", wasFirstLoaded.ToString() }
+            });
+
             if(!wasFirstLoaded) {
-                AddToDebugList(4);
                 // if the page wasn't unloaded in the meantime
                 if(entry != null) {
-                    AddToDebugList(5);
                     UpdateContent();
                 }
                 wasFirstLoaded = true;
             }
         }
 
-        private string Print(object var) {
-            if(var == null) return "null";
-            else return var.ToString();
-        }
-
-        private void AddToDebugList(int debug) {
-            this.debugList.Add(debug);
-            if(debugList.Count > 100) {
-                debugList.RemoveRange(0, 50);
-            }
-        }
-
-        private void AddToTimeDebugList() {
-            long unixSecond = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            timeDebugList.Add(unixSecond);
-            if(timeDebugList.Count > 100) {
-                timeDebugList.RemoveRange(0, 50);
-            }
-        }
 
         private void UpdateContent() {
-            AddToTimeDebugList();
+            entryButtonBarControl.DateText = entry.DateString;
+            titleElement.Text = entry.Title;
 
-            try {
-                entryButtonBarControl.DateText = entry.DateString;
-                titleElement.Text = entry.Title;
+            contentElement.IsReadOnly = false;
+            contentElement.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, entry.RtfText);
+            contentElement.Document.ApplyDisplayUpdates();
+            contentElement.IsReadOnly = true;
 
-                contentElement.IsReadOnly = false;
-                contentElement.Document.SetText(Windows.UI.Text.TextSetOptions.FormatRtf, entry.RtfText);
-                contentElement.Document.ApplyDisplayUpdates();
-                contentElement.IsReadOnly = true;
-
-                bool hasEntryImages = entry.StoredImages.Count > 0;
-                entryImagesEditor.Visibility = hasEntryImages ? Visibility.Visible : Visibility.Collapsed;
-                if(hasEntryImages) {
-                    entryImagesEditor.Clear();
-                    _ = entryImagesEditor.LoadImages(entry.StoredImages);
-                }
-            } catch(NullReferenceException e) {
-                var str = "";
-                foreach(int i in debugList) {
-                    str += i;
-                    str += ", ";
-                }
-
-                var timeStr = "";
-                foreach(long i in timeDebugList) {
-                    timeStr += i;
-                    timeStr += ", ";
-                }
-
-                Crashes.TrackError(e, new Dictionary<string, string>{
-                    { "entryButtonBarControl", Print(entryButtonBarControl) },
-                    { "entry", Print(entry) },
-                    { "entry.DateString", Print(entry?.DateString) },
-                    { "entry.Title", Print(entry?.Title) },
-                    { "titleElement", Print(titleElement) },
-                    { "contentElement", Print(contentElement) },
-                    { "contentElement.Document", Print(contentElement?.Document) },
-                    { "entry.StoredImages", Print(entry?.StoredImages) },
-                    { "entryImagesEditor", Print(entryImagesEditor) },
-                    { "str", str },
-                    { "timeStr", timeStr }
-                });
+            bool hasEntryImages = entry.StoredImages.Count > 0;
+            entryImagesEditor.Visibility = hasEntryImages ? Visibility.Visible : Visibility.Collapsed;
+            if(hasEntryImages) {
+                entryImagesEditor.Clear();
+                _ = entryImagesEditor.LoadImages(entry.StoredImages);
             }
 
         }
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
-            AddToDebugList(6);
             if(!IsReadyToPressButton()) return;
-            AddToDebugList(7);
+            Analytics.TrackEvent("HandleEditButton ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() }
+            });
 
             using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 if(entry.IsToday) {
