@@ -2,6 +2,8 @@
 using Diary.Model;
 using Diary.Services;
 using Diary.Utils;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -45,6 +47,11 @@ namespace Diary.Views {
             persistorService = arg.PersistorService;
             entry = arg.Entry;
 
+            Analytics.TrackEvent("OnNavigatedTo ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() },
+                { "wasFirstLoaded", wasFirstLoaded.ToString() }
+            });
+
             if(wasFirstLoaded && entry != null) {
                 UpdateContent();
             }
@@ -56,6 +63,11 @@ namespace Diary.Views {
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
+            Analytics.TrackEvent("PageLoaded ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() },
+                { "wasFirstLoaded", wasFirstLoaded.ToString() }
+            });
+
             if(!wasFirstLoaded) {
                 // if the page wasn't unloaded in the meantime
                 if(entry != null) {
@@ -86,6 +98,9 @@ namespace Diary.Views {
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
             if(!IsReadyToPressButton()) return;
+            Analytics.TrackEvent("HandleEditButton ViewPage", new Dictionary<string, string> {
+                { "entryIsNull", (entry == null).ToString() }
+            });
 
             using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 if(entry.IsToday) {
