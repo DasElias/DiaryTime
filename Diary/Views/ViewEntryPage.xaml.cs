@@ -66,14 +66,6 @@ namespace Diary.Views {
         }
 
 
-        private void AddToTimeDebugList() {
-            long unixSecond = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-            timeDebugList.Add(unixSecond);
-            if(timeDebugList.Count > 100) {
-                timeDebugList.RemoveRange(0, 50);
-            }
-        }
-
         private void UpdateContent() {
             entryButtonBarControl.DateText = entry.DateString;
             titleElement.Text = entry.Title;
@@ -93,9 +85,7 @@ namespace Diary.Views {
         }
 
         private async void HandleEditBtn_Click(object sender, RoutedEventArgs e) {
-            AddToDebugList(6);
             if(!IsReadyToPressButton()) return;
-            AddToDebugList(7);
 
             using(var btnLock = new DoubleClickPreventer(entryButtonBarControl)) {
                 if(entry.IsToday) {
