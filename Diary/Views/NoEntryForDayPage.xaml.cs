@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -59,15 +60,15 @@ namespace Diary.Views {
             }
         }
 
-        private void HandleCreateNowBtn_Click(object sender, RoutedEventArgs e) {
+        private async void HandleCreateNowBtn_Click(object sender, RoutedEventArgs e) {
             if(isForToday) {
                 CreateForToday();
             } else {
-                CreateForPast();
+                await CreateForPast();
             }
         }
 
-        private async void CreateForPast() {
+        private async Task CreateForPast() {
             ContentDialog editConfirmationDialog = new ContentDialog {
                 Title = resourceLoader.GetString("dayIsInPast"),
                 Content = string.Format(resourceLoader.GetString("dayIsInPastBody"), DateUtils.ToDateString(entryDate)),
