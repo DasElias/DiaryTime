@@ -9,7 +9,7 @@
   <Identity
     Name="65124EliasHorner.DiaryTime"
     Publisher="CN=CB97A0FB-EF33-425D-B5E4-78C8B418801D"
-    Version="1.2.0.0" />
+    Version="1.2.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="f9939c7f-b62b-413f-9d58-d0a25cad0df2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
