@@ -96,7 +96,7 @@ namespace Diary.Views {
                 if(file != null) {
                     CachedFileManager.DeferUpdates(file);
                     var exportService = new DatabaseExportService(persistorService);
-                    exportService.Export(file);
+                    await exportService.Export(file);
                     
                     await CachedFileManager.CompleteUpdatesAsync(file);
                 }
@@ -142,7 +142,7 @@ namespace Diary.Views {
                 result = await successDialog.ShowAsync();
                 if(result != ContentDialogResult.Primary) return;
 
-                exportService.Import(file);
+                await exportService.Import(file);
                 await CoreApplication.RequestRestartAsync("");
             }
         }
